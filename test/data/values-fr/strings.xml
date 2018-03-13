@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">VacApp</string>
+    <string name="action_settings">Réglages</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="vaca_detail_activity">vaca_detail_activity</string>
+    <string name="photo_vaca">photo_vaca</string>
+    <string name="Vaca_poultry_number">Nº basse-cour</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis lobortis suscipit. Aliquam convallis condimentum dui, eu ultricies metus aliquet ut. Duis sed sapien vitae risus aliquet rhoncus eu id metus. Nullam sagittis viverra velit, at aliquam nunc euismod at. Vestibulum nisl odio, pellentesque a volutpat aliquam, ullamcorper nec mi. Duis at sem feugiat felis auctor venenatis vel eu est. Nulla facilisis mattis tellus et porttitor. Etiam convallis velit sit amet dolor vestibulum tempor. </string>
+    <string name="Vaca_code">Marque à l\'oreille</string>
+    <string name="Vaca_birthDate">Date de naissance</string>
+    <string name="Vaca_gender">Sexe</string>
+    <string name="Vaca_race">Race</string>
+    <string name="Vaca_bornPlace">Pays</string>
+    <string name="Vaca_exploitation">Exploitation</string>
+    <string name="Vaca_mother">Mère</string>
+    <string name="Vaca_father">Père</string>
+    <string name="Vaca_state">État</string>
+    <string name="Vaca_calf">C\'est un veau?</string>
+    <string name="Vaca_weaned">Il est sevré?</string>
+    <string name="Vaca_description">Description</string><!-- events --><string name="event_title">Événements</string>
+    <string name="create_event">Ajouter événement</string>
+    <string name="EventType_PREGNANT">Avancée</string>
+    <string name="EventType_OTHER">Autres</string>
+    <string name="EventType_SANITATION">Assainissement</string>
+    <string name="EventType_CALVED">Vêlage</string>
+    <string name="EventType_SICK">Maladie</string>
+    <string name="EventType_WEAN">Sevrer</string>
+    <string name="EventType_CHANGE_HERD">Changement de troupeau</string>
+    <string name="EventType_DEAD">Mort</string>
+    <string name="EventType_SOLD">Vendue</string>
+    <string name="EventType_DEAD_CALF">Veau mort</string>
+    <string name="EventType_CALF_TO_COW">Animal adulte</string>
+    <string name="EventType_WEANED">Sevré</string>
+    <string name="EventType_FUCKED">Saillie</string>
+
+
+    <string name="VacaState_OWNED">Propriété</string>
+    <string name="VacaState_SOLD">Vendue</string>
+    <string name="VacaState_DEATH">Morte</string>
+
+    <string name="Gender_FEMALE">femelle</string>
+    <string name="Gender_MALE">mâle</string>
+
+    <string name="is_calf_true">veau</string>
+    <string name="is_calf_false">adulte</string>
+
+    <string name="Event_comments">Commentaire</string>
+    <string name="Event_date">Date</string>
+    <string name="Event_eventType">Type</string>
+    <string name="Event_vacaId">Vache</string>
+
+
+    <string name="eventgroup_tag_writen_ok">Vache ajoutée %1$s</string>
+    <string name="eventgroup_tag_writen_not_found">Aucune vache trouvée %1$s</string>
+
+
+    <plurals name="herd_list_cos_number">
+        <item quantity="zero">Sans vaches</item>
+        <item quantity="one">1 vache</item>
+        <item quantity="other">%d vaches</item>
+    </plurals>
+
+    <string name="EventGroup_comments">Commentaires</string>
+    <string name="EventGroup_date">Date de l\'événement</string>
+    <string name="EventGroup_eventType">Type d\'événement</string>
+
+    <string name="Herd">Troupeau</string>
+    <string name="Herd_location">Localisation</string>
+    <string name="Herd_color">Couleur</string>
+
+
+    <string name="calfs_title">Veaux</string>
+
+    <string name="cancel_button">Annuler</string>
+    <string name="ok_button">OK</string>
+    <string name="location">location</string>
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+    <string name="Species_CATTLE_group">Bétail</string>
+    <string name="Species_CATTLE_females">Vaches</string>
+    <string name="Species_CATTLE_males">Taureaux</string>
+    <string name="Species_CATTLE_baby">Veaux</string>
+    <string name="Species_CATTLE_weaned">Veaux sevrés</string>
+    <string name="label_dl_b">Autres</string>
+    <string name="drawer_category_data">Données</string>
+    <string name="label_dl_b_herds">Troupeaux</string>
+    <string name="label_dl_b_sanity">Assainissements</string>
+    <string name="label_dl_b_historic">Historique</string>
+    <string name="label_dl_b_export">Exporter</string>
+    <string name="label_dl_b_user">Utilisateur</string>
+    <string name="label_dl_b_event_log">Registre d\'événements</string>
+    <string name="label_dl_b_import">Importer des données</string>
+    <string name="label_exploitations">Exploitations</string>
+    <string name="label_help_videos">Tutoriel</string>
+    <string name="ic_action_new_herd">Nouveau troupeau</string>
+    <string name="ic_action_new_vaca">Nouvelle vache</string>
+    <string name="ic_action_edit_vaca">Éditer la vache</string>
+    <string name="ic_action_search">Rechercher</string>
+    <string name="vaca_search_hint">Numéro de basse-cour ou marque à l\'oreille</string>
+    <string name="title_activity_add_vaca">AddVacaActivity</string>
+    <string name="save_label">Enregistrer</string>
+    <string name="discard_label">Annuler</string>
+    <string name="onSaveVaca">Vache enregistrée</string>
+    <string name="onDeleteVaca">Vache annulée</string>
+    <string name="ic_action_change_herd">Changer de troupeau</string>
+    <string name="selection">Sélection</string>
+    <string name="one_cow_selected">Une vache</string>
+    <string name="multi_cow_selected">vaches</string>
+    <string name="select_herd">Sélectionnez le troupeau</string>
+    <string name="selected_vacas">Sélectionnées</string>
+    <string name="unselected_vacas">Non sélectionnées</string>
+    <string name="ic_action_new_event">Créer un événement</string>
+    <string name="ic_action_nfc_write_vaca">Write nfc tag</string>
+    <string name="ic_action_send_now">Envoyer</string>
+
+    <string name="user_drawer_guest_text">Vous êtes un utilisateur invité:  Inscrivez-vous</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+
+    <string name="welcome">Bienvenue sur VacApp</string>
+    <string name="welcome_subtitle">L\'application pour contrôler les vaches conçue pour et par des paysans.</string>
+    <string name="later">Plus tard</string>
+
+
+    <string name="error_not_unique">%1$s existant</string>
+    <string name="error_not_valid">%1$s non valide</string>
+    <string name="error_not_null">%1$s ne peut pas rester vide</string>
+    <string name="delete_options_sold">Vendue</string>
+    <string name="delete_options_death">Morte</string>
+    <string name="delete_options_delete">Annuler</string>
+    <string name="pick_mother">Sélectionner le numéro de la vache mère</string>
+    <string name="pick_father">Sélectionner le numéro du taureau</string>
+
+    <string name="calf_generated_pultry_number">Fils de %1$s</string>
+
+    <string name="state_change_action_wean_calf">Sevrer</string>
+    <string name="state_change_calf_to_cow">Devenir adulte</string>
+    <string name="state_change_action_set_sick">Signaler comme malade</string>
+    <string name="state_change_action_set_not_sick">Démarquer comme malade</string>
+    <string name="state_change_action_set_pregnant">Signaler comme avancée</string>
+    <string name="state_change_action_give_birth">Elle a vêlé</string>
+    <string name="state_change_action_set_fucked">Signaler comme saillie</string>
+
+
+    <string name="error_with_dib">On n\'a pas pu lire le passeport du bovin</string>
+    <string name="import_dib_not_registered_mother">La mère n\'est pas registrée. Elle ne sera pas sauvegardée</string>
+
+    <string name="no_events_text">Aucun événement</string>
+    <string name="no_calfs_text">Elle n\'a pas eu des veaux</string>
+
+    <string name="no_id_cow">Sans marque à oreille</string>
+
+    <string name="import_exploitations_description">D\'abord, pour commencer à utiliser VacApp, importez votre troupeau. Ajoutez vos exploitations.</string>
+    <string name="import_description">Une fois les exploitations ajoutées, vous devez y apporter le bétail. Pour ce faire, vous disposez de trois méthodes.</string>
+    <string name="div_scan_title">Scanner les passeports du bovins</string>
+    <string name="div_scan_description">Scannez le code à barre du passeport de la vache et importez les données dans l\'appli.</string>
+    <string name="import_excel_title">Importez un Excel.</string>
+    <string name="import_excel_description">Remplissez un fichier Excel avec les données des vaches pour l\'importer dans l\'appli. Effectuez cette opération confortablement depuis votre ordinateur.</string>
+    <string name="import_manual_title">Introduisez les données manuellement</string>
+    <string name="import_manual_description">Vous pouvez aussi introduire les vaches manuellement depuis l\'appli mobile.</string>
+    <string name="import_excel_explanation">Pour importer les données depuis l\'Excel, il faut accéder à la page suivante depuis votre ordinateur: \nhttp://vacapp.net</string>
+    <string name="import_excel_registration_need">Il vous faut être inscrit pour importer un Excel.</string>
+
+    <string name="no_switch">N</string>
+    <string name="yes_switch">S</string>
+
+    <string name="vaca_exiting_updated">La vache existait déjà et elle a été mise à jour.</string>
+    <string name="cow_not_identified">Non identifiée</string>
+
+    <string name="import_exploitations">1ère étape: Exploitations</string>
+
+    <string name="Exploitation">Exploitation</string>
+    <string name="Exploitation_code">Code</string>
+
+
+    <string name="sick_cause_dialog_message">Cause de la maladie (optionnel)</string>
+    <string name="death_cause_dialog_message">Cause de la mort (optionnel)</string>
+    <string name="vet_name">Prénom et Nom du vétérinaire</string>
+
+    <string name="excel_export_title">Exportation</string>
+    <string name="excel_export_message">Base de données en préparation.</string>
+
+
+    <string name="lose_data_title">Attention</string>
+    <string name="lose_data_message">Vos données ne seront pas sauvegardées dès que vous quittez cette page.</string>
+    <string name="exit">Sortir</string>
+
+    <string name="number_of_animals">%d animaux</string>
+
+    <string name="incorrect_login">E-mail ou mot de passe incorrects</string>
+    <string name="incorrect_signup">Erreur: Utilisateur inexistant ?</string>
+
+    <string name="incorrect_email">VacApp se trouve en phase de test et pour l\'instant le nombre d\'utilisateurs enregistrés est limité. Si vous désirez utiliser VacApp, veuillez envoyer un courriel à info@vacapp.net</string>
+    <string name="invalid_email">E-mail incorrect</string>
+
+    <string name="no_more_days_title">Attention</string>
+    <string name="no_more_days_message">Votre abonnement à vacapp.net a expiré.</string>
+    <string name="no_more_days_description">Adressez-vous à la page web pour utiliser l\'application</string>
+    <string name="no_more_days_subscribe">Mettre à jour l\'abonnement</string>
+
+    <string name="subscription_about_to_expire">Il ne vous reste que %d jours pour profiter de votre abonnement. Entrez dans vacapp.net et renouvelez l\'abonnement.</string>
+
+    <string name="connecting">Téléchargement des données</string>
+
+    <string name="must_update_title">Mise à jour de VacApp</string>
+    <string name="must_update_description">Pour continuer à travailler, il faut mettre à jour l\'application.</string>
+    <string name="must_update_update">Mettre à jour</string>
+
+    <string name="error_undo_wean_calf_but_adult">Cette vache est déjà adulte. Il est impossible d\'annuler cet événement.</string>
+    <string name="error_undo_weaned_calf_to_adult_but_mother">Cette vache est déjà mère. Il est impossible d\'annuler cet événement.</string>
+    <string name="remove_herd_event_does_not_change_herd">Vous venez d\'annuler l\'événement, mais la vache n\'a pas changé de troupeau.</string>
+
+    <string name="ic_action_check_list">Faites l\'appel</string>
+    <string name="no_herd">Sans troupeau</string>
+
+
+    <string name="video_help_url">https://www.youtube.com/playlist?list=PLN9nz4zQqi1nL1RTyckEbf5bf7-3LJgkv</string>
+    <string name="make_alive_does_not_restore_all_data">On peut pas récupérer le numéro de basse-cour et le troupeau. Introduisez-les manuellement.</string>
+    <string name="LoginData_promotional_code">Code promotionnel</string>
+    <string name="terms_checkbox">Je l\'ai lu et accepté</string>
+    <string name="terms_link">Je l\'ai lu et accepté les</string>
+    <string name="terms_must_be_accepted">Vous devez accepter les termes et conditions</string>
+
+    <!-- TODO recheck -->
+    <string name="test_app_title">Essayer VacApp</string>
+    <string name="test_app_description">Je suis nouveau sur l’application mais je veux seulement voir comment elle marche avant d’ajouter mon bétail</string>
+    <string name="sign_up_description">Je suis nouveau sur l’application. Je veux ajouter mon bétail et commencer à travailler avec VacApp</string>
+    <string name="sign_in_description">J\'ai déjà un identifiant. Je veux entrer.</string>
+    <string name="chose_start">Choisissez comment voulez-vous commencer</string>
+    <string name="end_demo">Finaliser démo</string>
+    <string name="demo_warning">Les données que vous entrez pendant la démo seront effacées au bout de quelques jours. Enregistrez-vous pour entrer des données réelles.</string>
+    <string name="demo_user_not_allowed">Accès réservé aux utilisateurs enregistrés</string>
+    <string name="state_change_action_set_aborted">avortement</string>
+    <string name="EventType_ABORTED">Avortement</string>
+
+    <string name="Sale">Vente</string>
+    <string name="Sale_destination">Destination</string>
+    <string name="Sale_date">Rendez-vous amoureux</string>
+    <string name="OfficialDocument_code">Document sur la santé</string>
+    <string name="Purchase_origin">Origine</string>
+    <string name="Exploitation_name">prénom</string>
+    <string name="EventType_PURCHASED">Acheté</string>
+    <string name="menu_continue">Continuer</string>
+    <string name="EventType_SOLD_name">Ventes</string>
+    <string name="EventType_PURCHASED_name">Achats</string>
+    <string name="VetTreatment_prescriptionDate">Date de la Presciption</string>
+    <string name="VetTreatment_administrationDate">Date d\'administration</string>
+    <string name="VetTreatment_administration">Administration</string>
+    <string name="VetTreatment_drugName">Nom du médicament</string>
+    <string name="VetTreatment_dosage">Dosage (ml / mg)</string>
+    <string name="VetTreatment_treatedCondition">Condition traitée</string>
+    <string name="VetTreatment_treatmentDuration">Durée (jours)</string>
+    <string name="VetTreatment_wait_time_milk">Temps d\'attente lait (jours)</string>
+    <string name="VetTreatment_wait_time_meat">Temps d\'attente viande (jours)</string>
+    <string name="VetTreatment_vet">Vétérinaire</string>
+    <string name="VetTreatment_medicineProvider">Fournisseur de médecine</string>
+    <string name="vetTreatment_prescription">Ordonnance</string>
+    <string name="Administration_VET_PRESCRIPTION">Prescription vétérinaire</string>
+    <string name="Administration_VET_APPLIED">Vétérinaire appliqué</string>
+    <string name="Administration_FARMER_APPLIED">Agriculteur appliqué</string>
+    <string name="EventType_BIRTH">Naissance</string>
+    <string name="Vaca_officialBirthDate">Date de naissance officielle</string>
+    <string name="EventType_VET_TREATMENT">Traitement vétérinaire</string>
+    <string name="select_all">Tout sélectionner</string>
+    <string name="Vet">Vétérinaire</string>
+    <string name="Vet_name">prénom</string>
+    <string name="Vet_professionalNumber">Numéro professionnel</string>
+    <string name="Vet_vetAssociation">Association des vétérinaires</string>
+    <string name="MedicineProvider">Fournisseur de médecine</string>
+    <string name="MedicineProvider_adress">Une robe</string>
+    <string name="MedicineProvider_name">prénom</string>
+    <string name="Drug">Drogue</string>
+    <string name="Drug_name">prénom</string>
+    <string name="permission_camera_rationale">L\'accès à la caméra est nécessaire pour la détection</string>
+    <string name="no_camera_permission">Cette application ne peut pas s\'exécuter car elle ne possède pas l\'autorisation de la caméra. L\'application va maintenant quitter.</string>
+    <string name="low_storage_error">manque d\'espace</string>
+    <string name="sales_n_purchases">Achats et ventes</string>
+    <string name="vet_operations">Vétérinaire</string>
+    <string name="new_sale">Nouvelle vente</string>
+    <string name="new_purchase">Nouvel achat</string>
+    <string name="new_sanitation">Nouvel assainissement</string>
+    <string name="new_vet_treatment">Nouveau traitement vétérinaire</string>
+    <string name="puchase_with_no_cattle">Vous devez ajouter le bétail acheté</string>
+    <string name="delete_sure">Êtes-vous sûr? Les données seront perdues! Si la vache est morte ou vendue, appuyez sur Annuler.</string>
+    <string name="export_description">Sélectionnez le document à générer</string>
+    <string name="export_vet_treatments_title">Traitements vétérinaires</string>
+    <string name="export_vet_treatments_description">Document officiel avec la liste des traitements vétérinaires pour une exploitation donnée</string>
+    <string name="export_exploitation_book_title">Livre d\'exploitation</string>
+    <string name="export_exploitation_book_description">Document officiel sur l\'histoire des animaux dans une exploitation donnée</string>
+    <string name="export_data_title">Données sur le bétail</string>
+    <string name="export_data_description">Fichier Excel avec les données de votre bétail</string>
+    <string name="exploitation_book">Livre d\'exploitation</string>
+    <string name="export_error">Erreur lors du téléchargement du fichier.</string>
+    <string name="reimport_warning">Attention: Utiliser uniquement pour l\'importation de bovins pour la première fois. Ne pas utiliser pour les naissances ou les achats ou la génération de documents officiels ne fonctionnera pas.</string>
+    <string name="copy_to_official_date">Voulez-vous également définir cette date comme date officielle?</string>
+    <string name="inseminator_code">Crotale du taureau de l\'insémination</string>
+    <string name="code_is_mandatory">L\'étiquette est obligatoire</string>
+    <string name="weighted">Pondéré</string>
+    <string name="not_empty">ça ne peut pas être vide</string>
+    <string name="weighted_dialog_title">Indiquez le poids (kg)</string>
+    <string name="action_drawer_feeder">Fatten</string>
+    <string name="to_feeder">Engraisser</string>
+    <string name="view_list">Voir la liste</string>
+
+    <string name="species">Espèces</string>
+    <string name="Species_CATTLE">Bovin</string>
+    <string name="Species_HORSE">Equine</string>
+    <string name="Species_GOAT">Chèvre</string>
+    <string name="Species_SHEEP">Mouton</string>
+    <string name="farm_settigs">Paramètres de la ferme</string>
+    <string name="species_question">Quels animaux avez-vous?</string>
+    <string name="available_only_for_cattle">Disponible uniquement pour les bovins</string>
+    <string name="import_animals">Étape 2: %1$s</string>
+    <string name="animal_name_generic_animal">Les animaux</string>
+    <string name="animal_name_generic_group">Les animaux</string>
+    <string name="animal_name_generic_males">Les mâles</string>
+    <string name="animal_name_generic_females">Les femelles</string>
+    <string name="animal_name_generic_children">Élevage</string>
+    <string name="animal_name_generic_weaned">Sevré</string>
+    <string name="sign_out_text">Quitter la session en cours</string>
+    <string name="demo">démo</string>
+    <string name="no_species_selected_error">Vous devez sélectionner une espèce</string>
+    <string name="Vaca_coatColor">Capa</string>
+    <string name="Vaca_transponderCode">Puce</string>
+    <string name="Vaca_UELN">UELN</string>
+
+    <string name="Species_HORSE_group">Chevaux</string>
+    <string name="Species_HORSE_males">Homme</string>
+    <string name="Species_HORSE_females">Mare</string>
+    <string name="Species_HORSE_baby">Potrillo</string>
+    <string name="Species_HORSE_weaned">Sevré</string>
+    <string name="Species_GOAT_group">Chèvre</string>
+    <string name="Species_GOAT_males">Cabro</string>
+    <string name="Species_GOAT_females">Chèvre</string>
+    <string name="Species_GOAT_baby">Chivo</string>
+    <string name="Species_GOAT_weaned">Sevré</string>
+    <string name="Species_SHEEP_group">Mouton</string>
+    <string name="Species_SHEEP_males">Ram</string>
+    <string name="Species_SHEEP_females">Mouton</string>
+    <string name="Species_SHEEP_baby">Agneau</string>
+    <string name="Species_SHEEP_weaned">Sevré</string>
+    <string name="error">Erreur</string>
+
+    <string name="animal_without_exploitation">%1$s doit avoir une exploitation</string>
+    <string name="Herd_locationType">Type</string>
+    <string name="LocationType_PASTURE">pâturage</string>
+    <string name="LocationType_MOUNTAIN">monte</string>
+    <string name="LocationType_STABLE">grange</string>
+    <string name="months_last_birth">Mois de la dernière livraison</string>
+    <string name="birth_count">Nombre de naissances</string>
+    <string name="more_than_one_species_selected_error">Un seul type peut être sélectionné</string>
+    <string name="mother_stats">mères</string>
+    <string name="heifer_stats">jeunes</string>
+    <string name="internet_required_title">Nous avons besoin d\'internet</string>
+    <string name="internet_required">Nous n\'avons pas pu nous connecter à nos serveurs. Réessayez plus tard.</string>
+    <string name="age">âge</string>
+    <string name="stats">Statistiques</string>
+    <string name="new_internal_sale">Nouveau changement d\'exploitation</string>
+    <string name="EventType_INTERNAL_SOLD">Changement d\'exploitation</string>
+    <string name="error_repeated_exploitation_when_changed">Vous ne pouvez pas déplacer un animal vers la même ferme</string>
+    <string name="warning">Avis</string>
+    <string name="warning_exploitation_change">Changer de batterie peut entraîner l\'échec de la génération de documents. Créer une vente interne si vous avez besoin de changer l'exploitation d'un animal.</string>
+    <string name="no_animals_selected_error">Vous devez sélectionner au moins un animal</string>
+    <string name="InternalSale_targetExploitationId">destination d\'exploitation</string>
+    <string name="DifficultyOfBirth_NO_ASSITANCE">1- Sans assistance</string>
+    <string name="DifficultyOfBirth_MINOR_ASSISTANCE">2- Moins d\'assistance</string>
+    <string name="DifficultyOfBirth_MAJOR_ASSISTANCE">3- Assistance majeure</string>
+    <string name="DifficultyOfBirth_CESAREAN">4- Césarienne</string>
+    <string name="DifficultyOfBirth_BAD_FETUS">5- Mauvaise présentation du fœtus</string>
+    <string name="Birth_date">date</string>
+    <string name="Birth_difficultyOfBirth">difficulté</string>
+    <string name="no_childs_added_error">Vous devez ajouter au moins un enfant</string>
+    <string name="CattleStage_ADULT">adulte</string>
+    <string name="CattleStage_CALF">veau</string>
+    <string name="CattleStage_WEANED">sevré</string>
+    <string name="CattleStage_FEEDER">engraissement</string>
+    <string name="Vaca_stage">étape</string>
+    <string name="reading_code_insead_of_dib">Il semble qu\'il essaie de lire un code à barres incorrect. Vous devriez lire le grand code à la fin du document. Vous pouvez regarder une vidéo d\'aide si vous avez des questions.</string>
+    <string name="watch_video">Regarder la vidéo</string>
+    <string name="import_video_url">https://www.youtube.com/watch?v=rdQVhsOoO1Y&amp;list=PLN9nz4zQqi1nL1RTyckEbf5bf7-3LJgkv</string>
+    <string name="delete_temp_data_confirmation">Êtes-vous sûr de vouloir supprimer ceci?</string>
+    <string name="showcase_stats_mothers">Voir les mères ordonnées par le temps qui fait la dernière naissance et vérifier les statistiques de naissance.</string>
+    <string name="showcase_stats_heifers">Voir les femelles qui n\'ont pas encore donné naissance, classées par âge.</string>
+    <string name="showcase_new_version_title">Bienvenue à VacApp %1$s</string>
+    <string name="showcase_version_2_features"><![CDATA[Quoi de neuf?<br/>&#8226; Gérer les moutons, les chèvres et les chevaux.<br/>&#8226; Nouvelle section de menu \ "statistiques \" où vous pouvez vérifier les données de naissance.<br/>&#8226; 3 types de troupeaux : champ, montagne ou stable<br/>&#8226; Et bien plus encore!]]></string>
+    <string name="last_birth">Dernière naissance</string>
+    <string name="days_number">%1$s  jours</string>
+    <string name="ancestors">Ancêtres</string>
+    <string name="descendants">Descendants</string>
+    <string name="User_region">Région</string>
+    <string name="User_phone">Téléphone</string>
+    <string name="confirm_sing_out">Êtes-vous sûr de vouloir partir?</string>
+
+</resources>

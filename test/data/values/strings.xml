@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VacApp</string>
+    <string name="EventGroup_comments">Comments</string>
+    <string name="EventGroup_date">Event date</string>
+    <string name="EventGroup_eventType">Event type</string>
+    <string name="EventType_CALF_TO_COW">Adult animal</string>
+    <string name="EventType_CALVED">Childbirth</string>
+    <string name="EventType_CHANGE_HERD">Herd change</string>
+    <string name="EventType_DEAD">Death</string>
+    <string name="EventType_DEAD_CALF">Dead calf</string>
+    <string name="EventType_FUCKED">Mate</string>
+    <string name="EventType_OTHER">Other</string>
+    <string name="EventType_PREGNANT">Pregnant</string>
+    <string name="EventType_SANITATION">Sanitation</string>
+    <string name="EventType_SICK">Sick</string>
+    <string name="EventType_SOLD">Sold</string>
+    <string name="EventType_WEAN">Wean</string>
+    <string name="EventType_WEANED">Weaned</string>
+    <string name="Event_comments">Comment</string>
+    <string name="Event_date">Date</string>
+    <string name="Event_eventType">Type</string>
+    <string name="Event_vacaId">Cow</string>
+    <string name="Exploitation">Exploitation</string>
+    <string name="Exploitation_code">Code</string>
+    <string name="Gender_FEMALE">Female</string>
+    <string name="Gender_MALE">Male</string>
+    <string name="Herd">Herd</string>
+    <string name="Herd_color">Color</string>
+    <string name="Herd_location">Location</string>
+    <string name="VacaState_DEATH">Dead</string>
+    <string name="VacaState_OWNED">Owned</string>
+    <string name="VacaState_SOLD">Sold</string>
+    <string name="action_settings">Settings</string>
+    <string name="calf_generated_pultry_number">Calf of %1$s</string>
+    <string name="calfs_title">Calfs</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="connecting">Downloading data</string>
+    <string name="cow_not_identified">Not identified</string>
+    <string name="create_event">Create event</string>
+    <string name="death_cause_dialog_message">Death cause (optional)</string>
+    <string name="delete_options_death">Death</string>
+    <string name="delete_options_delete">Delete</string>
+    <string name="delete_options_sold">Sold</string>
+    <string name="discard_label">Cancel</string>
+    <string name="div_scan_description">Spain Only. Scan DIB code and import data to the application.</string>
+    <string name="div_scan_title">Scan DIBs</string>
+    <string name="drawer_category_data">Data</string>
+    <string name="drawer_close">Open</string>
+    <string name="drawer_open">Close</string>
+    <string name="error_not_null">%1$s can\'t be empty</string>
+    <string name="error_not_unique">%1$s exists</string>
+    <string name="error_not_valid">%1$s not valid</string>
+    <string name="error_undo_wean_calf_but_adult">This cow is adult. You can\'t undo this event.</string>
+    <string name="error_undo_weaned_calf_to_adult_but_mother">This cow is mother. You can\'t undo this event.</string>
+    <string name="error_with_dib">Can\'t read DIB</string>
+    <string name="event_title">Events</string>
+    <string name="eventgroup_tag_writen_not_found">We have not found the cow: %1$s</string>
+    <string name="eventgroup_tag_writen_ok">Cow added: %1$s</string>
+    <string name="excel_export_message">Preparing data</string>
+    <string name="excel_export_title">Export</string>
+    <string name="exit">Exit</string>
+    <string name="Vaca_exploitation">Exploitation</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="ic_action_change_herd">Change heard</string>
+    <string name="ic_action_check_list">Check list</string>
+    <string name="ic_action_edit_vaca">Edit cow</string>
+    <string name="ic_action_new_event">Create event</string>
+    <string name="ic_action_new_herd">Create Herd</string>
+    <string name="ic_action_new_vaca">Create cow</string>
+    <string name="ic_action_nfc_write_vaca">Write nfc tag</string>
+    <string name="ic_action_search">Search</string>
+    <string name="ic_action_send_now">Send</string>
+    <!--string name="import_cattle">Step 2: cattle</string-->
+    <string name="import_description">Once explotations created we need to import cattle. We offer 3 ways to do so.</string>
+    <string name="import_dib_not_registered_mother">The mother is not registred and will not be saved.</string>
+    <string name="import_excel_description">Fill an Excel with your cows and import it to the application. Do it form a PC.</string>
+    <string name="import_excel_explanation">To import an excel go to:\nhttp://vacapp.net</string>
+    <string name="import_excel_registration_need">You need to be registered to import an Excel file.</string>
+    <string name="import_excel_title">Import excel.</string>
+    <string name="import_exploitations">Step 2: Explotations</string>
+    <string name="import_exploitations_description">To use Vacapp you need to import your cattle. First you need to add your explotations</string>
+    <string name="import_manual_description">You can also add the cattle from you mobile app.</string>
+    <string name="import_manual_title">Add cattle manually</string>
+    <string name="incorrect_email">incorrect mail</string>
+    <string name="incorrect_login">Email or password incorrect</string>
+    <string name="incorrect_signup">Error: existing user?</string>
+    <string name="invalid_email">Incorrect email</string>
+    <string name="is_calf_false">adult</string>
+    <string name="is_calf_true">calf</string>
+    <string name="label_dl_b">Other</string>
+    <string name="label_dl_b_event_log">Register events</string>
+    <string name="label_dl_b_export">Export</string>
+    <string name="label_dl_b_herds">Herds</string>
+    <string name="label_dl_b_historic">Historic</string>
+    <string name="label_dl_b_import">Import</string>
+    <string name="label_dl_b_sanity">Sanitation</string>
+    <string name="label_dl_b_user">User</string>
+    <string name="label_exploitations">Explotations</string>
+    <string name="label_help_videos">Video-tutorials</string>
+    <string name="later">Later</string>
+    <string name="location">Location</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis lobortis suscipit. Aliquam convallis condimentum dui, eu ultricies metus aliquet ut. Duis sed sapien vitae risus aliquet rhoncus eu id metus. Nullam sagittis viverra velit, at aliquam nunc euismod at. Vestibulum nisl odio, pellentesque a volutpat aliquam, ullamcorper nec mi. Duis at sem feugiat felis auctor venenatis vel eu est. Nulla facilisis mattis tellus et porttitor. Etiam convallis velit sit amet dolor vestibulum tempor.</string>
+    <string name="lose_data_message">Data won\'t be saved if you exit</string>
+    <string name="lose_data_title">Warning</string>
+    <string name="multi_cow_selected">Cows</string>
+    <string name="must_update_description">You need to update VacApp</string>
+    <string name="must_update_title">Update VacApp</string>
+    <string name="must_update_update">Update</string>
+    <string name="no_calfs_text">No calfs</string>
+    <string name="no_events_text">No events</string>
+    <string name="no_herd">No herd</string>
+    <string name="no_id_cow">No eartag</string>
+    <string name="no_more_days_description">Go to website to keep using VacApp. In case of problems contact to info@vacapp.net</string>
+    <string name="no_more_days_message">VacApp subscriptión is over.</string>
+    <string name="no_more_days_subscribe">Update Subscription</string>
+    <string name="no_more_days_title">Waring</string>
+    <string name="no_switch">N</string>
+    <string name="number_of_animals">%d animals</string>
+    <string name="ok_button">Ok</string>
+    <string name="onDeleteVaca">Cow deleted</string>
+    <string name="onSaveVaca">Cow saved</string>
+    <string name="one_cow_selected">One cow</string>
+    <string name="photo_vaca">Photo</string>
+    <string name="pick_father">Choose father number</string>
+    <string name="pick_mother">Choose mother number</string>
+    <string name="remove_herd_event_does_not_change_herd">Event deleted, but cow has not changed herd</string>
+    <string name="save_label">Save</string>
+    <string name="select_herd">Select herd</string>
+    <string name="selected_vacas">Selected</string>
+    <string name="selection">Selection</string>
+    <string name="sick_cause_dialog_message">Cause of sickness (optional)</string>
+    <string name="state_change_action_give_birth">Gave birth</string>
+    <string name="state_change_action_set_fucked">Set matted</string>
+    <string name="state_change_action_set_not_sick">Unset sick</string>
+    <string name="state_change_action_set_pregnant">Set pregnant</string>
+    <string name="state_change_action_set_aborted">Abortion</string>
+    <string name="state_change_action_set_sick">Set sick</string>
+    <string name="state_change_action_wean_calf">Wean</string>
+    <string name="state_change_calf_to_cow">Set adult</string>
+    <string name="subscription_about_to_expire">Only %d subscriptions days left. Go to vacapp.net to renew.</string>
+    <string name="Vaca_birthDate">Birth date</string>
+    <string name="Vaca_bornPlace">Country</string>
+    <string name="Vaca_code">Eartag</string>
+    <string name="Vaca_description">Description</string>
+    <string name="Vaca_father">Father</string>
+    <string name="Vaca_gender">Gender</string>
+    <string name="Vaca_calf">Is calf</string>
+    <string name="Vaca_weaned">Is weaned</string>
+    <string name="Vaca_mother">Mother</string>
+    <string name="Vaca_poultry_number">Poultry number</string>
+    <string name="Vaca_race">Race</string>
+    <string name="Vaca_state">State</string>
+    <string name="title_activity_add_vaca">Add Cow</string>
+    <string name="title_activity_welcome">Welcome</string>
+    <string name="unselected_vacas">Not selected</string>
+    <string name="user_drawer_guest_text">You are guest: register</string>
+    <string name="vaca_detail_activity">Cow</string>
+    <string name="vaca_exiting_updated">Cow updated</string>
+    <string name="vaca_search_hint">Poultry number or eartag</string>
+    <string name="vet_name">Veterinary number</string>
+    <string name="video_help_url">https://www.youtube.com/playlist?list=PLN9nz4zQqi1nL1RTyckEbf5bf7-3LJgkv</string>
+    <string name="welcome">Welcome to VacApp</string>
+    <string name="welcome_subtitle">Control you cattle from your mobile phone</string>
+    <string name="yes_switch">Y</string>
+    <string name="error">Error</string>
+    <string name="make_alive_does_not_restore_all_data">The poutlry number and herd will not be restored. Enter them manually.</string>
+    <string name="terms_must_be_accepted">Terms and conditions must be accepted</string>
+    <string name="terms_checkbox">I\'ve read and accept the </string>
+    <string name="terms_link">terms and conditions</string>
+    <string name="LoginData_promotional_code">Promotional code</string>
+    <string name="test_app_title">Test VacApp</string>
+    <string name="test_app_description">I\'m new but I only want to see how the app works before adding my cattle.</string>
+    <string name="sign_up_description">I\'m new to the app. I want to add my cattle and start working.</string>
+    <string name="sign_in_description">I allready have a user. Log me in.</string>
+    <string name="chose_start">Chose how to start</string>
+    <string name="end_demo">End Demo</string>
+    <string name="demo_warning">The data that you add when using the demo will be erased after some days. Register to enter real data.</string>
+    <string name="demo_user_not_allowed">Only for registered users.</string>
+    <string name="EventType_ABORTED">Abortion</string>
+
+
+    <string name="Sale">Sale</string>
+    <string name="Sale_destination">Destination</string>
+    <string name="Sale_date">Date</string>
+    <string name="OfficialDocument_code">Health Document</string>
+
+
+    <string name="Purchase_origin">Origin</string>
+    <string name="Exploitation_name">Name</string>
+    <string name="EventType_PURCHASED">Purchased</string>
+
+    <string name="menu_continue">Continue</string>
+    <string name="EventType_SOLD_name">Sales</string>
+    <string name="EventType_PURCHASED_name">Purchases</string>
+
+    <string name="VetTreatment_prescriptionDate">Presciption Date</string>
+    <string name="VetTreatment_administrationDate">Administration Date</string>
+    <string name="VetTreatment_administration">Administration</string>
+    <string name="VetTreatment_drugName">Drug Name</string>
+    <string name="VetTreatment_drugId" translatable="false">@string/VetTreatment_drugName</string>
+    <string name="VetTreatment_dosage">Dosage (ml/mg)</string>
+    <string name="VetTreatment_treatedCondition">Treated condition</string>
+    <string name="VetTreatment_treatmentDuration">Duration (days)</string>
+    <string name="VetTreatment_wait_time_milk">Wait time milk (days)</string>
+    <string name="VetTreatment_wait_time_meat">Wait time meat (days)</string>
+    <string name="VetTreatment_vet">Vet</string>
+    <string name="VetTreatment_vetId" translatable="false">@string/VetTreatment_vet</string>
+    <string name="VetTreatment_medicineProvider">Medicine Provider</string>
+    <string name="VetTreatment_medicineProviderId" translatable="false">@string/VetTreatment_medicineProvider</string>
+    <string name="vetTreatment_prescription">Prescription</string>
+    <string name="Administration_VET_PRESCRIPTION">Vet Presciption</string>
+    <string name="Administration_VET_APPLIED">Vet Applied</string>
+    <string name="Administration_FARMER_APPLIED">Farmer Applied</string>
+    <string name="EventType_BIRTH">Birth</string>
+    <string name="Vaca_officialBirthDate">Official birth date</string>
+    <string name="EventType_VET_TREATMENT">Vet Treatment</string>
+    <string name="select_all">Select All</string>
+    <string name="Vet">Vet</string>
+    <string name="Vet_name">Name</string>
+    <string name="Vet_professionalNumber">Professional Number</string>
+    <string name="Vet_vetAssociation">Vet Association</string>
+    <string name="MedicineProvider">Medicine Provider</string>
+    <string name="MedicineProvider_adress">Adress</string>
+    <string name="MedicineProvider_name">Name</string>
+    <string name="Drug">Drug</string>
+    <string name="Drug_name">Name</string>
+
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+
+    <string name="sales_n_purchases">Buy &amp; Sell</string>
+    <string name="vet_operations">Vet</string>
+    <string name="new_sale">New Sale</string>
+    <string name="new_purchase">New Purchase</string>
+    <string name="new_sanitation">New Sanitation</string>
+    <string name="new_vet_treatment">New Vet Treatment</string>
+    <string name="puchase_with_no_cattle">You need to add the purchased cattle</string>
+    <string name="delete_sure">Are you sure? Data will be lost! If the cow is just dead or sold, press cancel.</string>
+    <string name="export_description">Select what document you need to generate</string>
+    <string name="export_vet_treatments_title">Vet Treatments</string>
+    <string name="export_vet_treatments_description">Official document with the list of vet treatments for a given exploitation</string>
+    <string name="export_exploitation_book_title">Exploitation book</string>
+    <string name="export_exploitation_book_description">Official document with the history of in and outs of animals in a given exploitation</string>
+    <string name="export_data_title">Cattle data</string>
+    <string name="export_data_description">Excel file with the data of your cattle</string>
+    <string name="exploitation_book">Exploitation book</string>
+    <string name="export_error">Error downloading file.</string>
+    <string name="reimport_warning">Attention: Use only for importing cattle for the first time. Do not use for births or purchases or the official document generation will not work.</string>
+    <string name="copy_to_official_date">Do you want to set this as the official date too?</string>
+
+    <string name="inseminator_code">Inseminator bull eartag</string>
+    <string name="code_is_mandatory">Eartag is mandatory</string>
+
+    <string name="weighted">Weighted</string>
+    <string name="weighted_dialog_title">Indicate weight (Kg)</string>
+    <string name="EventType_WEIGHTED" translatable="false">@string/weighted</string>
+    <string name="not_empty">Can\'t be empty</string>
+
+    <string name="EventType_TO_FEEDER" translatable="false">@string/action_drawer_feeder</string>
+    <string name="action_drawer_feeder">Feeder</string>
+
+    <string name="to_feeder">To Feeder</string>
+
+    <string name="view_list">View list</string>
+
+    <string name="species">Species</string>
+    <string name="Species_CATTLE">Cattle</string>
+    <string name="Species_HORSE">Horse</string>
+    <string name="Species_GOAT">Goat</string>
+    <string name="Species_SHEEP">Sheep</string>
+
+
+    <string name="Species_CATTLE_group">Cattle</string>
+    <string name="Species_CATTLE_males">Bulls</string>
+    <string name="Species_CATTLE_females">Cows</string>
+    <string name="Species_CATTLE_baby">Calfs</string>
+    <string name="Species_CATTLE_weaned">Weaned calfs</string>
+
+    <string name="Species_HORSE_group">Horses</string>
+    <string name="Species_HORSE_males">Stallion</string>
+    <string name="Species_HORSE_females">Mare</string>
+    <string name="Species_HORSE_baby">Foal</string>
+    <string name="Species_HORSE_weaned">Weaned foal</string>
+
+    <string name="Species_GOAT_group">Goat</string>
+    <string name="Species_GOAT_males">Buck</string>
+    <string name="Species_GOAT_females">Doe</string>
+    <string name="Species_GOAT_baby">Kid</string>
+    <string name="Species_GOAT_weaned">Weaned kid</string>
+
+    <string name="Species_SHEEP_group">Sheep</string>
+    <string name="Species_SHEEP_males">Ram</string>
+    <string name="Species_SHEEP_females">Ewe</string>
+    <string name="Species_SHEEP_baby">Lamb</string>
+    <string name="Species_SHEEP_weaned">Weaned lamb</string>
+
+    <string name="farm_settigs">Farm Settings</string>
+    <string name="species_question">Which animals do you have?</string>
+    <string name="available_only_for_cattle">Available only for cattle</string>
+    <string name="import_animals">Step 2: %1$s</string>
+
+
+
+    <string name="animal_name_generic_animal">Animals</string>
+    <string name="animal_name_generic_group">Animals</string>
+    <string name="animal_name_generic_males">Males</string>
+    <string name="animal_name_generic_females">Females</string>
+    <string name="animal_name_generic_children">Baby</string>
+    <string name="animal_name_generic_weaned">Weaned</string>
+    <!--string name="user_settings">ULocaSettingsings</string-->
+    <string name="sign_out_text">Exit the current session</string>
+    <string name="demo">demo</string>
+    <string name="no_species_selected_error">You must select at least one specie</string>
+    <string name="Vaca_coatColor">Coat Color</string>
+    <string name="Vaca_transponderCode">Mirochip</string>
+    <string name="Vaca_UELN">UELN</string>
+
+    <string name="animal_without_exploitation">%1$s must have the exploitation set</string>
+    <string name="Herd_locationType">Type</string>
+    <string name="LocationType_PASTURE">Field</string>
+    <string name="LocationType_MOUNTAIN">Mountain</string>
+    <string name="LocationType_STABLE">Stable</string>
+    <string name="months_last_birth">Months last birth</string>
+    <string name="birth_count">Birth count</string>
+    <string name="more_than_one_species_selected_error">Only one specie can be selected</string>
+
+    <string name="mother_stats">Mother calving</string>
+    <string name="heifer_stats">Heifer age</string>
+
+    <string name="internet_required_title">Internet required</string>
+    <string name="internet_required">We could not connect to our servers. Retry later.</string>
+    <string name="age">Age</string>
+    <string name="stats">Stats</string>
+    <string name="new_internal_sale">New exploitation change</string>
+    <string name="EventType_INTERNAL_SOLD">Exploitation change</string>
+    <string name="error_repeated_exploitation_when_changed">You can\'t move an animal to the same exploitation</string>
+    <string name="warning">Warning</string>
+    <string name="warning_exploitation_change">Changing exploitations may break document generation. Create an internal sell if you need want to change the exploitation of an animal.</string>
+    <string name="no_animals_selected_error">You must select at least one animal</string>
+    <string name="InternalSale_targetExploitationId">Target Exploitation</string>
+
+
+
+
+
+
+    <string name="DifficultyOfBirth_NO_ASSITANCE">1- No need for assistance</string>
+    <string name="DifficultyOfBirth_MINOR_ASSISTANCE">2- Less assistance</string>
+    <string name="DifficultyOfBirth_MAJOR_ASSISTANCE">3- Major assistance</string>
+    <string name="DifficultyOfBirth_CESAREAN">4- Cesarean</string>
+    <string name="DifficultyOfBirth_BAD_FETUS">5- Bad presentation of the fetus</string>
+    <string name="Birth_date">Date</string>
+    <string name="Birth_difficultyOfBirth">Difficulty</string>
+    <string name="no_childs_added_error">You need to add at least one child</string>
+    <string name="CattleStage_ADULT">Adult</string>
+    <string name="CattleStage_CALF">Calf</string>
+    <string name="CattleStage_WEANED">Weaned</string>
+    <string name="CattleStage_FEEDER">Feeder</string>
+    <string name="Vaca_stage">Stage</string>
+
+    <string name="reading_code_insead_of_dib">It seams that you are trying to read an incorrect barcode. You have to read the big one that is at the end of the document. You can watch a help video if you have doubts.</string>
+    <string name="watch_video">Watch video</string>
+    <string name="import_video_url">https://www.youtube.com/watch?v=rdQVhsOoO1Y&amp;list=PLN9nz4zQqi1nL1RTyckEbf5bf7-3LJgkv</string>
+    <string name="delete_temp_data_confirmation">Are you sure you want to delete this?</string>
+
+
+    <string name="showcase_stats_mothers">View mothers ordered by the one that has the largest period without calving and check calving stats.</string>
+    <string name="showcase_stats_heifers">View females that have not calved yet, ordered by its age.</string>
+    <string name="showcase_new_version_title">Welcome to VacApp %1$s</string>
+    <string name="showcase_version_2_features"><![CDATA[What is new?<br/>&#8226; Manage sheeps, goats and horses.<br/>&#8226; New Menu section \"stats\" where you can check birth data.<br/>&#8226; 3 types of herds: field, mountain or stable<br/>&#8226; And more!]]></string>
+
+
+    <string name="last_birth">Last birth</string>
+    <string name="days_number">%1$s days</string>
+    <string name="ancestors">Ancestors</string>
+    <string name="descendants">Descendants</string>
+
+    <string name="confirm_sing_out">Are you sure you want to sign out?</string>
+
+
+    <string name="User_region">Region</string>
+    <string name="User_phone">Phone</string>
+</resources>

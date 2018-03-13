@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">VacApp</string>
+    <string name="action_settings">Ajustos</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="vaca_detail_activity">vaca_detail_activity</string>
+    <string name="photo_vaca">photo_vaca</string>
+    <string name="Vaca_poultry_number">Num corral</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis lobortis suscipit. Aliquam convallis condimentum dui, eu ultricies metus aliquet ut. Duis sed sapien vitae risus aliquet rhoncus eu id metus. Nullam sagittis viverra velit, at aliquam nunc euismod at. Vestibulum nisl odio, pellentesque a volutpat aliquam, ullamcorper nec mi. Duis at sem feugiat felis auctor venenatis vel eu est. Nulla facilisis mattis tellus et porttitor. Etiam convallis velit sit amet dolor vestibulum tempor. </string>
+    <string name="Vaca_code">Crotal</string>
+    <string name="Vaca_birthDate">Data naix.</string>
+    <string name="Vaca_gender">Sexe</string>
+    <string name="Vaca_race">Raça</string>
+    <string name="Vaca_bornPlace">País</string>
+    <string name="Vaca_exploitation">Explotació</string>
+    <string name="Vaca_mother">Mare</string>
+    <string name="Vaca_father">Pare</string>
+    <string name="Vaca_state">Estat</string>
+    <string name="Vaca_calf">És vedell?</string>
+    <string name="Vaca_weaned">Deslletat?</string>
+    <string name="Vaca_description">Descripció</string>
+    <!-- events -->
+    <string name="event_title">Events</string>
+    <string name="create_event">Afegir event</string>
+    <string name="EventType_PREGNANT">Avançada</string>
+    <string name="EventType_OTHER">Altres</string>
+    <string name="EventType_SANITATION">Sanejament</string>
+    <string name="EventType_CALVED">Part</string>
+    <string name="EventType_SICK">Malaltia</string>
+    <string name="EventType_WEAN">Deslletar</string>
+    <string name="EventType_CHANGE_HERD">Canvi de ramat</string>
+    <string name="EventType_DEAD">Mort</string>
+    <string name="EventType_SOLD">Venuda</string>
+    <string name="EventType_DEAD_CALF">Vedell mort</string>
+    <string name="EventType_CALF_TO_COW">Animal adult</string>
+    <string name="EventType_WEANED">Deslletat</string>
+    <string name="EventType_FUCKED">Coberta</string>
+
+
+    <string name="VacaState_OWNED">Propietat</string>
+    <string name="VacaState_SOLD">Venuda</string>
+    <string name="VacaState_DEATH">Morta</string>
+
+    <string name="Gender_FEMALE">femella</string>
+    <string name="Gender_MALE">mascle</string>
+
+    <string name="is_calf_true">vedell</string>
+    <string name="is_calf_false">adult</string>
+
+    <string name="Event_comments">Comentari</string>
+    <string name="Event_date">Data</string>
+    <string name="Event_eventType">Tipus</string>
+    <string name="Event_vacaId">Vaca</string>
+
+
+    <string name="eventgroup_tag_writen_ok">Vaca afegida: %1$s</string>
+    <string name="eventgroup_tag_writen_not_found">No hem trobat la vacas: %1$s</string>
+
+
+    <plurals name="herd_list_cos_number">
+        <item quantity="zero">Sense vaques</item>
+        <item quantity="one">1 vacas</item>
+        <item quantity="other">%d vaques</item>
+    </plurals>
+
+    <string name="EventGroup_comments">Comentaris</string>
+    <string name="EventGroup_date">Data del event</string>
+    <string name="EventGroup_eventType">Tipus d\'event</string>
+
+    <string name="Herd">Ramat</string>
+    <string name="Herd_location">Localització</string>
+    <string name="Herd_color">Color</string>
+
+
+    <string name="calfs_title">Vedells</string>
+
+    <string name="cancel_button">Cancel·lar</string>
+    <string name="ok_button">OK</string>
+    <string name="location">location</string>
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+    <string name="Species_CATTLE_group">Bestiar</string>
+    <string name="Species_CATTLE_females">Vaques</string>
+    <string name="Species_CATTLE_males">Toros</string>
+    <string name="Species_CATTLE_baby">Vedells</string>
+    <string name="Species_CATTLE_weaned">Vedells delletats</string>
+
+    <string name="label_dl_b">Altres</string>
+    <string name="drawer_category_data">Dades</string>
+    <string name="label_dl_b_herds">Ramats</string>
+    <string name="label_dl_b_sanity">Sanejaments</string>
+    <string name="label_dl_b_historic">Historial</string>
+    <string name="label_dl_b_export">Exportar</string>
+    <string name="label_dl_b_user">Usuari</string>
+    <string name="label_dl_b_event_log">Registre events</string>
+    <string name="label_dl_b_import">Importar dades</string>
+    <string name="label_exploitations">Explotacions</string>
+    <string name="label_help_videos">Video-ajuda</string>
+    <string name="ic_action_new_herd">Nou Ramat</string>
+    <string name="ic_action_new_vaca">Nova vacas</string>
+    <string name="ic_action_edit_vaca">Edita la vacas</string>
+    <string name="ic_action_search">Buscar</string>
+    <string name="vaca_search_hint">Numero de corral o crotal</string>
+    <string name="title_activity_add_vaca">AddVacaActivity</string>
+    <string name="save_label">Desar</string>
+    <string name="discard_label">Cancel·lar</string>
+    <string name="onSaveVaca">Vaca guardada</string>
+    <string name="onDeleteVaca">Vaca eliminada</string>
+    <string name="ic_action_change_herd">Canviar de ramat</string>
+    <string name="selection">Selecció</string>
+    <string name="one_cow_selected">Una vacas</string>
+    <string name="multi_cow_selected">vaques</string>
+    <string name="select_herd">Selecciona el ramat</string>
+    <string name="selected_vacas">Seleccionades</string>
+    <string name="unselected_vacas">No seleccionades</string>
+    <string name="ic_action_new_event">Crear event</string>
+    <string name="ic_action_nfc_write_vaca">Write nfc tag</string>
+    <string name="ic_action_send_now">Enviar</string>
+
+    <string name="user_drawer_guest_text">Ets un convidat: Registra\'t</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+
+    <string name="welcome">Benvingut a VacApp</string>
+    <string name="welcome_subtitle">L\'aplicació pel control de vaques per a pagesos pensada per pagesos.</string>
+    <string name="later">Més tard</string>
+
+
+    <string name="error_not_unique">%1$s existent</string>
+    <string name="error_not_valid">%1$s no valit</string>
+    <string name="error_not_null">%1$s no pot ser buit</string>
+    <string name="delete_options_sold">Venuda</string>
+    <string name="delete_options_death">Morta</string>
+    <string name="delete_options_delete">Eliminar</string>
+    <string name="pick_mother">Escull el número de la vacas mare</string>
+    <string name="pick_father">Escull el número de la vacas pare</string>
+
+    <string name="calf_generated_pultry_number">Fill de %1$s</string>
+
+    <string name="state_change_action_wean_calf">Deslletar</string>
+    <string name="state_change_calf_to_cow">Fer adult</string>
+    <string name="state_change_action_set_sick">Marcar malalta</string>
+    <string name="state_change_action_set_not_sick">Desmarcar malalta</string>
+    <string name="state_change_action_set_pregnant">Marcar avançada</string>
+    <string name="state_change_action_give_birth">Ha parit</string>
+    <string name="state_change_action_set_fucked">Marcar coberta</string>
+
+
+    <string name="error_with_dib">No s\'ha pogut llegir el DIB</string>
+    <string name="import_dib_not_registered_mother">La mare no està registrada i no es guardarà</string>
+
+    <string name="no_events_text">No hi ha envets</string>
+    <string name="no_calfs_text">No ha tingut cap vedell</string>
+
+    <string name="no_id_cow">Sense crotal</string>
+
+    <string name="import_exploitations_description">Per poder utilitzar Vacapp has de començar a importar el teu ramat. El primer pas és afegir les teves explotacions.</string>
+    <string name="import_description">Un cop creades les explotacions és hora de afegir el bestiar. T\'oferim tres formes de fer-ho.</string>
+    <string name="div_scan_title">Escanejar DIBs</string>
+    <string name="div_scan_description">Escaneja el codi de barres del DIB de la vacas i importa les dades a l\'aplicació.</string>
+    <string name="import_excel_title">Importa un excel</string>
+    <string name="import_excel_description">Omple un fitxer Excel amb les vaques i importa\'l a l\'aplicació. Per la major comoditat, fes-ho des d\'un ordinador.</string>
+    <string name="import_manual_title">Introdueix les dades manualment</string>
+    <string name="import_manual_description">També pots introduïr les vaques manualment desde l\'aplicació mòbil.</string>
+    <string name="import_excel_explanation">Per importar les dades amb excel has d\'accedir a la següent pagina desde un ordinador:\nhttp://vacapp.net</string>
+    <string name="import_excel_registration_need">Necessites estar registrat per poder importar un excel.</string>
+
+    <string name="no_switch">N</string>
+    <string name="yes_switch">S</string>
+
+    <string name="vaca_exiting_updated">La vacas ja existia i s\'ha actualitzat.</string>
+    <string name="cow_not_identified">no identificada</string>
+
+    <string name="import_exploitations">Pas 1: Explotacions</string>
+
+    <string name="Exploitation">Explotació</string>
+    <string name="Exploitation_code">Codi</string>
+
+
+    <string name="sick_cause_dialog_message">Causa de la malaltia (opcional)</string>
+    <string name="death_cause_dialog_message">Causa de la mort (opcional)</string>
+    <string name="vet_name">Nom del veterinari</string>
+
+    <string name="excel_export_title">Exportació</string>
+    <string name="excel_export_message">Estem preparant les dades.</string>
+
+
+    <string name="lose_data_title">Atenció</string>
+    <string name="lose_data_message">Si surts les dades no quedaran guardades.</string>
+    <string name="exit">Sortir</string>
+
+    <string name="number_of_animals">%d animals</string>
+
+    <string name="incorrect_login">Email o password incorrectes</string>
+    <string name="incorrect_signup">Error: Usuari existent?</string>
+
+    <string name="incorrect_email">Vacapp està en fase de prova i només permet registrar-se a alguns usuaris. Si vols usar Vacapp envia un correu a info@vacapp.net</string>
+    <string name="invalid_email">El email no és correcte</string>
+
+    <string name="no_more_days_title">Atenció</string>
+    <string name="no_more_days_message">La subcripció a vacapp.net se t\'ha caducat.</string>
+    <string name="no_more_days_description">Dirigeix-te a la web per poder usar l\'aplicació. Si tens algun problema contacta\'ns a info@vacapp.net.</string>
+    <string name="no_more_days_subscribe">Actualitzar subscripció</string>
+
+    <string name="subscription_about_to_expire">Només et queden %d dies de subscripció. Ves a vacapp.net per renovar-la.</string>
+
+    <string name="connecting">Descarregant dades</string>
+
+    <string name="must_update_title">Actualitza Vacapp</string>
+    <string name="must_update_description">És necessari que actualitzis l\'aplicació per seguir treballant.</string>
+    <string name="must_update_update">Actualitzar</string>
+
+    <string name="error_undo_wean_calf_but_adult">Aquesta vacas ja és adulta. No pots desfer aquest event.</string>
+    <string name="error_undo_weaned_calf_to_adult_but_mother">Aquesta vacas ja és mare. No pots desfer aquest event.</string>
+    <string name="remove_herd_event_does_not_change_herd">S\'ha elminat l\'event, però la vacas no s\'ha mogut de ramat.</string>
+
+    <string name="ic_action_check_list">Passa llista</string>
+    <string name="no_herd">Sense ramat</string>
+
+
+    <string name="video_help_url">https://www.youtube.com/playlist?list=PLN9nz4zQqi1kk-5MXX1rlcavdNuU-kywC</string>
+    <string name="make_alive_does_not_restore_all_data">El numero de corral i el ramat no es recuperaran. Introdueix-los manualment.</string>
+    <string name="terms_must_be_accepted">Has d\'acceptar els termes i condicions</string>
+    <string name="terms_checkbox">"He llegit i accepto els "</string>
+    <string name="terms_link">termes i condicions</string>
+    <string name="LoginData_promotional_code">Codi promocional</string>
+    <string name="chose_start">Escull com vols començar</string>
+    <string name="demo_user_not_allowed">Només usuaris registrats</string>
+    <string name="demo_warning">Les dades que entres durant la demo seran esborrades al cap d\'uns dies. Registra\'t per entrar dades reals.</string>
+    <string name="end_demo">Finalitzar demo</string>
+    <string name="sign_in_description">Ja tinc un usuari. Vull entrar.</string>
+    <string name="sign_up_description">Sóc nou a l\'aplicació. Vull afegir el meu bestiar i començar a treballar amb VacApp.</string>
+    <string name="test_app_description">Sóc nou a l\'aplicació però només vull veure com funciona l\'aplicació abans d\'afegir el meu bestiar</string>
+    <string name="test_app_title">Provar VacApp</string>
+    <string name="state_change_action_set_aborted">Avortament</string>
+    <string name="EventType_ABORTED">Avortament</string>
+    <string name="low_storage_error">Falta espai</string>
+    <string name="no_camera_permission">Es necesita permís de camera.</string>
+    <string name="permission_camera_rationale">Es necesita permís de camera</string>
+    <string name="Administration_FARMER_APPLIED">Aplicació ramader</string>
+    <string name="Drug">Medicament</string>
+    <string name="Drug_name">Nom</string>
+    <string name="EventType_BIRTH">Naixement</string>
+    <string name="Administration_VET_APPLIED">Aplicació veterinari</string>
+    <string name="EventType_PURCHASED">Comprada</string>
+    <string name="Administration_VET_PRESCRIPTION">Prescripció veterinari</string>
+    <string name="EventType_PURCHASED_name">Compres</string>
+    <string name="EventType_SOLD_name">Ventes</string>
+    <string name="EventType_VET_TREATMENT">Tractament veterinàri</string>
+    <string name="Exploitation_name">Nom</string>
+    <string name="MedicineProvider_adress">Adreça</string>
+    <string name="MedicineProvider">Proveïdor medicina</string>
+    <string name="OfficialDocument_code">Document sanitari</string>
+    <string name="MedicineProvider_name">Nom</string>
+    <string name="Purchase_origin">Origen</string>
+    <string name="Sale">Venta</string>
+    <string name="Sale_date">Data</string>
+    <string name="Sale_destination">Destí</string>
+    <string name="Vet">Veterinari</string>
+    <string name="VetTreatment_administration">Administración</string>
+    <string name="VetTreatment_administrationDate">Data Administració</string>
+    <string name="VetTreatment_dosage">Dosi (ml/mg)</string>
+    <string name="VetTreatment_drugName">Medicament</string>
+    <string name="VetTreatment_medicineProvider">Proveïdor medicina</string>
+    <string name="VetTreatment_prescriptionDate">Data de prescripció</string>
+    <string name="VetTreatment_treatedCondition">Condició tractada</string>
+    <string name="VetTreatment_treatmentDuration">Durada (dies)</string>
+    <string name="VetTreatment_vet">Veterianri</string>
+    <string name="VetTreatment_wait_time_meat">Espera carn (dies)</string>
+    <string name="VetTreatment_wait_time_milk">Espera llet (dies)</string>
+    <string name="Vet_name">Nom</string>
+    <string name="Vet_professionalNumber">Número professional</string>
+    <string name="Vet_vetAssociation">Associació veterinaris</string>
+    <string name="copy_to_official_date">Vols modificar també la data oficial?</string>
+    <string name="delete_sure">Estàs segur de continuar? Les dades es perdràn. Si la vacas ha mort o l\'has venut cancel·la.</string>
+    <string name="exploitation_book">Llibre d\'explotació</string>
+    <string name="export_data_description">Excel amb les dades del teu bestiar.</string>
+    <string name="export_data_title">Dades bestiar</string>
+    <string name="export_description">Selecciona quin document vols generar</string>
+    <string name="export_error">Error al descarregar el fitxer</string>
+    <string name="export_exploitation_book_description">Document oficial amb l\'historic d\'entrades i sortides d\'aniamls donada una explotació</string>
+    <string name="export_exploitation_book_title">Llibre d\'explotació</string>
+    <string name="export_vet_treatments_description">Document oficial amb la llista de tractaments veterinaris d\'una explotació</string>
+    <string name="export_vet_treatments_title">Tractaments veterinaris</string>
+    <string name="menu_continue">Continuar</string>
+    <string name="new_purchase">Nova compra</string>
+    <string name="new_sale">Nova venta</string>
+    <string name="new_sanitation">Nou sanejament</string>
+    <string name="new_vet_treatment">Nou tractament veterinari</string>
+    <string name="puchase_with_no_cattle">Has d\'afegir el bestiar comprat</string>
+    <string name="reimport_warning">Atenció: utilitza aquesta funcionalitat per importar el bestiar per primera vegada. No usar per naixements, o compres o la generació dedocuments oficials no funcionarà.</string>
+    <string name="sales_n_purchases">Compra-Venta</string>
+    <string name="select_all">Selecionar tots</string>
+    <string name="Vaca_officialBirthDate">Naix. oficial</string>
+    <string name="vetTreatment_prescription">Prescripció</string>
+    <string name="vet_operations">Veterinari</string>
+    <string name="inseminator_code">Crotal del toro de la inseminació</string>
+    <string name="code_is_mandatory">El crotal és obligatori</string>
+    <string name="weighted">Pesat</string>
+    <string name="weighted_dialog_title">Indica el pes (kg)</string>
+    <string name="not_empty">No pot estar buit</string>
+    <string name="action_drawer_feeder">Engreix</string>
+    <string name="to_feeder">A engreix</string>
+    <string name="view_list">Veure llistat</string>
+    <string name="species">Espècies</string>
+    <string name="Species_CATTLE">Boví</string>
+    <string name="Species_HORSE">Equí</string>
+    <string name="Species_GOAT">Cabra</string>
+    <string name="Species_SHEEP">Ovella</string>
+    <string name="farm_settigs">Configuració de la granja</string>
+    <string name="species_question">Quins animals tens?</string>
+    <string name="available_only_for_cattle">Disponible només per bestiar</string>
+    <string name="import_animals">Pas 2:  %1$s</string>
+    <string name="animal_name_generic_animal">Animals</string>
+    <string name="animal_name_generic_group">Animals</string>
+    <string name="animal_name_generic_males">Mascles</string>
+    <string name="animal_name_generic_females">Femelles</string>
+    <string name="animal_name_generic_children">Cria</string>
+    <string name="animal_name_generic_weaned">Deslletats</string>
+    <string name="sign_out_text">Sortir de la sessió actual</string>
+    <string name="demo">demo</string>
+    <string name="no_species_selected_error">Has de seleccionar com a mínim una espècie</string>
+    <string name="Vaca_coatColor">Capa</string>
+    <string name="Vaca_transponderCode">Microxip</string>
+    <string name="Vaca_UELN">UELN</string>
+    <string name="Species_HORSE_group">Cavalls</string>
+    <string name="Species_HORSE_males">Mascle</string>
+    <string name="Species_HORSE_females">Euga</string>
+    <string name="Species_HORSE_baby">Poltre</string>
+    <string name="Species_HORSE_weaned">Deslletat</string>
+    <string name="Species_GOAT_group">Cabres</string>
+    <string name="Species_GOAT_males">Boc</string>
+    <string name="Species_GOAT_females">Cabra</string>
+    <string name="Species_GOAT_baby">Cabrit</string>
+    <string name="Species_GOAT_weaned">Delletat</string>
+    <string name="Species_SHEEP_group">Ovella</string>
+    <string name="Species_SHEEP_males">Moltó</string>
+    <string name="Species_SHEEP_females">Ovella</string>
+    <string name="Species_SHEEP_baby">Anyell</string>
+    <string name="Species_SHEEP_weaned">Deslletat</string>
+    <string name="error">Error</string>
+
+    <string name="animal_without_exploitation">%1$s ha de tenir explotació</string>
+    <string name="Herd_locationType">Tipus</string>
+    <string name="LocationType_PASTURE">Pastura</string>
+    <string name="LocationType_MOUNTAIN">Muntanya</string>
+    <string name="LocationType_STABLE">Estable</string>
+    <string name="months_last_birth">Mesos ultim part</string>
+    <string name="birth_count">Num. parts</string>
+    <string name="more_than_one_species_selected_error">Només es pot seleccionar una espècie</string>
+    <string name="mother_stats">Mares</string>
+    <string name="heifer_stats">Joves</string>
+    <string name="internet_required_title">Necessitem internet</string>
+    <string name="internet_required">No hem pogut connectar-nos als nostres servidors. Torneu a provar més tard.</string>
+    <string name="age">Edat</string>
+    <string name="stats">Estadístiques</string>
+    <string name="new_internal_sale">Nou canvi d\'explotació</string>
+    <string name="EventType_INTERNAL_SOLD">Canvi d\'explotació</string>
+    <string name="error_repeated_exploitation_when_changed">No podeu moure un animal a la mateixa explotació</string>
+    <string name="warning">Avís</string>
+    <string name="warning_exploitation_change">Canviar les explotacions pot fer fallar la generació de documents. Creeu una venda interna si necessiteu canviar l\'explotació d\'un animal.</string>
+    <string name="no_animals_selected_error">Heu de seleccionar com a mínim un animal</string>
+    <string name="InternalSale_targetExploitationId">Explotació destí</string>
+    <string name="DifficultyOfBirth_NO_ASSITANCE">1- Sense assistència</string>
+    <string name="DifficultyOfBirth_MINOR_ASSISTANCE">2- Assistència menor</string>
+    <string name="DifficultyOfBirth_MAJOR_ASSISTANCE">3- Assistència major</string>
+    <string name="DifficultyOfBirth_CESAREAN">4- Cesària</string>
+    <string name="DifficultyOfBirth_BAD_FETUS">5- Mala presentació del fetus</string>
+    <string name="Birth_date">Data</string>
+    <string name="Birth_difficultyOfBirth">Dificultat</string>
+    <string name="no_childs_added_error">Has d\'afegir mínim un fill</string>
+    <string name="CattleStage_ADULT">Adult</string>
+    <string name="CattleStage_CALF">Vedell</string>
+    <string name="CattleStage_WEANED">Deslletat</string>
+    <string name="CattleStage_FEEDER">Engreix</string>
+    <string name="Vaca_stage">Etapa</string>
+    <string name="reading_code_insead_of_dib">Sembla que intenteu llegir un codi de barres incorrecte. Heu de llegir el codi gran que hi ha al final del document. Podeu veure un vídeo d\'ajuda si teniu dubtes.</string>
+    <string name="watch_video">Mira el vídeo</string>
+    <string name="import_video_url">https://www.youtube.com/watch?v=rdQVhsOoO1Y&amp;list=PLN9nz4zQqi1nL1RTyckEbf5bf7-3LJgkv</string>
+    <string name="delete_temp_data_confirmation">Esteu segur que voleu suprimir això?</string>
+    <string name="showcase_stats_mothers">Vegeu les mares ordenades pel temps que fa de l\'ultim part i comprovar les estadístiques del parts.</string>
+    <string name="showcase_stats_heifers">Vegeu femelles que encara no hagin parit, ordenades per la seva edat.</string>
+    <string name="showcase_new_version_title">Benvingut a VacApp %1$s</string>
+    <string name="showcase_version_2_features"><![CDATA[Què hi ha de nou?<br/>&#8226; Gestioneu ovelles, cabres i cavalls. <br/>&#8226; Nova secció de menú \"estadístiques\" on podreu consultar les dades dels parts.<br/>&#8226; 3 tipus de ramats : camp, muntanya o estable<br/>&#8226; I molt més!]]></string>
+    <string name="last_birth">Últim part</string>
+    <string name="days_number">%1$s  dies</string>
+    <string name="ancestors">Ancestres</string>
+    <string name="descendants">Descendents</string>
+    <string name="User_region">Provincia</string>
+    <string name="User_phone">Telèfon</string>
+    <string name="confirm_sing_out">Estàs segur que vols sortir?</string>
+
+</resources>
+

@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "pompeu"
+
+require 'pompeu/cli'
+Pompeu::CLI.start
