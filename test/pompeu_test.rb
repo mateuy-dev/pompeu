@@ -1,5 +1,6 @@
 require 'test_helper'
 
+
 class PompeuTest < Minitest::Test
   def test_that_it_has_a_version_number
     refute_nil ::Pompeu::VERSION
@@ -7,9 +8,8 @@ class PompeuTest < Minitest::Test
 
   def test_simple
     pompeu = Pompeu::Pompeu.new("test/data/project_configuration.yml")
-    pompeu.clear_db
-
     pompeu.import_existing
+
 
     # simpler test. does not work due to comments, etc
     #lang = "en"
@@ -31,6 +31,9 @@ class PompeuTest < Minitest::Test
         assert_equal androidfile1.strings[key], androidfile2.strings[key]
       end
     end
+
+    
+
     #
     #
     # old_xml = File.open(pompeu.android_file lang) { |f| Nokogiri::XML(f) }

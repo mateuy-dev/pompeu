@@ -65,7 +65,12 @@ module Pompeu
     # writes the data to android string.xml files
     def export_android
       languages.each do |lang|
-        file = "#{android_file(lang)}.v2.xml"
+        folder = android_folder(lang)
+        if !File.exist?(folder)
+          Logging.logger.warn "Pompeu - creating folder for android language #{lang}: #{folder}"
+          Dir.mkdir folder
+        end
+        file = android_file(lang)
         File.write(file, to_xml(lang))
         puts file
       end
@@ -79,8 +84,12 @@ module Pompeu
     end
 
     def android_file lang
+      "#{android_folder(lang)}/strings.xml"
+    end
+
+    def android_folder lang
       values_folder = lang=="en" ? "values" : "values-#{lang}"
-      "#{android_path}#{values_folder}/strings.xml"
+      "#{android_path}#{values_folder}"
     end
 
     # Returns a Text given its key
