@@ -32,7 +32,7 @@ class PompeuTest < Minitest::Test
       end
     end
 
-    
+
 
     #
     #
