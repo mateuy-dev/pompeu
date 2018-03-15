@@ -1,5 +1,3 @@
-
-
 module Pompeu
   module TranslationConfidence
     AUTO = 0

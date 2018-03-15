@@ -13,6 +13,8 @@ require "pompeu/text"
 require "pompeu/translation"
 require "pompeu/translation_confidence"
 require "pompeu/pompeu_operations"
+require "pompeu/simple_structs"
+require "pompeu/android_source"
 
 #require "pompeu/pompeu_shell"
 

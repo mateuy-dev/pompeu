@@ -20,9 +20,7 @@ module Pompeu
       @project_configuration["paths"]["db"]
     end
 
-    def android_path
-      @project_configuration["paths"]["android"]
-    end
+
     def languages
       @project_configuration["languages"]
     end
@@ -44,53 +42,8 @@ module Pompeu
       File.delete db_path
     end
 
-    #imports data form android xml files to the database
-    def import_existing
-      load
-      languages.each do |lang|
-        file = android_file lang
-        if File.exist? file
-          doc = File.open(file) { |f| Nokogiri::XML(f) }
-          string_lines = doc.xpath("//string")
-          string_lines.each do |string_line|
-            key = string_line["name"]
-            text = string_line.children.text
-            translatable = string_line["translatable"]!="false"
-            @textDB.add key, lang, text, translatable: translatable
-          end
-        end
-      end
-    end
 
-    # writes the data to android string.xml files
-    def export_android
-      languages.each do |lang|
-        folder = android_folder(lang)
-        if !File.exist?(folder)
-          Logging.logger.warn "Pompeu - creating folder for android language #{lang}: #{folder}"
-          Dir.mkdir folder
-        end
-        file = android_file(lang)
-        File.write(file, to_xml(lang))
-        puts file
-      end
-    end
-    # creates string.xml file contents for android
-    def to_xml lang
-      builder = Nokogiri::XML::Builder.new(:encoding => 'utf-8') do |xml|
-        @textDB.to_xml lang, xml
-      end
-      builder.to_xml(indent: 4)
-    end
 
-    def android_file lang
-      "#{android_folder(lang)}/strings.xml"
-    end
-
-    def android_folder lang
-      values_folder = lang=="en" ? "values" : "values-#{lang}"
-      "#{android_path}#{values_folder}"
-    end
 
     # Returns a Text given its key
     def text_for_key key
