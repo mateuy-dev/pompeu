@@ -41,8 +41,18 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## TODO
 
-    <plurals name="herd_list_cos_number">
-        <item quantity="zero">Sense vaques</item>
-        <item quantity="one">1 vacas</item>
-        <item quantity="other">%d vaques</item>
-    </plurals>
+### Plurals
+Plurals are not readded from string.xml
+```
+<plurals name="herd_list_cos_number">
+    <item quantity="zero">Sense vaques</item>
+    <item quantity="one">1 vacas</item>
+    <item quantity="other">%d vaques</item>
+</plurals>
+```
+
+### Other
+
+- translatable attributes are read one and not updated
+- removed texts are not removed"
+
