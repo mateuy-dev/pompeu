@@ -1,13 +1,27 @@
 require 'test_helper'
+require 'test_helper_functions'
+
 
 class AndroidFileTest < Minitest::Test
-  def simple_test
-    pompeu = Pompeu::Pompeu.new("test/data/project_configuration.yml")
-    androidFile = Pompeu::AndroidFile.new
-    androidFile.load_file"data/values/strings.xml"
-    androidFile2 = Pompeu::AndroidFile.new
-    androidFile2.load_file "test_data/values/strings.xml"
+  include TestHelperFunctions
 
-    assert androidFile.equal? androidFile2
+  def setup
+    prepare_file_tests
+
+    @text_db = Pompeu::TextDB.new
+    @lang = "en-GB"
+    @lang_file = File.join(@tmp_test_data, "values/strings.xml")
+    @out_file = File.join(@outfolder, "strings.xml")
+  end
+
+  def test_general
+    android_file = Pompeu::AndroidFile.from_files @lang_file
+    android_file.to_db @text_db, @lang
+    android_file_2 = Pompeu::AndroidFile.from_db @text_db, @lang
+    android_file_2.to_files @out_file
+
+    assert_equal android_file, android_file_2
+    assert_empty diff_dirs(@lang_file, @out_file)
+
   end
 end

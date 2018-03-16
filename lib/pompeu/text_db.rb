@@ -1,28 +1,29 @@
 module Pompeu
 
-
-
   class TextDB
     include Logging
 
-    attr_accessor :texts
+    attr_reader :texts
     def initialize
-      @texts = {}
+      @texts = []
     end
 
-    def add key, lang, text, confidence: TranslationConfidence::UNKNOWN, translatable: true
-      if !@texts[key]
-        logger.info "Pompeu - adding key: #{key}"
-        @texts[key] = Text.new key, translatable
+    def find_text target, key
+      @texts.find { |text| text.matches_key? target, key }
+    end
+
+    # def add key, lang, text, confidence: TranslationConfidence::UNKNOWN, translatable: true
+    def add_translation target, key, lang, text, confidence, translatable = true
+      pompeu_text = find_text(target, key)
+      if !pompeu_text
+        logger.info "Pompeu - adding key: #{target} #{key}"
+        pompeu_text = Text.create target, key, translatable
+        @texts << pompeu_text
       end
-      @texts[key].add lang, text, confidence
+      pompeu_text.add_translation lang, text, confidence
     end
 
-    def to_xml lang, xml
-      xml.resources {
-        @texts.each{|key, text| text.to_xml lang, xml}
-      }
-    end
+
 
   end
 end
