@@ -26,18 +26,20 @@ module Pompeu
     option :confidence, :type => :numeric, required: true
     def export_for_gengo language
       confidence = options[:confidence]
-      Logging.logger.info "Exporting file for gengo gor language #{language} and min confidence #{confidence}"
+      Logging.logger.info "Exporting file for gengo for language #{language} and min confidence #{confidence}"
       pompeu = Pompeu.new
       pompeu.import
       pompeu.export_for_gengo language, confidence
     end
 
     desc "auto_translate", "fills all the untranslated texts with auto translated values"
+    option :update, type: :boolean, default: false
     def auto_translate
-      Logging.logger.info "Translating database..."
+      confidence = options[:update] ? TranslationConfidence::AUTO + 1 : TranslationConfidence::AUTO
+      Logging.logger.info "Translating database with min confidence #{confidence}"
       pompeu = Pompeu.new
       pompeu.import
-      pompeu.auto_translate
+      pompeu.auto_translate confidence
       pompeu.save
       Logging.logger.info "Database translated"
     end

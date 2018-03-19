@@ -9,7 +9,7 @@ class GooglePlaySourceTest < Minitest::Test
 
     @play_folder = File.join(@tmp_test_data, "play")
 
-    @lang = "en-GB"
+    @lang = "en"
     @languages = {"en" => {"googleplay"=>"en-GB"}, "ca"=> {"googleplay"=>"ca"}}
     @target = Pompeu::GooglePlayData::TARGET
   end
@@ -46,7 +46,7 @@ class GooglePlaySourceTest < Minitest::Test
   end
 
   def translation key, language
-    @text_db.find_text(@target,key).translation(language)
+    @text_db.find_text(@target, key).translation(language)
   end
 
 end

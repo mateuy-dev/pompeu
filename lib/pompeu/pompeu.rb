@@ -43,14 +43,13 @@ module Pompeu
     end
 
     def export_for_gengo language, confidence
-      pompeu_extractor = PompeuExtractor.new @text_db
-      texts = pompeu_extractor.untranslated_or_worse_than language, confidence
+      texts = @text_db.untranslated_or_worse_than language, confidence
       Gengo.new.export(texts, @default_language)
     end
 
-    def auto_translate
+    def auto_translate(min_quality = TranslationConfidence::AUTO)
       auto_translate = AutoTranslate.new @text_db, @languages, @default_language
-      auto_translate.translate
+      auto_translate.translate min_quality
     end
 
     def interactive_translate language

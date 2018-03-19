@@ -1,6 +1,5 @@
 module Pompeu
 
-
   class Text
     include Logging
     #attr_accessor :id, :keys, :translations, :translatable
@@ -46,7 +45,9 @@ module Pompeu
         logger.info "Pompeu - adding translation: #{@id} #{lang} #{text}"
         @translations[lang] = Translation.new lang, text, confidence
       else
-        if @translations[lang].confidence > confidence
+        if (confidence == TranslationConfidence::UNKNOWN) and (@translations[lang].text == text)
+          return
+        elsif @translations[lang].confidence > confidence
           raise "Decrease confidence is not allowed"
         elsif @translations[lang].confidence == confidence and (@translations[lang].text != text)
           logger.info "Pompeu - updating translation: #{@id} #{lang} #{text}"

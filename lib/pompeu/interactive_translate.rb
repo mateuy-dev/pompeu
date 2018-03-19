@@ -14,8 +14,7 @@ module Pompeu
     
     def translate language
       cli = HighLine.new
-      pompeu_extractor = PompeuExtractor.new @text_db
-      texts = pompeu_extractor.untranslated_or_worse_than language, TranslationConfidence::MANUAL
+      texts = @text_db.untranslated_or_worse_than language, TranslationConfidence::MANUAL
       texts.each do |key, text|
         proposed = text.text_in(language) ? text.text_in(language).text : ""
         english_text = text.text_in(@default_language).text

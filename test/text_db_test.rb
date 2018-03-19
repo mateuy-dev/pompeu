@@ -1,18 +1,11 @@
 require 'test_helper'
+require 'test_helper_functions'
 
 class TextDbTest < Minitest::Test
-  def setup
-    @target = "android"
-    @key = "some_key"
-    @lang = "en"
-    @text = "some text"
-    @confidence = 5
-    @translatable = true
+  include TestHelperFunctions
 
-    @lang2 = "en"
-    @text2 = "other text"
-    @greater_confidence = 10
-    @less_confidence = 1
+  def setup
+    define_test_values
     @text_db = Pompeu::TextDB.new
     @text_db.add_translation @target, @key, @lang, @text, @confidence, @translatable
   end
@@ -32,6 +25,28 @@ class TextDbTest < Minitest::Test
     assert pompeu_text.matches_key? @target, @key
     assert @text, pompeu_text.translation(@lang)
     assert @text2, pompeu_text.translation(@lang2)
+  end
+
+  def test_untranslated_or_worse_than_for_untranslated
+    result = @text_db.untranslated_or_worse_than "nl"
+
+    assert_equal 1, result.size
+    text = result[0]
+    assert @text, text.translation(@lang)
+  end
+
+  def test_untranslated_or_worse_than_for_worse_confidence
+    result = @text_db.untranslated_or_worse_than "en", @confidence+1
+
+    assert_equal 1, result.size
+    text = result[0]
+    assert @text, text.translation(@lang)
+  end
+
+  def test_untranslated_or_worse_than_for_same_confidence
+    result = @text_db.untranslated_or_worse_than @lang, @confidence
+
+    assert_equal 0, result.size
   end
 
 end

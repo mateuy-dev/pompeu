@@ -5,13 +5,10 @@ languages:
   ca:
     android: "ca"
     googleplay: "ca"
-  fr:
-    android: "fr"
-    googleplay: "fr-FR"
 user-languages: ["en", "ca"]
 paths:
-  android: "test/data/"
-  googleplay_path: "test/play"
+  android: "test/data/android_resources"
+  googleplay: "test/play"
   db: "test/data/pompeu_db.yml"
 google_api_key: '---'
 default_language: "en"

@@ -47,6 +47,12 @@ class TextTest < Minitest::Test
     assert_equal @confidence, @pomeu_text.translation(@lang).confidence
   end
 
+  def test_add_translation_with_unknown_confidence_and_same_text
+    @pomeu_text.add_translation @lang, @text, Pompeu::TranslationConfidence::UNKNOWN
+    assert_equal @text, @pomeu_text.translation(@lang).text
+    assert_equal @confidence, @pomeu_text.translation(@lang).confidence
+  end
+
   def test_add_translation_with_less_confidence_sould_fail
     assert_raises do
       @pomeu_text.add_translation @lang, @text2, @less_confidence

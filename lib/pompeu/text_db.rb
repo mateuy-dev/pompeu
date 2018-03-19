@@ -32,6 +32,21 @@ module Pompeu
       @text = []
     end
 
+    def untranslated_or_worse_than lang, confidence = -1
+      result = []
+      @texts.each do |text|
+        if text.translatable
+          if !text.translation lang
+            logger.debug "Pompeu - missing translation found: #{text.id} #{lang}"
+            result << text
+          elsif text.translation(lang).confidence < confidence
+            logger.debug "Pompeu - translation to improve found: #{text.id} #{lang}"
+            result << text
+          end
+        end
+      end
+      result
+    end
 
   end
 end
