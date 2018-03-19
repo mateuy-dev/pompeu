@@ -28,7 +28,7 @@ module TestHelperFunctions
     @less_confidence = 1
 
     @default_language = "en"
-    @languages = {"en" => {"android"=>"en"}, "ca"=> {"android"=>"ca"}}
+    @languages = Pompeu::Language.load_map({"en" => {"android"=>"en", "googleplay"=>"en-GB"}, "ca"=> {"android"=>"ca"}})
   end
 
   def clear_file_tests

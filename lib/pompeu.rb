@@ -17,6 +17,7 @@ require "pompeu/android_source"
 require "pompeu/google_play_data"
 require "pompeu/google_play_source"
 require "pompeu/text_db_serializer"
+require "pompeu/language"
 
 
 #require "pompeu/pompeu_shell"

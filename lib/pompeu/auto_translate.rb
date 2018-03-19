@@ -14,7 +14,8 @@ module Pompeu
       @translator = @google_free_translator
     end
     def translate min_quality = TranslationConfidence::AUTO
-      @languages.keys.each do |lang|
+      @languages.each do |language|
+        lang = language.code
         texts = @text_db.untranslated_or_worse_than lang, min_quality
         texts.each do |text|
           if text.translatable

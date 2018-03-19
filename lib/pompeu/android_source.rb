@@ -10,35 +10,35 @@ module Pompeu
 
     #imports data form android xml files to the database
     def import
-      @languages.keys.each do |lang|
-        file = android_file_path(lang)
+      @languages.each do |language|
+        file = android_file_path(language)
         next unless File.exist? file
         android_file = AndroidFile.from_files file
-        android_file.to_db @textDB, lang
+        android_file.to_db @textDB, language.code
       end
     end
 
     # writes the data to android string.xml files
     def export
-      @languages.keys.each do |lang|
-        folder = android_folder(lang)
+      @languages.each do |language|
+        folder = android_folder(language)
         unless File.exist?(folder)
-          Logging.logger.warn "Pompeu - creating folder for android language #{lang}: #{folder}"
+          Logging.logger.warn "Pompeu - creating folder for android language #{language.code}: #{folder}"
           Dir.mkdir folder
         end
-        file = android_file_path(lang)
-        android_file = AndroidFile.from_db @textDB, lang
+        file = android_file_path(language)
+        android_file = AndroidFile.from_db @textDB, language.code
         android_file.to_files file
       end
     end
 
-    def android_file_path lang
-      File.join android_folder(lang), "strings.xml"
+    def android_file_path language
+      File.join android_folder(language), "strings.xml"
     end
 
-    def android_folder lang
-      android_lang = @languages[lang]["android"]
-      values_folder = lang==@default_language ? "values" : "values-#{android_lang}"
+    def android_folder language
+      android_lang = language.for "android"
+      values_folder = language.code==@default_language ? "values" : "values-#{android_lang}"
       File.join @android_path, values_folder
     end
   end

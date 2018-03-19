@@ -18,14 +18,13 @@ module Pompeu
       @db_path = @project_configuration["paths"]["db"]
       @android_path = @project_configuration["paths"]["android"]
       @googleplay_path = @project_configuration["paths"]["googleplay"]
-      @languages = @project_configuration["languages"]
+      @languages = Languages.load_map(@project_configuration["languages"])
       @default_language = @project_configuration["default_language"]
 
       @text_db_serializer = TextDbSerializer.new @db_path
       @text_db = @text_db_serializer.load_file
       @android_source = AndroidSource.new @text_db, @languages, @default_language, @android_path
       @google_play_source = GooglePlaySource.new @text_db, @languages, @googleplay_path
-
     end
 
     def save

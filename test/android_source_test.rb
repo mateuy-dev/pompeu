@@ -5,12 +5,11 @@ class AndroidSourceTest < Minitest::Test
   include TestHelperFunctions
 
   def setup
+    define_test_values
     prepare_file_tests
 
     @values_folder = File.join(@tmp_test_data, "android_resources")
 
-    @default_language = "en"
-    @languages = {"en" => {"android"=>"en"}, "ca"=> {"android"=>"ca"}}
     @target = Pompeu::AndroidFile::TARGET
   end
 

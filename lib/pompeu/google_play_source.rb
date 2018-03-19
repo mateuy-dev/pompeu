@@ -10,30 +10,30 @@ module Pompeu
 
     #imports data form android xml files to the database
     def import
-      @languages.keys.each do |lang|
-        folder = lang_folder(lang)
+      @languages.each do |language|
+        folder = lang_folder(language)
         next unless File.exist? folder
         google_play_data = GooglePlayData.from_files folder
-        google_play_data.to_db @textDB, lang
+        google_play_data.to_db @textDB, language.code
       end
     end
 
     # writes the data to android string.xml files
     def export
-      @languages.keys.each do |lang|
-        folder = lang_folder(lang)
+      @languages.each do |language|
+        folder = lang_folder(language)
         unless File.exist?(folder)
-          Logging.logger.warn "Pompeu - creating folder for google play info for language #{lang}: #{folder}"
+          Logging.logger.warn "Pompeu - creating folder for google play info for language #{language.code}: #{folder}"
           Dir.mkdir folder
         end
-        google_play_data = GooglePlayData.from_db @textDB, lang
+        google_play_data = GooglePlayData.from_db @textDB, language.code
         google_play_data.to_files folder
       end
     end
 
 
-    def lang_folder lang
-      play_lang = @languages[lang]["googleplay"]
+    def lang_folder language
+      play_lang = language.for "googleplay"
       File.join @play_data_path, play_lang
     end
   end

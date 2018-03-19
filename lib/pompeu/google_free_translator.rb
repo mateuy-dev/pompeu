@@ -1,7 +1,7 @@
 
 module Pompeu
   class GoogleFreeTranslator
-    @@conversions = {"%1$s"=> "Google", "%d"=> "10"}
+    @@conversions = {"%1$s"=> "Google", "%2$s"=> "Yahoo", "%d"=> "10"}
 
     def translate origin_lang, text, end_lang
       require 'net/http'

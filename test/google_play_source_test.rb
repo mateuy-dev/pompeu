@@ -6,11 +6,9 @@ class GooglePlaySourceTest < Minitest::Test
 
   def setup
     prepare_file_tests
+    define_test_values
 
     @play_folder = File.join(@tmp_test_data, "play")
-
-    @lang = "en"
-    @languages = {"en" => {"googleplay"=>"en-GB"}, "ca"=> {"googleplay"=>"ca"}}
     @target = Pompeu::GooglePlayData::TARGET
   end
 
