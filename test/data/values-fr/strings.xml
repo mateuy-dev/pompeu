@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">Pompeu</string>
-    <string name="param_text">% d est un paramètre</string>
-    <string name="number_param_text">% 1 $ s est aussi un paramètre</string>
-    <string name="characters_1">C'est un char difficile</string>
-</resources>

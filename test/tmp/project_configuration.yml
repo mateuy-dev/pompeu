@@ -1,7 +1,0 @@
-languages: ["en", "ca", "fr"]
-user-languages: ["en", "ca"]
-paths:
-  android: "test/data/"
-  db: "test/data/pompeu_db.yml"
-google_api_key: '---'
-default_language: "en"

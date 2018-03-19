@@ -1,9 +1,9 @@
 
 module Pompeu
   class OfficialGoogleTranslator
-    def initialize pompeu
+    def initialize api_key
       require 'easy_translate'
-      EasyTranslate.api_key = pompeu.project_configuration["google_api_key"]
+      EasyTranslate.api_key = api_key
     end
 
     def translate origin_lang, text, end_lang

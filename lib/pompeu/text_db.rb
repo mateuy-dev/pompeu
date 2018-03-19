@@ -12,6 +12,11 @@ module Pompeu
       @texts.find { |text| text.matches_key? target, key }
     end
 
+    def texts_for_target target
+      @texts.select { |text| text.matches_target? target}
+    end
+
+
     # def add key, lang, text, confidence: TranslationConfidence::UNKNOWN, translatable: true
     def add_translation target, key, lang, text, confidence, translatable = true
       pompeu_text = find_text(target, key)
@@ -23,6 +28,9 @@ module Pompeu
       pompeu_text.add_translation lang, text, confidence
     end
 
+    def clear
+      @text = []
+    end
 
 
   end

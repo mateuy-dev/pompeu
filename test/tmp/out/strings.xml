@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">Pompeu</string>
-    <string name="no_translate_text" translatable="false">Do not translate me</string>
-    <string name="param_text">%d is a parameter</string>
-    <string name="number_param_text">%1$s is a parameter too</string>
-    <string name="characters_1">It\'s a difficult char</string>
-</resources>

@@ -3,24 +3,26 @@ module Pompeu
   class AutoTranslate
     include Logging
 
-    attr_accessor :pompeu
-    def initialize pompeu
-      @pompeu = pompeu
+    def initialize text_db, languages, default_language, api_key=nil
+      @text_db = text_db
+      @languages = languages
+      @default_language = default_language
+      @api_key = api_key
     end
     def translate
       google_free_translator = GoogleFreeTranslator.new
-      google_original_translator = OfficialGoogleTranslator.new @pompeu
+      google_original_translator = OfficialGoogleTranslator.new @api_key
       translator = google_free_translator
-      @pompeu.textDB.texts.each do |key, text|
+      @text_db.texts.each do |text|
         if text.translatable
-          @pompeu.languages.each do |lang|
-            if !text.text_in lang
-              Logging.logger.info "Pompeu - auto translate: #{key} #{lang}"
-              if !text.text_in("en")
-                Logging.logger.info "Pompeu - auto translate: #{key} #{lang}"
+          @languages.keys.each do |lang|
+            if !text.translation lang
+              logger.info "Pompeu - auto translate: #{text.id} #{lang}"
+              if !text.translation("en")
+                logger.info "Pompeu - auto translate: #{text.id} #{lang}"
               end
-              translation = translator.translate("en", text.text_in("en").text, lang)
-              text.add lang, translation, TranslationConfidence::AUTO
+              translation = translator.translate(@default_language, text.translation(@default_language).text, lang)
+              text.add_translation lang, translation, TranslationConfidence::AUTO
             end
           end
         end

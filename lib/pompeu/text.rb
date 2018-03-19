@@ -4,7 +4,7 @@ module Pompeu
   class Text
     include Logging
     #attr_accessor :id, :keys, :translations, :translatable
-    attr_reader :translatable
+    attr_reader :translatable, :id
     def initialize id, translatable
       @id = id
       @translatable = translatable
@@ -25,6 +25,10 @@ module Pompeu
     def matches_key? target, key
       text_key = TextKey.new target, key
       @keys.include? text_key
+    end
+
+    def matches_target? target
+      @keys.find{ |key| key.target==target }
     end
 
     def key_for target

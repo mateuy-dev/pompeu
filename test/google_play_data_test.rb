@@ -13,7 +13,7 @@ class AndroidFileTest < Minitest::Test
   end
 
   def teardown
-    FileUtils.remove_dir(@tmp_test_data)
+    clear_file_tests
   end
 
   def test_general

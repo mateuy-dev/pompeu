@@ -1,7 +1,17 @@
-languages: ["en", "ca", "fr"]
+languages:
+  en:
+    android: "en"
+    googleplay: "en-GB"
+  ca:
+    android: "ca"
+    googleplay: "ca"
+  fr:
+    android: "fr"
+    googleplay: "fr-FR"
 user-languages: ["en", "ca"]
 paths:
   android: "test/data/"
+  googleplay_path: "test/play"
   db: "test/data/pompeu_db.yml"
 google_api_key: '---'
 default_language: "en"

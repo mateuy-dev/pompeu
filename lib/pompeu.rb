@@ -12,10 +12,13 @@ require "pompeu/text_db"
 require "pompeu/text"
 require "pompeu/translation"
 require "pompeu/translation_confidence"
-require "pompeu/pompeu_operations"
+require "pompeu/interactive_translate"
 require "pompeu/simple_structs"
 require "pompeu/android_source"
 require "pompeu/google_play_data"
+require "pompeu/google_play_source"
+require "pompeu/text_db_serializer"
+
 
 #require "pompeu/pompeu_shell"
 

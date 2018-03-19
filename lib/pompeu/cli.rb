@@ -6,16 +6,19 @@ module Pompeu
   include Logging
 
   class CLI < Thor
-    desc "reload_from_android", "adds changes from android strings files to the database"
-    def reload_from_android
-      Logging.logger.info "android files -> DB"
-      PompeuOperations.new.reload_from_android
+    desc "import", "adds changes from android strings files to the database"
+    def import
+      Logging.logger.info "text files -> DB"
+      pompeu = Pompeu.new
+      pompeu.import
+      pompeu.save
     end
 
-    desc "export_android", "exports the databse to android strings"
-    def export_android
-      Logging.logger.info "DB - android files"
-      PompeuOperations.new.export_android
+    desc "export", "exports the databse to android strings"
+    def export
+      Logging.logger.info "DB - text files"
+      pompeu = Pompeu.new
+      pompeu.export
     end
 
     desc "export_for_gengo", "export the untranslated or bad translated texts for gengo translation"
@@ -24,19 +27,26 @@ module Pompeu
     def export_for_gengo language
       confidence = options[:confidence]
       Logging.logger.info "Exporting file for gengo gor language #{language} and min confidence #{confidence}"
-      PompeuOperations.new.export_for_gengo language, confidence
+      pompeu = Pompeu.new
+      pompeu.import
+      pompeu.export_for_gengo language, confidence
     end
 
     desc "auto_translate", "fills all the untranslated texts with auto translated values"
     def auto_translate
       Logging.logger.info "Translating database..."
-      PompeuOperations.new.auto_translate
+      pompeu = Pompeu.new
+      pompeu.import
+      pompeu.auto_translate
+      pompeu.save
       Logging.logger.info "Database translated"
     end
 
     desc "translate", "translate"
     def translate language
-      PompeuOperations.new.translate language
+      pompeu = Pompeu.new
+      pompeu.import
+      pompeu.interactive_translate language
     end
 
 
@@ -49,7 +59,8 @@ module Pompeu
         exit
       end
       Logging.logger.info "Deleting Pompeu database"
-      PompeuOperations.new.clear_db
+      pompeu = Pompeu.new
+      pompeu.clear_database
     end
   end
 end

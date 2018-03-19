@@ -11,6 +11,10 @@ module TestHelperFunctions
     Dir.mkdir @outfolder
   end
 
+  def clear_file_tests
+    FileUtils.remove_dir(@tmp_test_data)
+  end
+
 
   def diff_dirs(dir1, dir2)
     diff_result = `diff -qr #{dir1} #{dir2}`

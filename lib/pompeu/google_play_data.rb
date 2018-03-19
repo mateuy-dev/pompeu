@@ -34,14 +34,14 @@ module Pompeu
 
     def to_db text_db, lang
       @strings.each_pair do |attr, value|
-        text_db.add_translation TARGET, attr, lang, value, TranslationConfidence::UNKNOWN
+        text_db.add_translation TARGET, attr.to_s, lang, value, TranslationConfidence::UNKNOWN
       end
     end
 
     def self.from_db text_db, lang
       strings = GooglePlayDataStrings.new
       strings.each_pair do |attr, value|
-        pompeu_text = text_db.find_text(TARGET, attr)
+        pompeu_text = text_db.find_text(TARGET, attr.to_s)
         if pompeu_text.translation lang
           text = pompeu_text.translation(lang).text
           strings[attr] = text

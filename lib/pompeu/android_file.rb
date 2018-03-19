@@ -1,5 +1,7 @@
 
 module Pompeu
+  AndroidString = Struct.new(:key, :text, :translatable)
+
   class AndroidFile
     TARGET = "android"
 
@@ -20,7 +22,7 @@ module Pompeu
       string_lines.each do |string_line|
         key = string_line["name"]
         translatable = string_line["translatable"]!="false"
-        text = string_line.children.text
+        text = unescape(string_line.children.text)
         strings<<AndroidString.new(key, text, translatable)
       end
       AndroidFile.new strings
@@ -33,11 +35,11 @@ module Pompeu
           @strings.each do |android_string|
             if android_string.translatable
               xml.string(name: android_string.key){
-                xml.text android_string.text
+                xml.text escape(android_string.text)
               }
             else
               xml.string(name: android_string.key, translatable: false){
-                xml.text android_string.text
+                xml.text escape(android_string.text)
               }
             end
           end
@@ -58,7 +60,7 @@ module Pompeu
 
     def self.from_db textDB, lang
       strings = []
-      textDB.texts.each do |pompeu_text|
+      textDB.texts_for_target(TARGET).each do |pompeu_text|
         translation = pompeu_text.translation(lang)
         if pompeu_text.translation lang
           key = pompeu_text.key_for TARGET
@@ -68,6 +70,14 @@ module Pompeu
         end
       end
       AndroidFile.new strings
+    end
+
+    def self.unescape string
+      string.gsub("\\'", "'")
+    end
+
+    def escape string
+      string.gsub("'", "\\\\'")
     end
 
     def ==(other_object)
