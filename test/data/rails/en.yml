@@ -1,0 +1,8 @@
+---
+en:
+  some:
+    key:
+      text1: some text
+      text2: another text
+      param_text: This is a %{param} sample
+      text_html: This is <b>html</b> text

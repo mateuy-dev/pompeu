@@ -1,0 +1,8 @@
+---
+en:
+  some:
+    key:
+      text1: un text
+      text2: un altre text
+      param_text: Aquest és un %{param} d'exemple
+      text_html: Aquest és un text <b>html</b>

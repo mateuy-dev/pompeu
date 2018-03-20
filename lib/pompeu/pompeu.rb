@@ -18,6 +18,7 @@ module Pompeu
       @db_path = @project_configuration["paths"]["db"]
       @android_path = @project_configuration["paths"]["android"]
       @googleplay_path = @project_configuration["paths"]["googleplay"]
+      @rails_path = @project_configuration["paths"]["rails"]
       @languages = Language.load_map(@project_configuration["languages"])
       @default_language = @project_configuration["default_language"]
 
@@ -25,6 +26,8 @@ module Pompeu
       @text_db = @text_db_serializer.load_file
       @android_source = AndroidSource.new @text_db, @languages, @default_language, @android_path
       @google_play_source = GooglePlaySource.new @text_db, @languages, @googleplay_path
+      @rails_source = RailsSource.new @text_db, @languages, @rails_path
+
     end
 
     def save
@@ -34,11 +37,13 @@ module Pompeu
     def import
       @android_source.import
       @google_play_source.import
+      @rails_source.import
     end
 
     def export
       @android_source.export
       @google_play_source.export
+      @rails_source.export
     end
 
     def export_for_gengo language, confidence

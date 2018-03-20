@@ -18,6 +18,8 @@ require "pompeu/google_play_data"
 require "pompeu/google_play_source"
 require "pompeu/text_db_serializer"
 require "pompeu/language"
+require "pompeu/rails_file"
+require "pompeu/rails_source"
 
 
 #require "pompeu/pompeu_shell"
