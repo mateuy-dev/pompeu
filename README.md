@@ -88,3 +88,8 @@ texts:
 ## Notes
 Com reutilitzar texts
 
+# Build
+rake build
+gem install pkg/pompeu-0.1.0.gem
+
+

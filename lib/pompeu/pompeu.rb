@@ -24,9 +24,9 @@ module Pompeu
 
       @text_db_serializer = TextDbSerializer.new @db_path
       @text_db = @text_db_serializer.load_file
-      @android_source = AndroidSource.new @text_db, @languages, @default_language, @android_path
-      @google_play_source = GooglePlaySource.new @text_db, @languages, @googleplay_path
-      @rails_source = RailsSource.new @text_db, @languages, @rails_path
+      @android_source = AndroidSource.new @text_db, @languages, @default_language, @android_path if @android_path
+      @google_play_source = GooglePlaySource.new @text_db, @languages, @googleplay_path if @googleplay_path
+      @rails_source = RailsSource.new @text_db, @languages, @rails_path if @rails_path
 
     end
 
@@ -35,15 +35,15 @@ module Pompeu
     end
 
     def import
-      @android_source.import
-      @google_play_source.import
-      @rails_source.import
+      @android_source.import if @android_source
+      @google_play_source.import if @google_play_source
+      @rails_source.import if @rails_source
     end
 
     def export
-      @android_source.export
-      @google_play_source.export
-      @rails_source.export
+      @android_source.export if @android_source
+      @google_play_source.export if @google_play_source
+      @rails_source.export if @rails_source
     end
 
     def export_for_gengo language, confidence

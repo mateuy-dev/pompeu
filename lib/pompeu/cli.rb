@@ -32,7 +32,7 @@ module Pompeu
       pompeu.export_for_gengo language, confidence
     end
 
-    desc "auto_translate", "fills all the untranslated texts with auto translated values"
+    desc "auto_translate", "Fills untranslated texts or updated ones with auto translated values. "
     option :update, type: :boolean, default: false
     def auto_translate
       confidence = options[:update] ? TranslationConfidence::AUTO + 1 : TranslationConfidence::AUTO
