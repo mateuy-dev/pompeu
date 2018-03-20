@@ -47,7 +47,7 @@ class TextDbTest < Minitest::Test
     assert_equal 0, result.size
   end
 
-  def test_untranslated_or_worse_for_updated
+  def test_untranslated_or_worse_for_updated_data
     # add translation
     @text_db.add_translation @target, @key, @lang2, @text, @confidence, @translatable
     sleep 0.1
@@ -58,7 +58,18 @@ class TextDbTest < Minitest::Test
 
     assert_equal 1, result.size
     assert @text2, result[0].translation(@lang)
+  end
 
+  def test_untranslated_or_worse_for_updated_data_with_more_confidence
+    # add translation
+    @text_db.add_translation @target, @key, @lang2, @text, @confidence+100, @translatable
+    sleep 0.1
+    # update original
+    @text_db.add_translation @target, @key, @lang, @text2, @confidence, @translatable
+
+    result = @text_db.untranslated_or_worse_than @lang2, @default_language,@confidence
+
+    assert_equal 0, result.size
   end
 
 end

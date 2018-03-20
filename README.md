@@ -86,10 +86,14 @@ texts:
 
 
 ## Notes
-Com reutilitzar texts
+- How to rehuse texts
+
+### Translate apis
+- https://tran.sl/
 
 # Build
 rake build
 gem install pkg/pompeu-0.1.0.gem
+
 
 
