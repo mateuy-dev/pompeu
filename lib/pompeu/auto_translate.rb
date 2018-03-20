@@ -16,7 +16,7 @@ module Pompeu
     def translate min_quality = TranslationConfidence::AUTO
       @languages.each do |language|
         lang = language.code
-        texts = @text_db.untranslated_or_worse_than lang, min_quality
+        texts = @text_db.untranslated_or_worse_than lang, @default_language, min_quality
         texts.each do |text|
           if text.translatable
             logger.info "Pompeu - auto translate: #{text.id} #{lang}"

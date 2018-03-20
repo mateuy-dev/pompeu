@@ -32,15 +32,21 @@ module Pompeu
       @text = []
     end
 
-    def untranslated_or_worse_than lang, confidence = -1
+    # Returns the untranslated texts, the translated with less confidence than the given,
+    # or the translated with same confidence but that are older than the default language
+    def untranslated_or_worse_than lang, default_lang, confidence = -1
       result = []
       @texts.each do |text|
         if text.translatable
-          if !text.translation lang
+          translation = text.translation(lang)
+          if !translation
             logger.debug "Pompeu - missing translation found: #{text.id} #{lang}"
             result << text
-          elsif text.translation(lang).confidence < confidence
+          elsif translation.confidence < confidence
             logger.debug "Pompeu - translation to improve found: #{text.id} #{lang}"
+            result << text
+          elsif translation.updated_at < text.translation(default_lang).updated_at
+            logger.debug "Pompeu - translation to update: #{text.id} #{lang}"
             result << text
           end
         end

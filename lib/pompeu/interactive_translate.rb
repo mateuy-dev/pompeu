@@ -13,8 +13,11 @@ module Pompeu
     end
     
     def translate language
+      puts "to test, and prepare for updates"
+      return if true
+
       cli = HighLine.new
-      texts = @text_db.untranslated_or_worse_than language, TranslationConfidence::MANUAL
+      texts = @text_db.untranslated_or_worse_than language, @default_language, TranslationConfidence::MANUAL
       texts.each do |key, text|
         proposed = text.text_in(language) ? text.text_in(language).text : ""
         english_text = text.text_in(@default_language).text

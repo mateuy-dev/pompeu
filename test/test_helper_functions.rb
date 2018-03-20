@@ -12,7 +12,7 @@ module TestHelperFunctions
   end
 
   def define_test_values
-    @skip_internet_test = false
+    @skip_internet_test = true
 
     @target = "android"
     @key = "some_key"
@@ -22,13 +22,13 @@ module TestHelperFunctions
     @confidence = 5
     @translatable = true
 
-    @lang2 = "en"
+    @lang2 = "ca"
     @text2 = "other text"
     @greater_confidence = 10
     @less_confidence = 1
 
     @default_language = "en"
-    @languages = Pompeu::Language.load_map({"en" => {"android"=>"en", "googleplay"=>"en-GB"}, "ca"=> {"android"=>"ca"}})
+    @languages = Pompeu::Language.load_map({"en" => {"googleplay"=>"en-GB"}, "ca"=> {}})
   end
 
   def clear_file_tests

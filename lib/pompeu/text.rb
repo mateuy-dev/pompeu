@@ -43,7 +43,7 @@ module Pompeu
     def add_translation lang, text, confidence
       if !@translations[lang]
         logger.info "Pompeu - adding translation: #{@id} #{lang} #{text}"
-        @translations[lang] = Translation.new lang, text, confidence
+        @translations[lang] = Translation.new lang, text, confidence, Time.now
       else
         if (confidence == TranslationConfidence::UNKNOWN) and (@translations[lang].text == text)
           return
@@ -57,7 +57,9 @@ module Pompeu
           # Nothing done
         end
         @translations[lang].confidence = confidence
+        @translations[lang].updated_at = Time.now if @translations[lang].text != text
         @translations[lang].text = text
+
       end
     end
 

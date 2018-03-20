@@ -18,7 +18,7 @@ module Pompeu
       @db_path = @project_configuration["paths"]["db"]
       @android_path = @project_configuration["paths"]["android"]
       @googleplay_path = @project_configuration["paths"]["googleplay"]
-      @languages = Languages.load_map(@project_configuration["languages"])
+      @languages = Language.load_map(@project_configuration["languages"])
       @default_language = @project_configuration["default_language"]
 
       @text_db_serializer = TextDbSerializer.new @db_path
@@ -42,7 +42,7 @@ module Pompeu
     end
 
     def export_for_gengo language, confidence
-      texts = @text_db.untranslated_or_worse_than language, confidence
+      texts = @text_db.untranslated_or_worse_than language, @default_language, confidence
       Gengo.new.export(texts, @default_language)
     end
 

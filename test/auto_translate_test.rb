@@ -8,6 +8,36 @@ class AutoTranslateTest < Minitest::Test
     define_test_values
   end
 
+  def test_auto_translate_mocked
+    translator = DummyTranslator.new
+
+    @text_db = Pompeu::TextDB.new
+    @text_db.add_translation @target, @key, @lang, @text, @confidence, @translatable
+
+    auto_translate = Pompeu::AutoTranslate.new @text_db, @languages, @default_language, nil
+    auto_translate.translator = translator
+    auto_translate.translate
+
+    assert @text_db.find_text @target,@key
+    assert_equal @text, translation(@key, @lang2).text
+  end
+
+  def test_auto_translate_mocked_for_updated_text
+    translator = DummyTranslator.new
+
+    @text_db = Pompeu::TextDB.new
+    @text_db.add_translation @target, @key, @lang, @text, @confidence, @translatable
+    @text_db.add_translation @target, @key, @lang2, @text, Pompeu::TranslationConfidence::AUTO, @translatable
+    # update original
+    @text_db.add_translation @target, @key, @lang, @text2, @confidence, @translatable
+
+    auto_translate = Pompeu::AutoTranslate.new @text_db, @languages, @default_language, nil
+    auto_translate.translator = translator
+    auto_translate.translate
+
+    assert @text_db.find_text @target,@key
+    assert_equal @text2, translation(@key, @lang2).text
+  end
 
   def test_auto_translate
     return if @skip_internet_test
@@ -18,7 +48,7 @@ class AutoTranslateTest < Minitest::Test
     auto_translate.translate
 
     assert @text_db.find_text @target,@key
-    assert_equal @text_ca, translation(@key, "ca").text
+    assert_equal @text_ca, translation(@key, @lang2).text
   end
 
   def test_auto_translate_for_two_line_text
@@ -30,22 +60,7 @@ class AutoTranslateTest < Minitest::Test
     auto_translate.translate
 
     assert @text_db.find_text @target,@key
-    assert_equal "Un\nDos\nTres", translation(@key, "ca").text
-  end
-
-
-  def test_auto_translate_with_dummy_translator
-    translator = DummyTranslator.new
-
-    @text_db = Pompeu::TextDB.new
-    @text_db.add_translation @target, @key, @lang, @text, @confidence, @translatable
-
-    auto_translate = Pompeu::AutoTranslate.new @text_db, @languages, @default_language, nil
-    auto_translate.translator = translator
-    auto_translate.translate
-
-    assert @text_db.find_text @target,@key
-    assert_equal @text, translation(@key, "ca").text
+    assert_equal "Un\nDos\nTres", translation(@key, @lang2).text
   end
 
   def translation key, language

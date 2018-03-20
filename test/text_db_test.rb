@@ -15,7 +15,7 @@ class TextDbTest < Minitest::Test
     pompeu_text = @text_db.find_text @target, @key
     translation = pompeu_text.translation @lang
     assert pompeu_text.matches_key? @target, @key
-    assert @text, translation.text
+    assert_equal @text, translation.text
   end
 
   def test_add_translation_for_existing_key_new_lang
@@ -23,30 +23,42 @@ class TextDbTest < Minitest::Test
 
     pompeu_text = @text_db.find_text @target, @key
     assert pompeu_text.matches_key? @target, @key
-    assert @text, pompeu_text.translation(@lang)
-    assert @text2, pompeu_text.translation(@lang2)
+    assert_equal @text, pompeu_text.translation(@lang).text
+    assert_equal @text2, pompeu_text.translation(@lang2).text
   end
 
   def test_untranslated_or_worse_than_for_untranslated
-    result = @text_db.untranslated_or_worse_than "nl"
+    result = @text_db.untranslated_or_worse_than "nl", @default_language
 
     assert_equal 1, result.size
-    text = result[0]
-    assert @text, text.translation(@lang)
+    assert @text, result[0].translation(@lang)
   end
 
   def test_untranslated_or_worse_than_for_worse_confidence
-    result = @text_db.untranslated_or_worse_than "en", @confidence+1
+    result = @text_db.untranslated_or_worse_than "en", @default_language,@confidence+1
 
     assert_equal 1, result.size
-    text = result[0]
-    assert @text, text.translation(@lang)
+    assert @text, result[0].translation(@lang)
   end
 
   def test_untranslated_or_worse_than_for_same_confidence
-    result = @text_db.untranslated_or_worse_than @lang, @confidence
+    result = @text_db.untranslated_or_worse_than @lang, @default_language,@confidence
 
     assert_equal 0, result.size
+  end
+
+  def test_untranslated_or_worse_for_updated
+    # add translation
+    @text_db.add_translation @target, @key, @lang2, @text, @confidence, @translatable
+    sleep 0.1
+    # update original
+    @text_db.add_translation @target, @key, @lang, @text2, @confidence, @translatable
+
+    result = @text_db.untranslated_or_worse_than @lang2, @default_language,@confidence
+
+    assert_equal 1, result.size
+    assert @text2, result[0].translation(@lang)
+
   end
 
 end
