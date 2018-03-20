@@ -19,6 +19,15 @@ class AutoTranslateTest < Minitest::Test
     assert_equal "El paràmetre %d és un número", translation
   end
 
+  def test_auto_translate_with_rails_param
+    translation = Pompeu::GoogleFreeTranslator.new.translate "en", "The parameter %{param} is a name", "ca"
+    assert_equal "El paràmetre %{param} és un nom", translation
+  end
+
+  def test_auto_translate_with_rails_html_text
+    translation = Pompeu::GoogleFreeTranslator.new.translate "en", "This is <b>html</b> text", "ca"
+    assert_equal "Aquest és un text <b>html</b>", translation
+  end
 
   def test_auto_translate
     translation = Pompeu::GoogleFreeTranslator.new.translate "en", "One\nTwo\nThree", "ca"

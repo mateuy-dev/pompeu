@@ -37,7 +37,7 @@ module TestHelperFunctions
 
 
   def diff_dirs(dir1, dir2)
-    diff_result = `diff -qr #{dir1} #{dir2}`
+    diff_result = `diff -r #{dir1} #{dir2}`
   end
 
 end
