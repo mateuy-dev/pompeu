@@ -9,8 +9,8 @@ class AutoTranslateTest < Minitest::Test
   end
 
 
-  def test_auto_translate_with_digit
-    translation = Pompeu::GoogleFreeTranslator.new.translate "en", "The parameter %1$s is a name", "ca"
+  def test_auto_translate_with_text
+    translation = Pompeu::GoogleFreeTranslator.new.translate "en", "The parameter %1$s is a text", "ca"
     assert_equal "El paràmetre %1$s és un text", translation
   end
 
@@ -22,6 +22,11 @@ class AutoTranslateTest < Minitest::Test
   def test_auto_translate_with_rails_param
     translation = Pompeu::GoogleFreeTranslator.new.translate "en", "The parameter %{param} is a name", "ca"
     assert_equal "El paràmetre %{param} és un nom", translation
+  end
+
+  def test_auto_translate_with_rails_param_numeric
+    translation = Pompeu::GoogleFreeTranslator.new.translate "en", "There are %{param_int} apples in the tree", "ca"
+    assert_equal "Hi ha %{number_param} pomes a l'arbre", translation
   end
 
   def test_auto_translate_with_rails_html_text

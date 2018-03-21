@@ -5,6 +5,8 @@ module Pompeu
     @@span_open = "<span class=\"notranslate\">"
     @@span_close = "</span>"
 
+    @@rails_param_regex = "(%{[a-zA-z0-9_]+})"
+    @@android_regex = "(%([0-9]\\$)?[a-z])"
 
     def initialize api_key
       require 'easy_translate'
@@ -12,26 +14,26 @@ module Pompeu
     end
 
     def self.add_no_translate text
-      text.gsub(/%{[a-z0-9_]+}/i, "#{@@span_open}\0#{@@span_close}")
+      rails_regex = Regexp.new(@@rails_param_regex)
+      text = text.gsub(rails_regex, "#{@@span_open}\\1#{@@span_close}")
+      android_regex = Regexp.new(@@android_regex)
+      text = text.gsub(android_regex, "#{@@span_open}\\1#{@@span_close}")
     end
 
     def self.remove_no_translate text
-
+      rails_regex = Regexp.new("#{@@span_open}#{@@rails_param_regex}#{@@span_close}")
+      text = text.gsub(rails_regex, "\\1")
+      android_regex = Regexp.new("#{@@span_open}#{@@android_regex}#{@@span_close}")
+      text = text.gsub(android_regex, "\\1")
     end
 
     def translate origin_lang, text, end_lang
-      text =
-
-      param = "%1$s"
-      params_present = text.include? param
-      if params_present
-        text = text.sub param, subs
-      end
+      text = add_no_translate text
       translation = EasyTranslate.translate(text, from: origin_lang, to: end_lang)
       if params_present
         translation = translation.sub subs, param
       end
-      translation
+      remove_no_translate text
     end
   end
 end
