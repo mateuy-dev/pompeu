@@ -27,7 +27,7 @@ module Pompeu
       @android_source = AndroidSource.new @text_db, @languages, @default_language, @android_path if @android_path
       @google_play_source = GooglePlaySource.new @text_db, @languages, @googleplay_path if @googleplay_path
       @rails_source = RailsSource.new @text_db, @languages, @rails_path if @rails_path
-
+      @web_cache = WebResponseCache.new @project_configuration["paths"]["internal"]
     end
 
     def save
@@ -52,7 +52,7 @@ module Pompeu
     end
 
     def auto_translate(min_quality = TranslationConfidence::AUTO)
-      auto_translate = AutoTranslate.new @text_db, @languages, @default_language
+      auto_translate = AutoTranslate.new(@text_db, @languages, @default_language,@web_cache)
       auto_translate.translate min_quality
     end
 

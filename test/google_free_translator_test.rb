@@ -26,7 +26,7 @@ class AutoTranslateTest < Minitest::Test
 
   def test_auto_translate_with_rails_param_numeric
     translation = Pompeu::GoogleFreeTranslator.new.translate "en", "There are %{param_int} apples in the tree", "ca"
-    assert_equal "Hi ha %{number_param} pomes a l'arbre", translation
+    assert_equal "Hi ha %{param_int} pomes a l'arbre", translation
   end
 
   def test_auto_translate_with_rails_html_text

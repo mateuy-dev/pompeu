@@ -20,6 +20,7 @@ require "pompeu/text_db_serializer"
 require "pompeu/language"
 require "pompeu/rails_file"
 require "pompeu/rails_source"
+require "pompeu/web_response_cache"
 
 
 #require "pompeu/pompeu_shell"

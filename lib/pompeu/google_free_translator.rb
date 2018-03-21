@@ -7,6 +7,21 @@ module Pompeu
     @@integers = ["9652", "8765", "7352"]
     @@rails_param_regex = "(%{[a-zA-z0-9_]+})"
 
+
+    def initialize(cache = nil)
+      @cache = cache
+    end
+
+    def response_from url
+      if @cache
+        response = @cache.get url
+      else
+        puts url
+        response = Net::HTTP.get(URI(url))
+      end
+      response
+    end
+
     def translate origin_lang, text, end_lang
       require 'net/http'
       require 'json'
@@ -14,11 +29,9 @@ module Pompeu
       converted_text, applied_android_conversions = convert_params text
       encoded_text = URI::encode(converted_text)
       url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=#{origin_lang}&tl=#{end_lang}&dt=t&q=#{encoded_text}"
-      puts url
-      response = Net::HTTP.get(URI(url))
+      response = response_from url
       lines = JSON.parse(response)[0]
       translated = lines.map{ |line| line[0] }.join('')
-
       unconver_params translated, applied_android_conversions
     end
 
@@ -36,7 +49,7 @@ module Pompeu
 
       rails_regex = Regexp.new(@@rails_param_regex)
       name_it = 0
-      while text.match? rails_regex do
+      while text.match rails_regex do
         replaced = text.match(rails_regex)[0]
         if replaced.include? "_int"
           replacement = @@integers[name_it]
@@ -58,4 +71,6 @@ module Pompeu
       text
     end
   end
+
+
 end

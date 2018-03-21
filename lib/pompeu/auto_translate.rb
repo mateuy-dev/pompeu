@@ -3,13 +3,13 @@ module Pompeu
   class AutoTranslate
     include Logging
     attr_accessor :translator
-    def initialize text_db, languages, default_language, api_key=nil
+    def initialize(text_db, languages, default_language, cache = nil, api_key: nil)
       @text_db = text_db
       @languages = languages
       @default_language = default_language
       @api_key = api_key
 
-      @google_free_translator = GoogleFreeTranslator.new
+      @google_free_translator = GoogleFreeTranslator.new cache
       @google_original_translator = OfficialGoogleTranslator.new @api_key
       @translator = @google_free_translator
     end
