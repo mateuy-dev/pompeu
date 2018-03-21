@@ -23,8 +23,12 @@ module Pompeu
             if !text.translation("en")
               logger.info "Pompeu - auto translate: #{text.id} #{lang}"
             end
-            translation = @translator.translate(@default_language, text.translation(@default_language).text, lang)
-            text.add_translation lang, translation, TranslationConfidence::AUTO
+            if text.translation(@default_language)
+              translation = @translator.translate(@default_language, text.translation(@default_language).text, lang)
+              text.add_translation lang, translation, TranslationConfidence::AUTO
+            else
+              logger.warn "Pompeu - auto translate: Text not found in default language #{text.id} #{@default_language}"
+            end
           end
         end
       end
