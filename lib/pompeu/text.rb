@@ -48,7 +48,7 @@ module Pompeu
         if (confidence == TranslationConfidence::UNKNOWN) and (@translations[lang].text == text)
           return
         elsif @translations[lang].confidence > confidence
-          raise "Decrease confidence is not allowed"
+          raise "Decrease confidence is not allowed #{confidence}, #{lang}, #{@id}, #{text}"
         elsif @translations[lang].confidence == confidence and (@translations[lang].text != text)
           logger.info "Pompeu - updating translation: #{@id} #{lang} #{text}"
         elsif @translations[lang].confidence > confidence

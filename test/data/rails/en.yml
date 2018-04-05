@@ -6,3 +6,4 @@ en:
       text2: another text
       param_text: This is a %{param} sample
       text_html: This is <b>html</b> text
+      diff_char: Write € or @ can be difficult.

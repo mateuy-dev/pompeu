@@ -28,6 +28,7 @@ module Pompeu
       @google_play_source = GooglePlaySource.new @text_db, @languages, @googleplay_path if @googleplay_path
       @rails_source = RailsSource.new @text_db, @languages, @rails_path if @rails_path
       @web_cache = WebResponseCache.new @project_configuration["paths"]["internal"]
+      @auto_translate = AutoTranslate.new(@text_db, @languages, @default_language,@web_cache)
     end
 
     def save
@@ -52,12 +53,11 @@ module Pompeu
     end
 
     def auto_translate(min_quality = TranslationConfidence::AUTO)
-      auto_translate = AutoTranslate.new(@text_db, @languages, @default_language,@web_cache)
-      auto_translate.translate min_quality
+      @auto_translate.translate min_quality
     end
 
     def interactive_translate language
-      interactive_translate = InteractiveTranslate.new @text_db, @default_language
+      interactive_translate = InteractiveTranslate.new @text_db, @default_language, @auto_translate
       interactive_translate.translate language
     end
 

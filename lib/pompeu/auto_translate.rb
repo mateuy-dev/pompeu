@@ -18,18 +18,23 @@ module Pompeu
         lang = language.code
         texts = @text_db.untranslated_or_worse_than lang, @default_language, min_quality
         texts.each do |text|
-          if text.translatable
-            logger.info "Pompeu - auto translate: #{text.id} #{lang}"
-            if !text.translation("en")
-              logger.info "Pompeu - auto translate: #{text.id} #{lang}"
-            end
-            if text.translation(@default_language)
-              translation = @translator.translate(@default_language, text.translation(@default_language).text, lang)
-              text.add_translation lang, translation, TranslationConfidence::AUTO
-            else
-              logger.warn "Pompeu - auto translate: Text not found in default language #{text.id} #{@default_language}"
-            end
-          end
+          translation = translate_text(text, lang)
+          text.add_translation lang, translation, TranslationConfidence::AUTO if translation
+        end
+      end
+    end
+
+    def translate_text text, lang
+      if text.translatable
+        logger.info "Pompeu - auto translate: #{text.id} #{lang}"
+        if !text.translation("en")
+          logger.info "Pompeu - auto translate: #{text.id} #{lang}"
+        end
+        if text.translation(@default_language)
+          return @translator.translate(@default_language, text.translation(@default_language).text, lang)
+        else
+          logger.warn "Pompeu - auto translate: Text not found in default language #{text.id} #{@default_language}"
+          return nil;
         end
       end
     end
