@@ -36,7 +36,7 @@ class GooglePlaySourceTest < Minitest::Test
     google_play_source.import
 
     google_play_source2 = Pompeu::GooglePlaySource.new text_db, @languages, @outfolder
-    google_play_source2.export
+    google_play_source2.export @app_name
 
     assert_empty diff_dirs(@play_folder, @outfolder)
 

@@ -21,6 +21,7 @@ module Pompeu
       @rails_path = @project_configuration["paths"]["rails"]
       @languages = Language.load_map(@project_configuration["languages"])
       @default_language = @project_configuration["default_language"]
+      @app_name = @project_configuration["app_name"]
 
       @text_db_serializer = TextDbSerializer.new @db_path
       @text_db = @text_db_serializer.load_file
@@ -29,6 +30,7 @@ module Pompeu
       @rails_source = RailsSource.new @text_db, @languages, @rails_path if @rails_path
       @web_cache = WebResponseCache.new @project_configuration["paths"]["internal"]
       @auto_translate = AutoTranslate.new(@text_db, @languages, @default_language,@web_cache)
+
     end
 
     def save
@@ -43,7 +45,7 @@ module Pompeu
 
     def export
       @android_source.export if @android_source
-      @google_play_source.export if @google_play_source
+      @google_play_source.export(@app_name) if @google_play_source
       @rails_source.export if @rails_source
     end
 

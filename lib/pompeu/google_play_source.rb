@@ -19,7 +19,7 @@ module Pompeu
     end
 
     # writes the data to android string.xml files
-    def export
+    def export app_name
       @languages.each do |language|
         folder = lang_folder(language)
         unless File.exist?(folder)
@@ -27,7 +27,7 @@ module Pompeu
           Dir.mkdir folder
         end
         google_play_data = GooglePlayData.from_db @textDB, language.code
-        google_play_data.to_files folder
+        google_play_data.to_files folder, app_name
       end
     end
 

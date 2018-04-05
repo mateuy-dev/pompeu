@@ -12,3 +12,4 @@ paths:
   db: "test/data/pompeu_db.yml"
 google_api_key: '---'
 default_language: "en"
+app_name: "Pompeu sample"

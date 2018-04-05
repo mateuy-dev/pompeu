@@ -22,12 +22,15 @@ module Pompeu
       GooglePlayData.new strings
     end
 
-    def to_files folder_path
+    def to_files folder_path, app_name
       listing_path = File.join(folder_path, "listing")
       Dir.mkdir(listing_path) unless File.exist? listing_path
       FILES.each_pair do |attr, file|
         path = File.join(folder_path, file)
         value = @strings[attr]
+        if :title == attr and value.length > 30
+          value = app_name
+        end
         File.write(path, value)
       end
     end
