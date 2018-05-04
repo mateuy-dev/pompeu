@@ -10,7 +10,7 @@ class AndroidSourceTest < Minitest::Test
 
     @values_folder = File.join(@tmp_test_data, "android_resources")
 
-    @target = Pompeu::AndroidFile::TARGET
+    @target = "android"
   end
 
   def teardown
@@ -19,7 +19,7 @@ class AndroidSourceTest < Minitest::Test
 
   def test_android_source_import
     @text_db = Pompeu::TextDB.new
-    android_source = Pompeu::AndroidSource.new @text_db, @languages, @default_language, @values_folder
+    android_source = Pompeu::AndroidSource.new @text_db, @languages, @default_language, @values_folder, @target
     android_source.import
 
     assert @text_db.find_text @target,"app_name"
@@ -38,10 +38,10 @@ class AndroidSourceTest < Minitest::Test
 
   def test_android_source_import_and_export
     text_db = Pompeu::TextDB.new
-    android_source = Pompeu::AndroidSource.new text_db, @languages, @default_language, @values_folder
+    android_source = Pompeu::AndroidSource.new text_db, @languages, @default_language, @values_folder, @target
     android_source.import
 
-    android_source2 = Pompeu::AndroidSource.new text_db, @languages, @default_language, @outfolder
+    android_source2 = Pompeu::AndroidSource.new text_db, @languages, @default_language, @outfolder, @target
     android_source2.export
 
     assert_empty diff_dirs(@values_folder, @outfolder)

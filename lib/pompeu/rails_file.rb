@@ -4,21 +4,20 @@ module Pompeu
   RailsString = Struct.new(:keys, :text)
 
   class RailsFile
-    TARGET = "RubyOnRails"
-
-    attr_reader :strings
-    def initialize(strings = [])
+    attr_reader :strings, :target
+    def initialize(target, strings = [])
+      @target = target
       @strings = strings
     end
 
-    def self.from_files file_path, language
+    def self.from_files file_path, language, target
       strings = []
       file = YAML.load_file(file_path)
       hashed_texts = flat_hash(file[language.for("rails")])
       hashed_texts.each_pair do |key, value|
         strings << RailsString.new(key, unescape(value))
       end
-      RailsFile.new strings
+      RailsFile.new target, strings
     end
 
     def self.flat_hash(hash, k = [])
@@ -49,21 +48,21 @@ module Pompeu
 
     def to_db textDB, lang
       @strings.each do |rails_string|
-        textDB.add_translation TARGET, rails_string.keys, lang, rails_string.text, TranslationConfidence::UNKNOWN, true
+        textDB.add_translation @target, rails_string.keys, lang, rails_string.text, TranslationConfidence::UNKNOWN, true
       end
     end
 
-    def self.from_db textDB, lang
+    def self.from_db textDB, lang, target
       strings = []
-      textDB.texts_for_target(TARGET).each do |pompeu_text|
+      textDB.texts_for_target(target).each do |pompeu_text|
         translation = pompeu_text.translation(lang)
         if pompeu_text.translation lang
-          key = pompeu_text.key_for TARGET
+          key = pompeu_text.key_for target
           text = pompeu_text.translation(lang).text
           strings << RailsString.new(key, text)
         end
       end
-      RailsFile.new strings
+      RailsFile.new target, strings
     end
 
     def self.unescape string

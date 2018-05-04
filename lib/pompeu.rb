@@ -21,6 +21,8 @@ require "pompeu/language"
 require "pompeu/rails_file"
 require "pompeu/rails_source"
 require "pompeu/web_response_cache"
+require "pompeu/auto_translator_with_double_check"
+require "pompeu/auto_translate_with_double_check"
 
 
 #require "pompeu/pompeu_shell"

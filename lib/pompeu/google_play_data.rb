@@ -17,7 +17,7 @@ module Pompeu
       strings = GooglePlayDataStrings.new
       FILES.each_pair do |attr, file|
         path = File.join(folder_path, file)
-        strings[attr] = File.read path
+        strings[attr] = File.read path if File.exist? path
       end
       GooglePlayData.new strings
     end

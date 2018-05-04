@@ -1,14 +1,21 @@
 languages:
   en:
-    android: "en"
     googleplay: "en-GB"
-  ca:
-    android: "ca"
-    googleplay: "ca"
+  ca: {}
 user-languages: ["en", "ca"]
+translatables:
+  - type: "android"
+    path: "test/data/android_resources"
+#- type: "android"
+#  target: "android_video"
+#  path: "video_resources"
+#  languages: ["es", "ca", "en"]
+  - type: "googleplay"
+    path: "test/play"
+  - type: "rails"
+    path: "rails"
+    target: "RubyOnRails"
 paths:
-  android: "test/data/android_resources"
-  googleplay: "test/play"
   db: "test/data/pompeu_db.yml"
 google_api_key: '---'
 default_language: "en"

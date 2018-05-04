@@ -13,6 +13,8 @@ class RailsFileTest < Minitest::Test
     @language = @languages[0]
     @lang_file = File.join(@tmp_test_data, "rails/en.yml")
     @out_file = File.join(@outfolder, "en.yml")
+
+    @target = "rails"
   end
 
   def teardown
@@ -20,9 +22,9 @@ class RailsFileTest < Minitest::Test
   end
 
   def test_general
-    android_file = Pompeu::RailsFile.from_files @lang_file, @language
+    android_file = Pompeu::RailsFile.from_files @lang_file, @language, @target
     android_file.to_db @text_db, @lang
-    android_file_2 = Pompeu::RailsFile.from_db @text_db, @lang
+    android_file_2 = Pompeu::RailsFile.from_db @text_db, @lang, @target
     android_file_2.to_files @out_file, @language
 
     assert_equal android_file, android_file_2
@@ -31,7 +33,7 @@ class RailsFileTest < Minitest::Test
 
   def test_export_with_keys_not_for_android
     @text_db.add_translation "other_target", "some-key", @lang, 0, true
-    android_file = Pompeu::RailsFile.from_db @text_db, @lang
+    android_file = Pompeu::RailsFile.from_db @text_db, @lang, @target
     android_file.to_files @out_file, @language
   end
 

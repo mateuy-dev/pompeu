@@ -16,21 +16,33 @@ module Pompeu
     def initialize configuration_file = "project_configuration.yml"
       @project_configuration = YAML.load_file(configuration_file)
       @db_path = @project_configuration["paths"]["db"]
-      @android_path = @project_configuration["paths"]["android"]
-      @googleplay_path = @project_configuration["paths"]["googleplay"]
-      @rails_path = @project_configuration["paths"]["rails"]
+      @user_languages = @project_configuration["user-languages"]
       @languages = Language.load_map(@project_configuration["languages"])
       @default_language = @project_configuration["default_language"]
       @app_name = @project_configuration["app_name"]
-
       @text_db_serializer = TextDbSerializer.new @db_path
       @text_db = @text_db_serializer.load_file
-      @android_source = AndroidSource.new @text_db, @languages, @default_language, @android_path if @android_path
-      @google_play_source = GooglePlaySource.new @text_db, @languages, @googleplay_path if @googleplay_path
-      @rails_source = RailsSource.new @text_db, @languages, @rails_path if @rails_path
+
+
+      @sources = @project_configuration["translatables"].map do |translatable|
+        type = translatable["type"]
+        path = translatable["path"]
+        target = translatable["target"] || translatable["type"]
+        selected_languages = translatable["languages"]
+        languages = selected_languages ? @languages.select{ |lang| selected_languages.include? lang.code} : @languages
+        case type
+          when "android"
+            AndroidSource.new @text_db, languages, @default_language, path, target
+          when "googleplay"
+            GooglePlaySource.new @text_db, languages, path
+          when "rails"
+            RailsSource.new @text_db, languages, path, target
+        end
+      end
+
       @web_cache = WebResponseCache.new @project_configuration["paths"]["internal"]
       @auto_translate = AutoTranslate.new(@text_db, @languages, @default_language,@web_cache)
-
+      @auto_translate_2check = AutoTranslateWithDoubleCheck.new(@text_db, @default_language, @web_cache)
     end
 
     def save
@@ -38,24 +50,24 @@ module Pompeu
     end
 
     def import
-      @android_source.import if @android_source
-      @google_play_source.import if @google_play_source
-      @rails_source.import if @rails_source
+      @sources.each { |source| source.import}
     end
 
     def export
-      @android_source.export if @android_source
-      @google_play_source.export(@app_name) if @google_play_source
-      @rails_source.export if @rails_source
+      @sources.each { |source| source.export @app_name}
     end
 
-    def export_for_gengo language, confidence
-      texts = @text_db.untranslated_or_worse_than language, @default_language, confidence
-      Gengo.new.export(texts, @default_language)
+    def export_for_gengo language, confidence, target
+      texts = @text_db.untranslated_or_worse_than language, @default_language, confidence, target
+      puts Gengo.new.export(texts, @default_language)
     end
 
     def auto_translate(min_quality = TranslationConfidence::AUTO)
       @auto_translate.translate min_quality
+    end
+
+    def auto_translate_double_check(end_lang, min_times, min_quality = TranslationConfidence::AUTO)
+      @auto_translate_2check.translate(@user_languages, end_lang, min_times, min_quality)
     end
 
     def interactive_translate language

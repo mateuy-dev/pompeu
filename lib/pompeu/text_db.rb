@@ -34,11 +34,11 @@ module Pompeu
 
     # Returns the untranslated texts, the translated with less confidence than the given,
     # or the translated with same confidence but that are older than the default language
-    def untranslated_or_worse_than lang, default_lang, confidence = -1
+    def untranslated_or_worse_than lang, default_lang, confidence = -1, target = nil
       seconds_margin = 5
       result = []
       @texts.each do |text|
-        if text.translatable
+        if text.translatable && (!target || text.matches_target?(target))
           translation = text.translation(lang)
           if !text.translation(default_lang)
             logger.debug "Pompeu - original text for : #{text.id}"

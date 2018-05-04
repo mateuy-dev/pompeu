@@ -3,19 +3,18 @@ module Pompeu
   AndroidString = Struct.new(:key, :text, :translatable)
 
   class AndroidFile
-    TARGET = "android"
-
-    attr_reader :strings
-    def initialize(strings = [])
+    attr_reader :strings, :target
+    def initialize(target, strings = [])
+      @target = target
       @strings = strings
     end
 
-    def self.from_files file_path
-      File.open(file_path) { |f| from_xml(f) }
+    def self.from_files file_path, target
+      File.open(file_path) { |f| from_xml(f, target) }
     end
 
     # loads data from strings xml
-    def self.from_xml input
+    def self.from_xml input, target
       strings = []
       doc = Nokogiri::XML(input)
       string_lines = doc.xpath("//string")
@@ -25,7 +24,7 @@ module Pompeu
         text = unescape(string_line.children.text)
         strings<<AndroidString.new(key, text, translatable)
       end
-      AndroidFile.new strings
+      AndroidFile.new target, strings
     end
 
     # data to string.xml format
@@ -54,22 +53,22 @@ module Pompeu
 
     def to_db textDB, lang
       @strings.each do |android_string|
-        textDB.add_translation TARGET, android_string.key, lang, android_string.text, TranslationConfidence::UNKNOWN, android_string.translatable
+        textDB.add_translation @target, android_string.key, lang, android_string.text, TranslationConfidence::UNKNOWN, android_string.translatable
       end
     end
 
-    def self.from_db textDB, lang
+    def self.from_db textDB, lang, target
       strings = []
-      textDB.texts_for_target(TARGET).each do |pompeu_text|
+      textDB.texts_for_target(target).each do |pompeu_text|
         translation = pompeu_text.translation(lang)
         if pompeu_text.translation lang
-          key = pompeu_text.key_for TARGET
+          key = pompeu_text.key_for target
           text = pompeu_text.translation(lang).text
           translatable = pompeu_text.translatable
           strings << AndroidString.new(key, text, translatable)
         end
       end
-      AndroidFile.new strings
+      AndroidFile.new target, strings
     end
 
     def self.unescape string

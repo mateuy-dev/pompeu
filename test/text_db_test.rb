@@ -72,6 +72,19 @@ class TextDbTest < Minitest::Test
     assert_equal 0, result.size
   end
 
+  def test_untranslated_or_worse_for_specific_target
+    result = @text_db.untranslated_or_worse_than "nl", @default_language, @confidence, @target
+
+    assert_equal 1, result.size
+    assert @text, result[0].translation(@lang)
+  end
+
+  def test_untranslated_or_worse_for_specific_unexisting_target
+    result = @text_db.untranslated_or_worse_than "nl", @default_language, @confidence, "another_target"
+
+    assert_equal 0, result.size
+  end
+
   # def test_temporal
   #   @text_db.add_translation Pompeu::RailsFile::TARGET, ["some","key_html"], @lang, @text, @confidence,@translatable
   #   @text_db.add_translation Pompeu::RailsFile::TARGET, ["some","key_html"], @lang2, @text, @confidence, @translatable

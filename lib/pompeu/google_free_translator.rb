@@ -24,20 +24,20 @@ module Pompeu
     end
 
     def translate origin_lang, text, end_lang
+      print text
+
+
       require 'net/http'
       require 'json'
       require 'uri'
 
-      if text.include?("<p>") || text.include?("<li>") || text.include?("<ul>")
+      if text.include?("<p>") || text.include?("<li>") || text.include?("<ul>") || text.include?("<br>") || text.include?("</br>")
         raise "Only some html is supported. "+ text
       end
 
-      # uri = URI.parse("https://translate.googleapis.com/translate_a/single")
-      # params = {client: "gtx", sl: origin_lang, tl: end_lang, dt: "t", q: no_html_text}
-      # uri.query = URI.encode_www_form(params)
-      # result = Net::HTTP.start(uri.host, uri.port, use_ssl: true) {|http| http.get(uri.request_uri) }
-      # result.body.force_encoding('UTF-8')
-
+      if text.include?("<br/>")
+        return splitAndJoinLines origin_lang, text, end_lang
+      end
       converted_text, applied_android_conversions = convert_params text, origin_lang, end_lang
       no_html_text = Nokogiri::HTML(converted_text).text
       encoded_text = URI::encode(no_html_text)
@@ -101,6 +101,12 @@ module Pompeu
         text = text.sub text_replacement.replacement, text_replacement.replaced
       end
       text
+    end
+
+    def splitAndJoinLines origin_lang, text, end_lang
+      text.split('<br/>')
+          .map { |line| translate(origin_lang, line, end_lang)}
+          .join('<br/>')
     end
   end
 

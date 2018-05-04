@@ -10,7 +10,7 @@ class RailsSourceTest < Minitest::Test
 
     @values_folder = File.join(@tmp_test_data, "rails")
 
-    @target = Pompeu::RailsFile::TARGET
+    @target = "rails"
   end
 
   def teardown
@@ -19,7 +19,7 @@ class RailsSourceTest < Minitest::Test
 
   def test_rails_source_import
     @text_db = Pompeu::TextDB.new
-    rails_source = Pompeu::RailsSource.new @text_db, @languages, @values_folder
+    rails_source = Pompeu::RailsSource.new @text_db, @languages, @values_folder, @target
     rails_source.import
 
     assert @text_db.find_text @target,["some", "key", "text1"]
@@ -31,10 +31,10 @@ class RailsSourceTest < Minitest::Test
 
   def test_rails_source_import_and_export
     text_db = Pompeu::TextDB.new
-    rails_source = Pompeu::RailsSource.new text_db, @languages, @values_folder
+    rails_source = Pompeu::RailsSource.new text_db, @languages, @values_folder, @target
     rails_source.import
 
-    rails_source2 = Pompeu::RailsSource.new text_db, @languages, @outfolder
+    rails_source2 = Pompeu::RailsSource.new text_db, @languages, @outfolder, @target
     rails_source2.export
 
     assert_empty diff_dirs(@values_folder, @outfolder)
