@@ -16,6 +16,15 @@ module Pompeu
       @texts.select { |text| text.matches_target? target}
     end
 
+    def find_text_by_id id
+      @texts.find { |text| text.id == id }
+    end
+
+    # adding a text translation to an existing text
+    def add_text_translation id, lang, text, confidence
+      pompeu_text = find_text_by_id(id)
+      pompeu_text.add_translation lang, text, confidence
+    end
 
     # def add key, lang, text, confidence: TranslationConfidence::UNKNOWN, translatable: true
     def add_translation target, key, lang, text, confidence, translatable = true

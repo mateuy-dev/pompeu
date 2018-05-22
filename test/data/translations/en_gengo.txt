@@ -1,0 +1,8 @@
+[[[textid google_play__shortdescription]]]
+Short description
+[[[textid google_play__fulldescription]]]
+This is a full description
+
+With more than one line
+[[[textid google_play__lasttag]]]
+Something else
