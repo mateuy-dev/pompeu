@@ -17,7 +17,7 @@ module TestHelperFunctions
     @target = "android"
     @key = "some_key"
     @lang = "en"
-    @text = "some text"
+    @text = "Some text"
     @text_ca = "algun text"
     @confidence = 5
     @translatable = true

@@ -13,14 +13,14 @@ module Pompeu
       EasyTranslate.api_key = api_key
     end
 
-    def self.add_no_translate text
+    def add_no_translate text
       rails_regex = Regexp.new(@@rails_param_regex)
       text = text.gsub(rails_regex, "#{@@span_open}\\1#{@@span_close}")
       android_regex = Regexp.new(@@android_regex)
       text = text.gsub(android_regex, "#{@@span_open}\\1#{@@span_close}")
     end
 
-    def self.remove_no_translate text
+    def remove_no_translate text
       rails_regex = Regexp.new("#{@@span_open}#{@@rails_param_regex}#{@@span_close}")
       text = text.gsub(rails_regex, "\\1")
       android_regex = Regexp.new("#{@@span_open}#{@@android_regex}#{@@span_close}")

@@ -42,7 +42,5 @@ module Pompeu
       save
     end
 
-
-
   end
 end

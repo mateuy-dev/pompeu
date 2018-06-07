@@ -17,16 +17,12 @@ module Pompeu
       if @cache
         response = @cache.get url
       else
-        puts url
         response = Net::HTTP.get(URI(url))
       end
       response
     end
 
     def translate origin_lang, text, end_lang
-      print text
-
-
       require 'net/http'
       require 'json'
       require 'uri'
@@ -46,7 +42,11 @@ module Pompeu
       response = response_from url
       lines = JSON.parse(response)[0]
       translated = lines.map{ |line| line[0] }.join('')
-      unconver_params translated, applied_android_conversions
+      result = unconver_params translated, applied_android_conversions
+      Logging.logger.debug "Pompeu - connecting to #{url}"
+      Logging.logger.info "Pompeu - translating #{text} in #{origin_lang} to #{end_lang}: #{result}"
+
+      result
     end
 
     def convert_params text, origin_lang, end_lang

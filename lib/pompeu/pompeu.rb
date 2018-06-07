@@ -42,7 +42,8 @@ module Pompeu
 
       @web_cache = WebResponseCache.new @project_configuration["paths"]["internal"]
       @auto_translate = AutoTranslate.new(@text_db, @languages, @default_language,@web_cache)
-      @auto_translate_2check = AutoTranslateWithDoubleCheck.new(@text_db, @default_language, @web_cache)
+
+      @auto_translate_2check = AutoTranslateWithDoubleCheck.new(@text_db, @default_language, @auto_translate.google_free_translator)
     end
 
     def save

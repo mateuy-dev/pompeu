@@ -49,9 +49,10 @@ module Pompeu
     option :update, type: :boolean, default: false
     def auto_translate2check language
       confidence = options[:update] ? TranslationConfidence::AUTO_2CHECK + 1 : TranslationConfidence::AUTO_2CHECK
+      min_times = options[:min_times]
       Logging.logger.info "Translating database with min confidence #{confidence}"
       pompeu = Pompeu.new
-      pompeu.auto_translate_double_check language, min_times
+      pompeu.auto_translate_double_check language, min_times, confidence
       pompeu.save
       Logging.logger.info "Database translated"
     end
