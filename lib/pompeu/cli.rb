@@ -25,12 +25,27 @@ module Pompeu
     #option :language, :type => :string, required: true
     option :confidence, :type => :numeric, required: true
     option :target, :type => :string, required: true
+    option :origin_language, :type => :string
     def export_for_gengo language
       confidence = options[:confidence]
       target = options[:target]
+      origin_language = options[:origin_language]
       Logging.logger.info "Exporting file for gengo for language #{language} and min confidence #{confidence}"
       pompeu = Pompeu.new
-      pompeu.export_for_gengo language, confidence, target
+      pompeu.export_for_gengo language, confidence, target, origin_language
+    end
+
+    desc "export_for_csv [language]", "export the untranslated or bad translated texts in a csv file for translation"
+    option :confidence, :type => :numeric, required: true
+    option :target, :type => :string, required: true
+    option :origin_language, :type => :string
+    def export_for_csv language
+      confidence = options[:confidence]
+      target = options[:target]
+      origin_language = options[:origin_language]
+      Logging.logger.info "Exporting file for gengo for language #{language} and min confidence #{confidence}"
+      pompeu = Pompeu.new
+      pompeu.export_for_csv language, confidence, target, origin_language
     end
 
     desc "auto_translate", "Fills untranslated texts or updated ones with auto translated values. "
@@ -44,7 +59,7 @@ module Pompeu
       Logging.logger.info "Database translated"
     end
 
-    desc "auto_translate2check [language]", "Fills untranslated texts or updated ones with auto translated values. using double check"
+    desc "auto_translate2check [language]", "Fills untranslated texts or updated ones with auto translated values. using double check."
     option :min_times, type: :numeric, default: 3
     option :update, type: :boolean, default: false
     def auto_translate2check language
@@ -65,7 +80,15 @@ module Pompeu
     end
 
 
-    desc "clear_db", "export the untranslated or bad translated texts for gengo translation"
+    desc "import_translation [file] [language]", "Imports a translation file. For now only Gengo"
+    def import_translation file, language
+      Logging.logger.info "Importing gengo file for #{language}"
+      pompeu = Pompeu.new
+      pompeu.import_gengo_translation file, language
+
+    end
+
+    desc "clear_db", "Cleard database"
     #option :language, :type => :string, required: true
     option :confirm, :type => :boolean
     def clear_db

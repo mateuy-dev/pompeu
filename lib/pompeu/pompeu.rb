@@ -58,9 +58,20 @@ module Pompeu
       @sources.each { |source| source.export @app_name}
     end
 
-    def export_for_gengo language, confidence, target
-      texts = @text_db.untranslated_or_worse_than language, @default_language, confidence, target
-      puts Gengo.new.export(texts, @default_language)
+    def import_gengo_translation file, lang
+      Gengo.new.import @text_db, file, lang
+    end
+
+    def export_for_gengo language, confidence, target, origin_language = nil
+      origin_language ||= @default_language
+      texts = @text_db.untranslated_or_worse_than language, origin_language, confidence, target
+      puts Gengo.new.export(texts, origin_language)
+    end
+
+    def export_for_csv(language, confidence, target, origin_language = nil)
+      origin_language ||= @default_language
+      texts = @text_db.untranslated_or_worse_than language, origin_language, confidence, target
+      puts CsvImportExport.new.export(texts, origin_language)
     end
 
     def auto_translate(min_quality = TranslationConfidence::AUTO)
@@ -80,6 +91,8 @@ module Pompeu
       @text_db_serializer.clear
       @text_db.clear
     end
+
+
 
   end
 
