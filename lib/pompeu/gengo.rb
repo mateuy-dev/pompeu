@@ -1,6 +1,7 @@
 
 module Pompeu
   class Gengo
+    include Logging
     ID_TAG = "textid"
     def import text_db, file, language
       data = File.read file
@@ -9,6 +10,7 @@ module Pompeu
       File.open(file).each do |line|
         if line.start_with? "[[[#{ID_TAG} "
           if text_id
+            logger.info "Pompeu - Gengo adding translation: #{text_id} #{language} #{text.strip}"
             text_db.add_text_translation text_id, language, text.strip, TranslationConfidence::PROFESSIONAL
           end
           text_id = line.sub("[[[#{ID_TAG} ", '').sub(']]]', '').strip
@@ -18,6 +20,7 @@ module Pompeu
         end
       end
       text_db.add_text_translation text_id, language, text.strip, TranslationConfidence::PROFESSIONAL
+      logger.info "Pompeu - Gengo adding translation: #{text_id} #{language} #{text.strip}"
     end
 
     def export texts, language

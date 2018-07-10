@@ -85,7 +85,7 @@ module Pompeu
       Logging.logger.info "Importing gengo file for #{language}"
       pompeu = Pompeu.new
       pompeu.import_gengo_translation file, language
-
+      pompeu.save
     end
 
     desc "clear_db", "Cleard database"
