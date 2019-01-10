@@ -72,6 +72,22 @@ module Pompeu
       Logging.logger.info "Database translated"
     end
 
+    desc "auto_translate2check [language]", "Fills untranslated texts or updated ones with auto translated values. using double check."
+    option :min_times, type: :numeric, default: 3
+    option :update, type: :boolean, default: false
+    def auto_translate2check language
+      confidence = options[:update] ? TranslationConfidence::AUTO_2CHECK + 1 : TranslationConfidence::AUTO_2CHECK
+      min_times = options[:min_times]
+      Logging.logger.info "Translating database with min confidence #{confidence}"
+      pompeu = Pompeu.new
+      pompeu.auto_translate_double_check language, min_times, confidence
+      pompeu.save
+      Logging.logger.info "Database translated"
+    end
+
+
+
+
     desc "translate [language]", "translate"
     def translate language
       pompeu = Pompeu.new

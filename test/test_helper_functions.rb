@@ -31,6 +31,10 @@ module TestHelperFunctions
     @languages = Pompeu::Language.load_map({"en" => {"googleplay"=>"en-GB"}, "ca"=> {}})
 
     @app_name = "pompeu App"
+
+    @key2 = "another_key"
+    @key3 = "yet_another_key"
+    @text3 = "lorem ipsum"
   end
 
   def clear_file_tests

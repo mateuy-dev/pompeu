@@ -24,6 +24,8 @@ require "pompeu/web_response_cache"
 require "pompeu/auto_translator_with_double_check"
 require "pompeu/auto_translate_with_double_check"
 require "pompeu/csv_import_export"
+require "pompeu/reuse_translator"
+require "pompeu/reuse_translate"
 
 
 #require "pompeu/pompeu_shell"

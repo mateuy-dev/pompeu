@@ -85,6 +85,22 @@ class TextDbTest < Minitest::Test
     assert_equal 0, result.size
   end
 
+
+  def test_find_texts_by_text
+    @text_db.add_translation @target, "another_key", @lang, @text, @confidence, @translatable
+    @text_db.add_translation @target, "dummy", @lang, @text2, @confidence, @translatable
+    found = @text_db.select_by_text @lang, @text
+    assert_equal 2, found.texts.size
+  end
+
+  def test_select_by_better_confidence
+    @text_db.add_translation @target, @key2, @lang, @text, @confidence + 1, @translatable
+    @text_db.add_translation @target, @key3, @lang, @text2, @confidence - 1, @translatable
+    found = @text_db.select_by_min_confidence @lang, @confidence
+    assert_equal 2, found.texts.size
+  end
+
+
   # def test_temporal
   #   @text_db.add_translation Pompeu::RailsFile::TARGET, ["some","key_html"], @lang, @text, @confidence,@translatable
   #   @text_db.add_translation Pompeu::RailsFile::TARGET, ["some","key_html"], @lang2, @text, @confidence, @translatable

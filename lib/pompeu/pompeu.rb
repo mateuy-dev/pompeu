@@ -44,6 +44,8 @@ module Pompeu
       @auto_translate = AutoTranslate.new(@text_db, @languages, @default_language,@web_cache)
 
       @auto_translate_2check = AutoTranslateWithDoubleCheck.new(@text_db, @default_language, @auto_translate.google_free_translator)
+
+      @reuse_translate = ReuseTranslate.new(@text_db, @languages, @default_language)
     end
 
     def save
@@ -81,6 +83,11 @@ module Pompeu
     def auto_translate_double_check(end_lang, min_times, min_quality = TranslationConfidence::AUTO)
       @auto_translate_2check.translate(@user_languages, end_lang, min_times, min_quality)
     end
+
+    def auto_translate_reusing(min_quality = TranslationConfidence::PROFESSIONAL_REUSED)
+      @reuse_translate.translate(min_quality)
+    end
+
 
     def interactive_translate language
       interactive_translate = InteractiveTranslate.new @text_db, @default_language, @auto_translate

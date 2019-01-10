@@ -1,11 +1,12 @@
 module Pompeu
 
+  # Contains the Databases of translations
   class TextDB
     include Logging
 
     attr_reader :texts
-    def initialize
-      @texts = []
+    def initialize(texts=[])
+      @texts = texts
     end
 
     def find_text target, key
@@ -18,6 +19,17 @@ module Pompeu
 
     def find_text_by_id id
       @texts.find { |text| text.id == id }
+    end
+
+    def select_by_text(language, text_to_find)
+      TextDB.new @texts.select { |text| text.translation(language).text == text_to_find }
+    end
+
+    def select_by_min_confidence(language, min_confidence)
+      values =  @texts.select do |text|
+        (text.translation(language)) && (text.translation(language).confidence >= min_confidence)
+      end
+      TextDB.new values
     end
 
     # adding a text translation to an existing text
