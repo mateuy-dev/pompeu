@@ -52,6 +52,18 @@ class ReuseTranslateTest < Minitest::Test
     assert_equal @text2, translation(@key2, @lang2).text
   end
 
+  def test_reuse_translate_when_no_translation_found_does_nothing
+    @text_db = Pompeu::TextDB.new
+    @text_db.add_translation @target, @key, @lang, @text, @confidence, @translatable
+    @text_db.add_translation @target, @key2, @lang, @text, @confidence, @translatable
+
+    auto_translate = Pompeu::ReuseTranslate.new @text_db, @languages, @default_language
+    auto_translate.translate
+
+    assert @text_db.find_text @target,@key2
+    assert_nil translation(@key2, @lang2)
+  end
+
   def translation key, language
     @text_db.find_text(@target,key).translation(language)
   end

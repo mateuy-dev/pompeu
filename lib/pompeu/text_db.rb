@@ -22,7 +22,7 @@ module Pompeu
     end
 
     def select_by_text(language, text_to_find)
-      TextDB.new @texts.select { |text| text.translation(language).text == text_to_find }
+      TextDB.new @texts.select { |text| (text.translation(language) && text.translation(language).text == text_to_find )}
     end
 
     def select_by_min_confidence(language, min_confidence)
