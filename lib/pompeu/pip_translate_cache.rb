@@ -10,8 +10,17 @@ module Pompeu
     end
 
     def get origin_lang, text, end_lang
-      @cache.dig(origin_lang, end_lang, text)
+      translation = @cache.dig(origin_lang, end_lang, text)
+      translation ? translation.translation : nil
     end
+
+    def add origin_lang, text, end_lang, translation
+      @cache[origin_lang] = {} if !@cache[origin_lang]
+      @cache[origin_lang][end_lang] = {} if !@cache[origin_lang][end_lang]
+      @cache[origin_lang][end_lang][text] = PipCacheData.new(origin_lang, text, end_lang, translation, Time.now)
+      save
+    end
+
 
     private
 
@@ -29,12 +38,6 @@ module Pompeu
       end
     end
 
-    def add origin_lang, text, end_lang, translation
-      @cache[origin_lang] = {} if !@cache[origin_lang]
-      @cache[origin_lang][end_lang] = {} if !@cache[origin_lang][end_lang]
-      @cache[origin_lang][end_lang][text] = PipCacheData.new(origin_lang, text, end_lang, translation, Time.now)
-      save
-    end
 
   end
 end

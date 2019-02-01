@@ -10,18 +10,28 @@ module Pompeu
     @@rails_param_regex = "(%{[a-zA-z0-9_]+})"
     @@html_links = "()"
 
+    @@domains = ["translate.google.co.kr"]
 
     def initialize(pipcache = nil)
       @pipcache = pipcache
     end
 
     def py_translate origin_lang, text, end_lang
-      cache_trans = pipcache.get origin_lang, text, end_lang
-      return cache_trans if cache_trans
+      if @pipcache
+        cache_trans = @pipcache.get origin_lang, text, end_lang
+        return cache_trans if cache_trans
+      end
+
 
       pyimport :googletrans
-      translator = googletrans.Translator.new
+      # translator = googletrans.Translator.new @@domains
+      proxies = {'http': '127.0.0.1:9080', 'https': '127.0.0.1:9080'}
+      translator = googletrans.Translator.new(proxies: proxies)
       translation = translator.translate(text, end_lang, origin_lang)
+
+      @pipcache.add origin_lang, text, end_lang, translation.text if @pipcache
+
+      translation.text
     end
 
     def translate origin_lang, text, end_lang
@@ -36,9 +46,8 @@ module Pompeu
 
       no_html_text = Nokogiri::HTML(converted_text).text
 
-      translation = py_translate origin_lang, no_html_text, end_lang
+      translated = py_translate origin_lang, no_html_text, end_lang
 
-      translated = translation.text
       result = unconver_params translated, applied_android_conversions
 
       Logging.logger.info "Pompeu - translating #{text} in #{origin_lang} to #{end_lang}: #{result}"
