@@ -22,13 +22,13 @@ class AndroidSourceTest < Minitest::Test
     android_source = Pompeu::AndroidSource.new @text_db, @languages, @default_language, @values_folder, @target
     android_source.import
 
-    assert @text_db.find_text @target,"app_name"
+    assert @text_db.find_text @target, "app_name"
 
     assert_equal "Pompeu", translation("app_name", "en").text
-    assert @text_db.find_text(@target,"app_name").translatable
+    assert @text_db.find_text(@target, "app_name").translatable
 
     assert_equal "Do not translate me", translation("no_translate_text", "en").text
-    assert !@text_db.find_text(@target,"no_translate_text").translatable
+    assert !@text_db.find_text(@target, "no_translate_text").translatable
 
     assert_equal "%d is a parameter", translation("param_text", "en").text
     assert_equal "%1$s is a parameter too", translation("number_param_text", "en").text
@@ -50,7 +50,7 @@ class AndroidSourceTest < Minitest::Test
   end
 
   def translation key, language
-    @text_db.find_text(@target,key).translation(language)
+    @text_db.find_text(@target, key).translation(language)
   end
 
 end

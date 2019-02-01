@@ -5,28 +5,29 @@ module Pompeu
     include Logging
 
     attr_reader :texts
-    def initialize(texts=[])
+
+    def initialize(texts = [])
       @texts = texts
     end
 
     def find_text target, key
-      @texts.find { |text| text.matches_key? target, key }
+      @texts.find {|text| text.matches_key? target, key}
     end
 
     def texts_for_target target
-      @texts.select { |text| text.matches_target? target}
+      @texts.select {|text| text.matches_target? target}
     end
 
     def find_text_by_id id
-      @texts.find { |text| text.id == id }
+      @texts.find {|text| text.id == id}
     end
 
     def select_by_text(language, text_to_find)
-      TextDB.new @texts.select { |text| (text.translation(language) && text.translation(language).text == text_to_find )}
+      TextDB.new @texts.select {|text| (text.translation(language) && text.translation(language).text == text_to_find)}
     end
 
     def select_by_min_confidence(language, min_confidence)
-      values =  @texts.select do |text|
+      values = @texts.select do |text|
         (text.translation(language)) && (text.translation(language).confidence >= min_confidence)
       end
       TextDB.new values
@@ -72,9 +73,9 @@ module Pompeu
           elsif translation.confidence == confidence and (translation.updated_at + seconds_margin) < text.translation(default_lang).updated_at
             logger.debug "Pompeu - translation to update: #{text.id} #{lang}"
             result << text
-          #elsif translation.confidence == confidence and text.matches_target?(RailsFile::TARGET) and text.key_for(RailsFile::TARGET)[-1].end_with? "_html"
-          #  logger.debug "Pompeu - translation to update: #{text.id} #{lang}"
-          #  result << text
+            #elsif translation.confidence == confidence and text.matches_target?(RailsFile::TARGET) and text.key_for(RailsFile::TARGET)[-1].end_with? "_html"
+            #  logger.debug "Pompeu - translation to update: #{text.id} #{lang}"
+            #  result << text
           end
         end
       end

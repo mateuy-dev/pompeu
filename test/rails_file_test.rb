@@ -37,4 +37,4 @@ class RailsFileTest < Minitest::Test
     android_file.to_files @out_file, @language
   end
 
-  end
+end

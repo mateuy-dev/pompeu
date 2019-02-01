@@ -7,6 +7,7 @@ module Pompeu
 
   class CLI < Thor
     desc "import", "adds changes from android strings files to the database"
+
     def import
       Logging.logger.info "text files -> DB"
       pompeu = Pompeu.new
@@ -15,6 +16,7 @@ module Pompeu
     end
 
     desc "export", "exports the databse to android strings"
+
     def export
       Logging.logger.info "DB - text files"
       pompeu = Pompeu.new
@@ -26,6 +28,7 @@ module Pompeu
     option :confidence, :type => :numeric, required: true
     option :target, :type => :string, required: true
     option :origin_language, :type => :string
+
     def export_for_gengo language
       confidence = options[:confidence]
       target = options[:target]
@@ -39,6 +42,7 @@ module Pompeu
     option :confidence, :type => :numeric, required: true
     option :target, :type => :string, required: true
     option :origin_language, :type => :string
+
     def export_for_csv language
       confidence = options[:confidence]
       target = options[:target]
@@ -50,6 +54,7 @@ module Pompeu
 
     desc "auto_translate", "Fills untranslated texts or updated ones with auto translated values. "
     option :update, type: :boolean, default: false
+
     def auto_translate
       confidence = options[:update] ? TranslationConfidence::AUTO + 1 : TranslationConfidence::AUTO
       Logging.logger.info "Translating database with min confidence #{confidence}"
@@ -62,6 +67,7 @@ module Pompeu
     desc "auto_translate2check [language]", "Fills untranslated texts or updated ones with auto translated values. using double check."
     option :min_times, type: :numeric, default: 3
     option :update, type: :boolean, default: false
+
     def auto_translate2check language
       confidence = options[:update] ? TranslationConfidence::AUTO_2CHECK + 1 : TranslationConfidence::AUTO_2CHECK
       min_times = options[:min_times]
@@ -74,6 +80,7 @@ module Pompeu
 
     desc "auto_translate_reusing", "Fills untranslated texts or updated ones with reused translations if available"
     option :update, type: :boolean, default: false
+
     def auto_translate_reusing
       confidence = options[:update] ? TranslationConfidence::PROFESSIONAL_REUSED + 1 : TranslationConfidence::PROFESSIONAL_REUSED
       Logging.logger.info "Translating database with min confidence #{confidence}"
@@ -84,6 +91,7 @@ module Pompeu
     end
 
     desc "translate [language]", "translate"
+
     def translate language
       pompeu = Pompeu.new
       pompeu.interactive_translate language
@@ -92,6 +100,7 @@ module Pompeu
 
 
     desc "import_translation [file] [language]", "Imports a translation file. For now only Gengo"
+
     def import_translation file, language
       Logging.logger.info "Importing gengo file for #{language}"
       pompeu = Pompeu.new
@@ -102,6 +111,7 @@ module Pompeu
     desc "clear_db", "Cleard database"
     #option :language, :type => :string, required: true
     option :confirm, :type => :boolean
+
     def clear_db
       if !options[:confirm]
         Logging.logger.info "Confirmation needed"

@@ -35,4 +35,4 @@ class AndroidFileTest < Minitest::Test
     android_file.to_files @out_file
   end
 
-  end
+end

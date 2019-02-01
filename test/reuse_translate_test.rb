@@ -17,7 +17,7 @@ class ReuseTranslateTest < Minitest::Test
     auto_translate = Pompeu::ReuseTranslate.new @text_db, @languages, @default_language
     auto_translate.translate
 
-    assert @text_db.find_text @target,@key2
+    assert @text_db.find_text @target, @key2
     assert_equal @text2, translation(@key2, @lang2).text
   end
 
@@ -31,7 +31,7 @@ class ReuseTranslateTest < Minitest::Test
     auto_translate = Pompeu::ReuseTranslate.new @text_db, @languages, @default_language
     auto_translate.translate
 
-    assert @text_db.find_text @target,@key2
+    assert @text_db.find_text @target, @key2
     assert_equal @text2, translation(@key2, @lang2).text
   end
 
@@ -48,7 +48,7 @@ class ReuseTranslateTest < Minitest::Test
     auto_translate = Pompeu::ReuseTranslate.new @text_db, @languages, @default_language
     auto_translate.translate
 
-    assert @text_db.find_text @target,@key2
+    assert @text_db.find_text @target, @key2
     assert_equal @text2, translation(@key2, @lang2).text
   end
 
@@ -60,12 +60,12 @@ class ReuseTranslateTest < Minitest::Test
     auto_translate = Pompeu::ReuseTranslate.new @text_db, @languages, @default_language
     auto_translate.translate
 
-    assert @text_db.find_text @target,@key2
+    assert @text_db.find_text @target, @key2
     assert_nil translation(@key2, @lang2)
   end
 
   def translation key, language
-    @text_db.find_text(@target,key).translation(language)
+    @text_db.find_text(@target, key).translation(language)
   end
 
 end

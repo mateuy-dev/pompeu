@@ -22,7 +22,7 @@ class RailsSourceTest < Minitest::Test
     rails_source = Pompeu::RailsSource.new @text_db, @languages, @values_folder, @target
     rails_source.import
 
-    assert @text_db.find_text @target,["some", "key", "text1"]
+    assert @text_db.find_text @target, ["some", "key", "text1"]
 
     assert_equal "some text", translation(["some", "key", "text1"], "en").text
     assert_equal "another text", translation(["some", "key", "text2"], "en").text
@@ -43,7 +43,7 @@ class RailsSourceTest < Minitest::Test
   end
 
   def translation key, language
-    @text_db.find_text(@target,key).translation(language)
+    @text_db.find_text(@target, key).translation(language)
   end
 
 end

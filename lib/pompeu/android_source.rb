@@ -1,7 +1,7 @@
 module Pompeu
 
   class AndroidSource
-  def initialize textDB, languages, default_language, android_path, target
+    def initialize textDB, languages, default_language, android_path, target
       @textDB = textDB
       @languages = languages
       @android_path = android_path
@@ -20,7 +20,7 @@ module Pompeu
     end
 
     # writes the data to android string.xml files
-    def export(_appname=nil)
+    def export(_appname = nil)
       @languages.each do |language|
         folder = android_folder(language)
         unless File.exist?(folder)
@@ -39,7 +39,7 @@ module Pompeu
 
     def android_folder language
       android_lang = language.for "android"
-      values_folder = language.code==@default_language ? "values" : "values-#{android_lang}"
+      values_folder = language.code == @default_language ? "values" : "values-#{android_lang}"
       File.join @android_path, values_folder
     end
   end

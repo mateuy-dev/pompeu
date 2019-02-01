@@ -13,6 +13,7 @@ module Pompeu
   class Pompeu
     include Logging
     attr_accessor :project_configuration, :textDB
+
     def initialize configuration_file = "project_configuration.yml"
       @project_configuration = YAML.load_file(configuration_file)
       @db_path = @project_configuration["paths"]["db"]
@@ -29,21 +30,21 @@ module Pompeu
         path = translatable["path"]
         target = translatable["target"] || translatable["type"]
         selected_languages = translatable["languages"]
-        languages = selected_languages ? @languages.select{ |lang| selected_languages.include? lang.code} : @languages
+        languages = selected_languages ? @languages.select {|lang| selected_languages.include? lang.code} : @languages
         case type
-          when "android"
-            AndroidSource.new @text_db, languages, @default_language, path, target
-          when "googleplay"
-            GooglePlaySource.new @text_db, languages, path
-          when "rails"
-            RailsSource.new @text_db, languages, path, target
+        when "android"
+          AndroidSource.new @text_db, languages, @default_language, path, target
+        when "googleplay"
+          GooglePlaySource.new @text_db, languages, path
+        when "rails"
+          RailsSource.new @text_db, languages, path, target
         end
       end
 
       @web_cache = WebResponseCache.new @project_configuration["paths"]["internal"]
-      @auto_translate = AutoTranslate.new(@text_db, @languages, @default_language,@web_cache)
+      @auto_translate = AutoTranslate.new(@text_db, @languages, @default_language, @web_cache)
 
-      @auto_translate_2check = AutoTranslateWithDoubleCheck.new(@text_db, @default_language, @auto_translate.google_free_translator)
+      @auto_translate_2check = AutoTranslateWithDoubleCheck.new(@text_db, @default_language, @auto_translate.google_free_translator_with_python)
 
       @reuse_translate = ReuseTranslate.new(@text_db, @languages, @default_language)
     end
@@ -53,11 +54,11 @@ module Pompeu
     end
 
     def import
-      @sources.each { |source| source.import}
+      @sources.each {|source| source.import}
     end
 
     def export
-      @sources.each { |source| source.export @app_name}
+      @sources.each {|source| source.export @app_name}
     end
 
     def import_gengo_translation file, lang
@@ -98,7 +99,6 @@ module Pompeu
       @text_db_serializer.clear
       @text_db.clear
     end
-
 
 
   end

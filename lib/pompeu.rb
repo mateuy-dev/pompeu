@@ -26,6 +26,7 @@ require "pompeu/auto_translate_with_double_check"
 require "pompeu/csv_import_export"
 require "pompeu/reuse_translator"
 require "pompeu/reuse_translate"
+require "pompeu/google_free_translator_pip"
 
 
 #require "pompeu/pompeu_shell"

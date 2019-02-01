@@ -1,10 +1,10 @@
-
 module Pompeu
   # key is an array of strings
   RailsString = Struct.new(:keys, :text)
 
   class RailsFile
     attr_reader :strings, :target
+
     def initialize(target, strings = [])
       @target = target
       @strings = strings
@@ -22,7 +22,7 @@ module Pompeu
 
     def self.flat_hash(hash, k = [])
       return {k => hash} unless hash.is_a?(Hash)
-      hash.inject({}){ |h, v| h.merge! flat_hash(v[-1], k + [v[0]]) }
+      hash.inject({}) {|h, v| h.merge! flat_hash(v[-1], k + [v[0]])}
     end
 
 
@@ -39,7 +39,7 @@ module Pompeu
         end
         current[rails_string.keys[-1]] = escape(rails_string.text)
       end
-      {language.for("rails")=> result}
+      {language.for("rails") => result}
     end
 
     def to_files file, language
@@ -76,7 +76,7 @@ module Pompeu
     end
 
     def ==(other_object)
-      @strings.sort_by{|x| x.keys.join(",")} == other_object.strings.sort_by{|x| x.keys.join(",")}
+      @strings.sort_by {|x| x.keys.join(",")} == other_object.strings.sort_by {|x| x.keys.join(",")}
     end
   end
 end

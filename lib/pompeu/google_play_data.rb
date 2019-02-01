@@ -1,14 +1,14 @@
-
 module Pompeu
   GooglePlayDataStrings = Struct.new(:fulldescription, :shortdescription, :title, :whatsnew)
   class GooglePlayData
     TARGET = "google_play"
     FILES = {fulldescription: "listing/fulldescription",
-      shortdescription: "listing/shortdescription",
-      title: "listing/title",
-      whatsnew: "whatsnew"}
+             shortdescription: "listing/shortdescription",
+             title: "listing/title",
+             whatsnew: "whatsnew"}
 
     attr_reader :strings
+
     def initialize(strings)
       @strings = strings
     end

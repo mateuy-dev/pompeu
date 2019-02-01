@@ -1,6 +1,7 @@
 module Pompeu
   class Language
     attr_reader :code
+
     def initialize code, platforms
       @code = code
       @platforms = platforms

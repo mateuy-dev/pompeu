@@ -1,8 +1,8 @@
-
 module Pompeu
   class AutoTranslate
     include Logging
     attr_accessor :translator, :google_free_translator, :google_original_translator
+
     def initialize(text_db, languages, default_language, cache = nil, api_key: nil)
       @text_db = text_db
       @languages = languages
@@ -11,8 +11,10 @@ module Pompeu
 
       @google_free_translator = GoogleFreeTranslator.new cache
       @google_original_translator = OfficialGoogleTranslator.new @api_key
-      @translator = @google_free_translator
+      @google_free_translator_with_python = GoogleFreeTranslatorWithPython.new
+      @translator = @google_free_translator_with_python
     end
+
     def translate min_quality = TranslationConfidence::AUTO
       @languages.each do |language|
         lang = language.code

@@ -25,7 +25,7 @@ module Pompeu
 
     def load
       if File.exist? @path
-        @cache = File.open(@path) { |file| YAML::load( file ) }
+        @cache = File.open(@path) {|file| YAML::load(file)}
       else
         @cache = {}
       end

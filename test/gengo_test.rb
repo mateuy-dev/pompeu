@@ -38,4 +38,4 @@ class RailsFileTest < Minitest::Test
     assert_equal "Something else", lasttag.text
   end
 
-  end
+end

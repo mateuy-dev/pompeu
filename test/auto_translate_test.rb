@@ -18,7 +18,7 @@ class AutoTranslateTest < Minitest::Test
     auto_translate.translator = translator
     auto_translate.translate
 
-    assert @text_db.find_text @target,@key
+    assert @text_db.find_text @target, @key
     assert_equal @text, translation(@key, @lang2).text
   end
 
@@ -35,7 +35,7 @@ class AutoTranslateTest < Minitest::Test
     auto_translate.translator = translator
     auto_translate.translate
 
-    assert @text_db.find_text @target,@key
+    assert @text_db.find_text @target, @key
     assert_equal @text2, translation(@key, @lang2).text
   end
 
@@ -47,7 +47,7 @@ class AutoTranslateTest < Minitest::Test
     auto_translate = Pompeu::AutoTranslate.new @text_db, @languages, @default_language, nil
     auto_translate.translate
 
-    assert @text_db.find_text @target,@key
+    assert @text_db.find_text @target, @key
     assert_equal @text_ca, translation(@key, @lang2).text
   end
 
@@ -59,7 +59,7 @@ class AutoTranslateTest < Minitest::Test
     auto_translate = Pompeu::AutoTranslate.new @text_db, @languages, @default_language, nil
     auto_translate.translate
 
-    assert @text_db.find_text @target,@key
+    assert @text_db.find_text @target, @key
     assert_equal "Un\nDos\nTres", translation(@key, @lang2).text
   end
 
@@ -71,12 +71,12 @@ class AutoTranslateTest < Minitest::Test
     auto_translate = Pompeu::AutoTranslate.new @text_db, @languages, @default_language, nil
     auto_translate.translate
 
-    assert @text_db.find_text @target,@key
+    assert @text_db.find_text @target, @key
     assert_equal "Un<br/>Dos", translation(@key, @lang2).text
   end
 
   def translation key, language
-    @text_db.find_text(@target,key).translation(language)
+    @text_db.find_text(@target, key).translation(language)
   end
 
   class DummyTranslator

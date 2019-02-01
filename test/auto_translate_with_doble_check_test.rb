@@ -21,9 +21,9 @@ class AutoTranslateWithDoubleCheckTest < Minitest::Test
 
   def test_auto_translate_dck_mocked_accepted
     auto_translate = Pompeu::AutoTranslateWithDoubleCheck.new @text_db, @lang, @translator
-    auto_translate.translate @origin_langs, @lang4, 3, @confidence+1
+    auto_translate.translate @origin_langs, @lang4, 3, @confidence + 1
 
-    assert @text_db.find_text @target,@key
+    assert @text_db.find_text @target, @key
     assert_equal @text, translation(@key, @lang4).text
   end
 
@@ -31,9 +31,9 @@ class AutoTranslateWithDoubleCheckTest < Minitest::Test
     @text_db.add_translation @target, @key, @lang, @text2, @confidence, @translatable
 
     auto_translate = Pompeu::AutoTranslateWithDoubleCheck.new @text_db, @lang, @translator
-    auto_translate.translate @origin_langs, @lang4, 2, @confidence+1
+    auto_translate.translate @origin_langs, @lang4, 2, @confidence + 1
 
-    assert @text_db.find_text @target,@key
+    assert @text_db.find_text @target, @key
     assert_equal @text, translation(@key, @lang4).text
   end
 
@@ -41,9 +41,9 @@ class AutoTranslateWithDoubleCheckTest < Minitest::Test
     @text_db.add_translation @target, @key, @lang, @text2, @confidence, @translatable
 
     auto_translate = Pompeu::AutoTranslateWithDoubleCheck.new @text_db, @lang, @translator
-    auto_translate.translate @origin_langs, @lang4, 3, @confidence+1
+    auto_translate.translate @origin_langs, @lang4, 3, @confidence + 1
 
-    assert @text_db.find_text @target,@key
+    assert @text_db.find_text @target, @key
     assert_nil translation(@key, @lang4)
   end
 
@@ -52,14 +52,14 @@ class AutoTranslateWithDoubleCheckTest < Minitest::Test
     @text_db.add_translation @target, @key, @lang3, @text.upcase, @confidence, @translatable
 
     auto_translate = Pompeu::AutoTranslateWithDoubleCheck.new @text_db, @lang, @translator
-    auto_translate.translate @origin_langs, @lang4, 3, @confidence+1
+    auto_translate.translate @origin_langs, @lang4, 3, @confidence + 1
 
-    assert @text_db.find_text @target,@key
+    assert @text_db.find_text @target, @key
     assert_equal @text.upcase, translation(@key, @lang4).text
   end
 
   def translation key, language
-    @text_db.find_text(@target,key).translation(language)
+    @text_db.find_text(@target, key).translation(language)
   end
 
   class DummyTranslator

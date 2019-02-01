@@ -1,4 +1,3 @@
-
 module Pompeu
   class OfficialGoogleTranslator
     @@android_conversions = ["%1$s", "%2$s", "%d"]

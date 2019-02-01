@@ -1,8 +1,8 @@
-
 module Pompeu
   class ReuseTranslate
     include Logging
     attr_accessor :reuse_translator
+
     def initialize(text_db, languages, default_language)
       @text_db = text_db
       @languages = languages

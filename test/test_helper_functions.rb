@@ -28,7 +28,7 @@ module TestHelperFunctions
     @less_confidence = 1
 
     @default_language = "en"
-    @languages = Pompeu::Language.load_map({"en" => {"googleplay"=>"en-GB"}, "ca"=> {}})
+    @languages = Pompeu::Language.load_map({"en" => {"googleplay" => "en-GB"}, "ca" => {}})
 
     @app_name = "pompeu App"
 

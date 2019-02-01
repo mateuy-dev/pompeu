@@ -1,6 +1,10 @@
+require 'pycall/import'
+include PyCall::Import
+
+
 module Pompeu
   TextReplacement = Struct.new :replaced, :replacement
-  class GoogleFreeTranslator
+  class GoogleFreeTranslatorWithPython
     @@android_conversions = {"%1$s" => "Google", "%2$s" => "Yahoo", "%d" => "9898"}
     @@names = ["Microsoft", "Facebook", "Twitter"]
     @@integers = ["9652", "8765", "7352"]
@@ -12,20 +16,13 @@ module Pompeu
       @cache = cache
     end
 
-    def response_from url
-      if @cache
-        response = @cache.get url
-      else
-        response = Net::HTTP.get(URI(url))
-      end
-      response
+    def py_translate origin_lang, text, end_lang
+      pyimport :googletrans
+      translator = googletrans.Translator.new
+      translation = translator.translate(text, end_lang, origin_lang)
     end
 
     def translate origin_lang, text, end_lang
-      require 'net/http'
-      require 'json'
-      require 'uri'
-
       if text.include?("<p>") || text.include?("<li>") || text.include?("<ul>") || text.include?("<br>") || text.include?("</br>")
         raise "Only some html is supported. " + text
       end
@@ -34,15 +31,14 @@ module Pompeu
         return splitAndJoinLines origin_lang, text, end_lang
       end
       converted_text, applied_android_conversions = convert_params text, origin_lang, end_lang
-      no_html_text = Nokogiri::HTML(converted_text).text
-      encoded_text = URI::encode(no_html_text)
-      url = "https://translate.googleapis.com/translate_a/single?client=gtx&format=html&sl=#{origin_lang}&tl=#{end_lang}&dt=t&q=#{encoded_text}"
 
-      response = response_from url
-      lines = JSON.parse(response)[0]
-      translated = lines.map {|line| line[0]}.join('')
+      no_html_text = Nokogiri::HTML(converted_text).text
+
+      translation = py_translate origin_lang, no_html_text, end_lang
+
+      translated = translation.text
       result = unconver_params translated, applied_android_conversions
-      Logging.logger.debug "Pompeu - connecting to #{url}"
+
       Logging.logger.info "Pompeu - translating #{text} in #{origin_lang} to #{end_lang}: #{result}"
 
       result

@@ -6,7 +6,7 @@ module Pompeu
 
     def load_file
       if File.file? @db_path
-        File.open(@db_path) { |file| YAML::load( file ) }
+        File.open(@db_path) {|file| YAML::load(file)}
       else
         TextDB.new
       end

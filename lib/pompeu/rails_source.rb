@@ -1,6 +1,6 @@
 module Pompeu
   class RailsSource
-  def initialize textDB, languages, rails_path, target
+    def initialize textDB, languages, rails_path, target
       @textDB = textDB
       @languages = languages
       @rails_path = rails_path
@@ -18,7 +18,7 @@ module Pompeu
     end
 
     # writes the data to rails yaml files
-    def export(_appname=nil)
+    def export(_appname = nil)
       @languages.each do |language|
         file = rails_file_path(language)
         rails_file = RailsFile.from_db @textDB, language.code, @target

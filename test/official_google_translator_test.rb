@@ -6,7 +6,7 @@ class AutoTranslateTest < Minitest::Test
 
   def setup
     define_test_values
-    @skip_after = Time.new(2018,3,17)
+    @skip_after = Time.new(2018, 3, 17)
   end
 
   def skip?

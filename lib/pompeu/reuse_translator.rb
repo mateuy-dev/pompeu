@@ -1,4 +1,3 @@
-
 module Pompeu
   class ReuseTranslator
     def initialize(text_db)
