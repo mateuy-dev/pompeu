@@ -11,11 +11,14 @@ module Pompeu
     @@html_links = "()"
 
 
-    def initialize(cache = nil)
-      @cache = cache
+    def initialize(pipcache = nil)
+      @pipcache = pipcache
     end
 
     def py_translate origin_lang, text, end_lang
+      cache_trans = pipcache.get origin_lang, text, end_lang
+      return cache_trans if cache_trans
+
       pyimport :googletrans
       translator = googletrans.Translator.new
       translation = translator.translate(text, end_lang, origin_lang)

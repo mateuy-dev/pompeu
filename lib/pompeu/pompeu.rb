@@ -40,9 +40,9 @@ module Pompeu
           RailsSource.new @text_db, languages, path, target
         end
       end
-
+      @pip_cache = PipTranslateCache.new @project_configuration["paths"]["internal"]
       @web_cache = WebResponseCache.new @project_configuration["paths"]["internal"]
-      @auto_translate = AutoTranslate.new(@text_db, @languages, @default_language, @web_cache)
+      @auto_translate = AutoTranslate.new(@text_db, @languages, @default_language, @web_cache, @pip_cache)
 
       @auto_translate_2check = AutoTranslateWithDoubleCheck.new(@text_db, @default_language, @auto_translate.google_free_translator_with_python)
 

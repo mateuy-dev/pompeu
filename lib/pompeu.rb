@@ -27,6 +27,7 @@ require "pompeu/csv_import_export"
 require "pompeu/reuse_translator"
 require "pompeu/reuse_translate"
 require "pompeu/google_free_translator_pip"
+require "pompeu/pip_translate_cache"
 
 
 #require "pompeu/pompeu_shell"

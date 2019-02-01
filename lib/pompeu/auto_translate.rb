@@ -3,7 +3,7 @@ module Pompeu
     include Logging
     attr_accessor :translator, :google_free_translator, :google_original_translator, :google_free_translator_with_python
 
-    def initialize(text_db, languages, default_language, cache = nil, api_key: nil)
+    def initialize(text_db, languages, default_language, cache = nil, pipcache = nil, api_key: nil)
       @text_db = text_db
       @languages = languages
       @default_language = default_language
@@ -11,7 +11,7 @@ module Pompeu
 
       @google_free_translator = GoogleFreeTranslator.new cache
       @google_original_translator = OfficialGoogleTranslator.new @api_key
-      @google_free_translator_with_python = GoogleFreeTranslatorWithPython.new
+      @google_free_translator_with_python = GoogleFreeTranslatorWithPython.new pipcache
       @translator = @google_free_translator_with_python
     end
 
