@@ -3,7 +3,6 @@ include PyCall::Import
 
 
 module Pompeu
-  TextReplacement = Struct.new :replaced, :replacement
   class GoogleFreeTranslatorWithPython
     @@android_conversions = {"%1$s" => "Google", "%2$s" => "Yahoo", "%d" => "9898"}
     @@names = ["Microsoft", "Facebook", "Twitter"]
