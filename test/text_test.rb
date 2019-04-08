@@ -59,5 +59,12 @@ class TextTest < Minitest::Test
     end
   end
 
+  def test_add_translation_with_unknown_confidence_and_same_text
+    @pomeu_text.add_translation "w", @text, Pompeu::TranslationConfidence::MANUAL
+    @pomeu_text.add_translation "q", @text, Pompeu::TranslationConfidence::PROFESSIONAL
+    @pomeu_text.add_translation "e", @text, Pompeu::TranslationConfidence::AUTO
+    assert_equal 2, @pomeu_text.good_translations.size
+  end
+
 
 end

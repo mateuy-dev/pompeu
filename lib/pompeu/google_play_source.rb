@@ -9,10 +9,15 @@ module Pompeu
     end
 
     #imports data form android xml files to the database
-    def import
+    def import_all
       @languages.each do |language|
-        folder = lang_folder(language)
-        next unless File.exist? folder
+        import language
+      end
+    end
+
+    def import language
+      folder = lang_folder(language)
+      if File.exist? folder
         google_play_data = GooglePlayData.from_files folder
         google_play_data.to_db @textDB, language.code
       end

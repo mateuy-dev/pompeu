@@ -20,7 +20,7 @@ class AndroidSourceTest < Minitest::Test
   def test_android_source_import
     @text_db = Pompeu::TextDB.new
     android_source = Pompeu::AndroidSource.new @text_db, @languages, @default_language, @values_folder, @target
-    android_source.import
+    android_source.import_all
 
     assert @text_db.find_text @target, "app_name"
 
@@ -39,7 +39,7 @@ class AndroidSourceTest < Minitest::Test
   def test_android_source_import_and_export
     text_db = Pompeu::TextDB.new
     android_source = Pompeu::AndroidSource.new text_db, @languages, @default_language, @values_folder, @target
-    android_source.import
+    android_source.import_all
 
     android_source2 = Pompeu::AndroidSource.new text_db, @languages, @default_language, @outfolder, @target
     android_source2.export

@@ -12,7 +12,7 @@ module Pompeu
 
   class Pompeu
     include Logging
-    attr_accessor :project_configuration, :textDB
+    attr_accessor :project_configuration, :text_db
 
     def initialize configuration_file = "project_configuration.yml"
       @project_configuration = YAML.load_file(configuration_file)
@@ -53,8 +53,12 @@ module Pompeu
       @text_db_serializer.save @text_db
     end
 
-    def import
-      @sources.each {|source| source.import}
+    def import language
+      @sources.each {|source| source.import @languages.select{|lang| lang.code == language}[0]}
+    end
+
+    def import_all
+      @sources.each {|source| source.import_all}
     end
 
     def export
@@ -81,8 +85,8 @@ module Pompeu
       @auto_translate.translate min_quality
     end
 
-    def auto_translate_double_check(end_lang, min_times, min_quality = TranslationConfidence::AUTO)
-      @auto_translate_2check.translate(@user_languages, end_lang, min_times, min_quality)
+    def auto_translate_double_check(end_lang, min_times = 2, min_quality = TranslationConfidence::AUTO)
+      @auto_translate_2check.translate(end_lang, min_times, min_quality)
     end
 
     def auto_translate_reusing(min_quality = TranslationConfidence::PROFESSIONAL_REUSED)

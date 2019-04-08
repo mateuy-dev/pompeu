@@ -1,7 +1,7 @@
 module Pompeu
   module TranslationConfidence
     AUTO = 0
-    AUTO_2CHECK = 1
+    AUTO_2CHECK = 1 # to 4
     PROFESSIONAL_REUSED = 5
     UNKNOWN = 50
     MANUAL = 100

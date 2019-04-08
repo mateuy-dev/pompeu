@@ -48,7 +48,7 @@ module Pompeu
 
     def to_db textDB, lang
       @strings.each do |rails_string|
-        textDB.add_translation @target, rails_string.keys, lang, rails_string.text, TranslationConfidence::UNKNOWN, true
+        textDB.add_translation @target, rails_string.keys, lang, rails_string.text, TranslationConfidence::MANUAL, true
       end
     end
 

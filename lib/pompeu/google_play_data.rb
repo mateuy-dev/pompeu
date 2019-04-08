@@ -37,7 +37,7 @@ module Pompeu
 
     def to_db text_db, lang
       @strings.each_pair do |attr, value|
-        text_db.add_translation TARGET, attr.to_s, lang, value, TranslationConfidence::UNKNOWN
+        text_db.add_translation TARGET, attr.to_s, lang, value, TranslationConfidence::MANUAL
       end
     end
 

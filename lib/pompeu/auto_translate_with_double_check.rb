@@ -10,14 +10,15 @@ module Pompeu
       @translator = AutoTranslatorWithDoubleCheck.new inner_translator
     end
 
-    def translate origin_langs, end_lang, min_times, min_quality = TranslationConfidence::AUTO_2CHECK
+    def translate end_lang, min_times = 2, min_quality = TranslationConfidence::AUTO_2CHECK
       counter = 0
       texts = @text_db.untranslated_or_worse_than end_lang, @default_language, min_quality
       texts.each do |text|
-        translation, times = @translator.translate origin_langs, text, end_lang
+        translation, times = @translator.translate text, end_lang
         if times >= min_times
           logger.info "Pompeu - auto translate dchk: #{times} #{translation}"
-          text.add_translation end_lang, translation, TranslationConfidence::AUTO_2CHECK if translation
+          confidence = [TranslationConfidence::AUTO_2CHECK + times - min_times, TranslationConfidence::PROFESSIONAL_REUSED-1].min
+          text.add_translation end_lang, translation, confidence if translation
           counter += 1
         else
           logger.info "Pompeu - auto translate dchk: Skip (#{times}) #{translation}"

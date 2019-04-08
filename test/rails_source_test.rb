@@ -20,7 +20,7 @@ class RailsSourceTest < Minitest::Test
   def test_rails_source_import
     @text_db = Pompeu::TextDB.new
     rails_source = Pompeu::RailsSource.new @text_db, @languages, @values_folder, @target
-    rails_source.import
+    rails_source.import_all
 
     assert @text_db.find_text @target, ["some", "key", "text1"]
 
@@ -32,7 +32,7 @@ class RailsSourceTest < Minitest::Test
   def test_rails_source_import_and_export
     text_db = Pompeu::TextDB.new
     rails_source = Pompeu::RailsSource.new text_db, @languages, @values_folder, @target
-    rails_source.import
+    rails_source.import_all
 
     rails_source2 = Pompeu::RailsSource.new text_db, @languages, @outfolder, @target
     rails_source2.export

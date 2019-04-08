@@ -8,10 +8,15 @@ module Pompeu
     end
 
     #imports data form rails yaml files to the database
-    def import
+    def import_all
       @languages.each do |language|
-        file = rails_file_path(language)
-        next unless File.exist? file
+        import language
+      end
+    end
+
+    def import language
+      file = rails_file_path(language)
+      if File.exist? file
         rails_file = RailsFile.from_files file, language, @target
         rails_file.to_db @textDB, language.code
       end

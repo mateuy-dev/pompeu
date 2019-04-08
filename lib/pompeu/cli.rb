@@ -6,12 +6,20 @@ module Pompeu
   include Logging
 
   class CLI < Thor
-    desc "import", "adds changes from android strings files to the database"
 
-    def import
+    desc "import [language]", "adds changes from files to the database"
+    def import language
       Logging.logger.info "text files -> DB"
       pompeu = Pompeu.new
-      pompeu.import
+      pompeu.import language
+      pompeu.save
+    end
+
+    desc "import_all", "adds changes from files to the database"
+    def import_all
+      Logging.logger.info "text files -> DB"
+      pompeu = Pompeu.new
+      pompeu.import_all
       pompeu.save
     end
 
@@ -65,7 +73,7 @@ module Pompeu
     end
 
     desc "auto_translate2check [language]", "Fills untranslated texts or updated ones with auto translated values. using double check."
-    option :min_times, type: :numeric, default: 3
+    option :min_times, type: :numeric, default: 2
     option :update, type: :boolean, default: false
 
     def auto_translate2check language

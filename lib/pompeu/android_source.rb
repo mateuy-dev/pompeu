@@ -10,10 +10,15 @@ module Pompeu
     end
 
     #imports data form android xml files to the database
-    def import
+    def import_all
       @languages.each do |language|
-        file = android_file_path(language)
-        next unless File.exist? file
+        import language
+      end
+    end
+
+    def import language
+      file = android_file_path(language)
+      if File.exist? file
         android_file = AndroidFile.from_files file, @target
         android_file.to_db @textDB, language.code
       end
