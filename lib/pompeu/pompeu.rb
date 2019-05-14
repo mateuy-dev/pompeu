@@ -75,6 +75,12 @@ module Pompeu
       puts Gengo.new.export(texts, origin_language)
     end
 
+    def export_for_csv language, confidence, target, origin_language = nil
+      origin_language ||= @default_language
+      texts = @text_db.untranslated_or_worse_than language, origin_language, confidence, target
+      puts CsvExporter.new.export(texts, origin_language, language)
+    end
+
     def export_for_csv(language, confidence, target, origin_language = nil)
       origin_language ||= @default_language
       texts = @text_db.untranslated_or_worse_than language, origin_language, confidence, target
