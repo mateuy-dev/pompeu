@@ -46,15 +46,6 @@ module Pompeu
       pompeu.export_for_gengo language, confidence, target, origin_language
     end
 
-    def export_for_csv language
-      confidence = options[:confidence]
-      target = options[:target]
-      origin_language = options[:origin_language]
-      Logging.logger.info "Exporting file for csv for language #{language} and min confidence #{confidence}"
-      pompeu = Pompeu.new
-      pompeu.export_for_csv language, confidence, target, origin_language
-    end
-
     desc "export_for_csv [language]", "export the untranslated or bad translated texts in a csv file for translation"
     option :confidence, :type => :numeric, required: true
     option :target, :type => :string, required: true
@@ -64,7 +55,7 @@ module Pompeu
       confidence = options[:confidence]
       target = options[:target]
       origin_language = options[:origin_language]
-      Logging.logger.info "Exporting file for gengo for language #{language} and min confidence #{confidence}"
+      Logging.logger.info "Exporting file for csv for language #{language} and min confidence #{confidence}"
       pompeu = Pompeu.new
       pompeu.export_for_csv language, confidence, target, origin_language
     end
