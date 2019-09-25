@@ -53,7 +53,7 @@ module Pompeu
 
     def to_db textDB, lang
       @strings.each do |android_string|
-        textDB.add_translation @target, android_string.key, lang, android_string.text, TranslationConfidence::MANUAL, android_string.translatable
+        textDB.add_translation @target, android_string.key, lang, android_string.text, TranslationConfidence::UNKNOWN, android_string.translatable
       end
     end
 

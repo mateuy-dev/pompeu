@@ -3,7 +3,13 @@ module Pompeu
     include Logging
 
     def import text_db, file, language
-      puts "todo"
+      require 'csv'
+      data = CSV.read(file)
+      data.each do |line|
+        id = line[0]
+        text = line[1]
+        text_db.add_text_translation(id, language, text, TranslationConfidence::MANUAL)
+      end
     end
 
     def export texts, origin_language, language

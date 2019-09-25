@@ -26,12 +26,12 @@ class AutoTranslateTest < Minitest::Test
 
   def test_auto_translate_with_rails_param_numeric
     translation = Pompeu::GoogleFreeTranslator.new.translate "en", "There are %{param_int} apples in the tree", "ca"
-    assert_equal "Hi ha %{param_int} pomes a l'arbre", translation
+    assert_equal "Hi ha %{param_int} pomes a l’arbre", translation
   end
 
   def test_auto_translate_with_rails_html_text
     translation = Pompeu::GoogleFreeTranslator.new.translate "en", "This is <b>html</b> text", "ca"
-    assert_equal "Aquest és un text html", translation
+    assert_equal "Aquest és el text html", translation
   end
 
   def test_auto_translate_with_rails_html_link
@@ -41,7 +41,7 @@ class AutoTranslateTest < Minitest::Test
 
   def test_auto_translate_with_rails_html_and_param
     translation = Pompeu::GoogleFreeTranslator.new.translate "en", "This is <a href=\"somelink\">%{param}</a> to somewhere", "ca"
-    assert_equal "Aquest és <a href=\"somelink\">%{param}</a> a algun lloc", translation
+    assert_equal "Això és <a href=\"somelink\">%{param}</a> a algun lloc", translation
   end
 
   def test_auto_translate_with_rails_html_and_param_2

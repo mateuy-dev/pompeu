@@ -31,7 +31,7 @@ class AutoTranslateWithPythonTest < Minitest::Test
 
   def test_auto_translate_with_rails_html_text
     translation = Pompeu::GoogleFreeTranslatorWithPython.new.translate "en", "This is <b>html</b> text", "ca"
-    assert_equal "Aquest és un text html", translation
+    assert_equal "Aquest és el text html", translation
   end
 
   def test_auto_translate_with_rails_html_link

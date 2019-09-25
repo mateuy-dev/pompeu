@@ -107,12 +107,19 @@ module Pompeu
     end
 
 
-    desc "import_translation [file] [language]", "Imports a translation file. For now only Gengo"
-
-    def import_translation file, language
+    desc "import_gengo_translation [file] [language]", "Imports a translation file. For now only Gengo"
+    def import_gengo_translation file, language
       Logging.logger.info "Importing gengo file for #{language}"
       pompeu = Pompeu.new
       pompeu.import_gengo_translation file, language
+      pompeu.save
+    end
+
+    desc "import_csv_translation [file] [language]", "Imports a translation file. For now only CSV"
+    def import_csv_translation file, language
+      Logging.logger.info "Importing csv file for #{language}"
+      pompeu = Pompeu.new
+      pompeu.import_csv_translation file, language
       pompeu.save
     end
 

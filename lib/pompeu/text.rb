@@ -9,7 +9,7 @@ module Pompeu
       @id = id
       @translatable = translatable
       @keys = []
-      @translations = {}
+      git = {}
     end
 
     def self.generate_id target, key

@@ -2,7 +2,7 @@ require 'test_helper'
 require 'test_helper_functions'
 
 
-class RailsFileTest < Minitest::Test
+class GengoTest < Minitest::Test
   include TestHelperFunctions
 
   def setup
@@ -17,7 +17,7 @@ class RailsFileTest < Minitest::Test
     texts = @text_db.untranslated_or_worse_than "nl", @default_language, @confidence, @target
     result = Pompeu::Gengo.new.export texts, @lang
 
-    assert_equal "[[[android__some_key]]]\nsome text", result
+    assert_equal "[[[textid android__some_key]]]\nSome text", result
   end
 
   def test_import

@@ -106,6 +106,7 @@ module Pompeu
     def unconver_params text, applied_android_conversions
       applied_android_conversions.reverse_each do |text_replacement|
         text = text.sub text_replacement.replacement, text_replacement.replaced
+        text = text.sub text_replacement.replacement.downcase, text_replacement.replaced
       end
       text
     end

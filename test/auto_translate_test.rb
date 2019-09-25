@@ -66,13 +66,13 @@ class AutoTranslateTest < Minitest::Test
   def test_auto_translate_for_two_line_html_text
     #return if @skip_internet_test
     @text_db = Pompeu::TextDB.new
-    @text_db.add_translation @target, @key, @lang, "One<br/>Two", @confidence, @translatable
+    @text_db.add_translation @target, @key, @lang, "Apple<br/>Orange", @confidence, @translatable
 
     auto_translate = Pompeu::AutoTranslate.new @text_db, @languages, @default_language, nil
     auto_translate.translate
 
     assert @text_db.find_text @target, @key
-    assert_equal "Un<br/>Dos", translation(@key, @lang2).text
+    assert_equal "Poma<br/>Taronja", translation(@key, @lang2).text
   end
 
   def translation key, language
