@@ -7,11 +7,12 @@ module Pompeu
     end
 
     def export texts, origin_language, language
-      texts.map {|text| line_export(text, origin_language, language)}.join("\n")
+      require 'csv'
+      texts.map {|text| line_export(text, origin_language, language)}.join("")
     end
 
     def line_export text, origin_language, language
-      [text.id, text.translation(origin_language).text, text.translation(language).text]
+      [text.id, text.translation(origin_language).text, text.translation(language) ? text.translation(language).text : ""].to_csv
     end
   end
 end
