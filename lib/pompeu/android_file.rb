@@ -34,6 +34,7 @@ module Pompeu
           @strings.each do |android_string|
             if android_string.translatable
               xml.string(name: android_string.key) {
+                puts android_string if !android_string.text
                 xml.text escape(android_string.text)
               }
             else

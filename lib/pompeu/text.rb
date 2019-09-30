@@ -3,13 +3,13 @@ module Pompeu
   class Text
     include Logging
     #attr_accessor :id, :keys, :translations, :translatable
-    attr_reader :translatable, :id
+    attr_reader :translatable, :id, :translations
 
     def initialize id, translatable
       @id = id
       @translatable = translatable
       @keys = []
-      git = {}
+      @translations = {}
     end
 
     def self.generate_id target, key
