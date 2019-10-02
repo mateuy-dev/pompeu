@@ -40,6 +40,11 @@ module Pompeu
     end
 
     # def add key, lang, text, confidence: TranslationConfidence::UNKNOWN, translatable: true
+    # @param [String] target
+    # @param [String] key
+    # @param [String] lang
+    # @param [String] text
+    # @param [Integer] confidence
     def add_translation target, key, lang, text, confidence, translatable = true
       pompeu_text = find_text(target, key)
       if !pompeu_text

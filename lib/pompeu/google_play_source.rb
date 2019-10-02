@@ -16,31 +16,19 @@ module Pompeu
     end
 
     def import language
-      folder = lang_folder(language)
-      if File.exist? folder
-        google_play_data = GooglePlayData.from_files folder
-        google_play_data.to_db @textDB, language.code
-      end
+      google_play_data = GooglePlayData.from_files @play_data_path, language
+      google_play_data.to_db @textDB
     end
 
     # writes the data to android string.xml files
     def export app_name
       @languages.each do |language|
-        folder = lang_folder(language)
-        unless File.exist?(folder)
-          Logging.logger.warn "Pompeu - creating folder for google play info for language #{language.code}: #{folder}"
-          Dir.mkdir folder
-        end
-        google_play_data = GooglePlayData.from_db @textDB, language.code
-        google_play_data.to_files folder, app_name
+        google_play_data = GooglePlayData.from_db @textDB, language
+        google_play_data.to_files @play_data_path, app_name
       end
     end
 
 
-    def lang_folder language
-      play_lang = language.for "googleplay"
-      File.join @play_data_path, play_lang
-    end
 
   end
 end

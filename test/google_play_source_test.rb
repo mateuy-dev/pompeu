@@ -19,7 +19,7 @@ class GooglePlaySourceTest < Minitest::Test
   def test_google_play_source_import
     @text_db = Pompeu::TextDB.new
     google_play_source = Pompeu::GooglePlaySource.new @text_db, @languages, @play_folder
-    google_play_source.import
+    google_play_source.import_all
 
 
     assert_equal "This is a full description", translation("fulldescription", @lang).text
@@ -33,7 +33,7 @@ class GooglePlaySourceTest < Minitest::Test
   def test_google_play_source_import_and_export
     text_db = Pompeu::TextDB.new
     google_play_source = Pompeu::GooglePlaySource.new text_db, @languages, @play_folder
-    google_play_source.import
+    google_play_source.import_all
 
     google_play_source2 = Pompeu::GooglePlaySource.new text_db, @languages, @outfolder
     google_play_source2.export @app_name
@@ -43,8 +43,8 @@ class GooglePlaySourceTest < Minitest::Test
 
   end
 
-  def translation key, language
-    @text_db.find_text(@target, key).translation(language)
+  def translation key, lang
+    @text_db.find_text(@target, key).translation(lang)
   end
 
 end
