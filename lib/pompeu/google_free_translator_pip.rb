@@ -41,8 +41,13 @@ module Pompeu
       end
 
       if text.include?("<br/>")
-        return splitAndJoinLines origin_lang, text, end_lang
+        return splitAndJoinLines origin_lang, text, end_lang, "<br/>"
       end
+
+      if text.include?("\\n")
+        return splitAndJoinLines origin_lang, text, end_lang, "\\n"
+      end
+
       converted_text, applied_android_conversions = convert_params text, origin_lang, end_lang
 
       no_html_text = Nokogiri::HTML(converted_text).text
@@ -111,10 +116,10 @@ module Pompeu
       text
     end
 
-    def splitAndJoinLines origin_lang, text, end_lang
-      text.split('<br/>')
+    def splitAndJoinLines origin_lang, text, end_lang, split_chars = '<br/>'
+      text.split(split_chars)
           .map {|line| translate(origin_lang, line, end_lang)}
-          .join('<br/>')
+          .join(split_chars)
     end
   end
 
