@@ -25,9 +25,10 @@ module Pompeu
 
       pyimport :googletrans
       # translator = googletrans.Translator.new @@domains
-      proxies = {'http': '127.0.0.1:9080', 'https': '127.0.0.1:9080'}
-      translator = googletrans.Translator.new(proxies: proxies)
-      #translator = googletrans.Translator.new
+      # # TOR out
+      #proxies = {'http': '127.0.0.1:9080', 'https': '127.0.0.1:9080'}
+      #translator = googletrans.Translator.new(proxies: proxies)
+      translator = googletrans.Translator.new
       translation = translator.translate(text, end_lang, origin_lang)
 
       @pipcache.add origin_lang, text, end_lang, translation.text if @pipcache

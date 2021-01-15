@@ -15,8 +15,9 @@ module Pompeu
       texts = @text_db.untranslated_or_worse_than end_lang, @default_language, min_quality
       texts.each do |text|
         translation, times = @translator.translate text, end_lang
+        logger.info "Pompeu - auto translate dchk: #{text.one_key} #{times} #{translation}"
         if times >= min_times
-          logger.info "Pompeu - auto translate dchk: #{times} #{translation}"
+          logger.info "Pompeu - auto translate dchk: Accept #{times} #{translation}"
           confidence = [TranslationConfidence::AUTO_2CHECK + times - min_times, TranslationConfidence::PROFESSIONAL_REUSED-1].min
           text.add_translation end_lang, translation, confidence if translation
           counter += 1

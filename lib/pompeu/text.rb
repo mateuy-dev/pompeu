@@ -31,6 +31,10 @@ module Pompeu
       @keys.find {|key| key.target == target}
     end
 
+    def one_key
+      @keys[0].key
+    end
+
     def key_for target
       @keys.find {|key| key.target == target}.key
     end
