@@ -45,15 +45,19 @@ module Pompeu
       end
     end
 
-    def add_translation lang, text, confidence
+    def add_translation lang, text, confidence, force=false
       if !@translations[lang]
         logger.info "Pompeu - adding translation: #{@id} #{lang} #{text}"
         @translations[lang] = Translation.new lang, text, confidence, Time.now
       else
-        if (confidence == TranslationConfidence::UNKNOWN) and (@translations[lang].text == text)
+        if force
+          logger.info "Pompeu - force update translation: #{@id} #{lang} #{text}"
+        elsif (confidence == TranslationConfidence::UNKNOWN) and (@translations[lang].text == text)
+          logger.info "Pompeu - Skipping update"
           return
         elsif @translations[lang].confidence > confidence
-          raise "Decrease confidence is not allowed #{confidence}, #{lang}, #{@id}, #{text}, #{@translations[lang].confidence}, #{@translations[lang].text}"
+          # raise "Decrease confidence is not allowed #{confidence}, #{lang}, #{@id}, #{text}, #{@translations[lang].confidence}, #{@translations[lang].text}"
+          return
         elsif @translations[lang].confidence == confidence and (@translations[lang].text != text)
           logger.info "Pompeu - updating translation: #{@id} #{lang} #{text}"
         elsif @translations[lang].confidence > confidence
@@ -62,7 +66,7 @@ module Pompeu
           # Nothing done
         end
         @translations[lang].confidence = confidence
-        @translations[lang].updated_at = Time.now if @translations[lang].text != text
+        @translations[lang].updated_at = Time.now if (force || @translations[lang].text != text)
         @translations[lang].text = text
 
       end

@@ -119,7 +119,7 @@ module Pompeu
 
     def splitAndJoinLines origin_lang, text, end_lang, split_chars = '<br/>'
       text.split(split_chars)
-          .map {|line| translate(origin_lang, line, end_lang)}
+          .map {|line| line.strip.empty? ? line : translate(origin_lang, line, end_lang)}
           .join(split_chars)
     end
   end

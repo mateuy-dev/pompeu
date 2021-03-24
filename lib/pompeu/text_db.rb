@@ -60,7 +60,7 @@ module Pompeu
     end
 
     # Returns the untranslated texts, the translated with less confidence than the given,
-    # or the translated with same confidence but that are older than the default language
+    # or the translated that are older than the default language
     def untranslated_or_worse_than lang, default_lang, confidence = -1, target = nil
       seconds_margin = 5
       result = []
@@ -75,7 +75,7 @@ module Pompeu
           elsif translation.confidence < confidence
             logger.debug "Pompeu - translation to improve found: #{text.id} #{lang}"
             result << text
-          elsif translation.confidence == confidence and (translation.updated_at + seconds_margin) < text.translation(default_lang).updated_at
+          elsif (translation.updated_at + seconds_margin) < text.translation(default_lang).updated_at
             logger.debug "Pompeu - translation to update: #{text.id} #{lang}"
             result << text
             #elsif translation.confidence == confidence and text.matches_target?(RailsFile::TARGET) and text.key_for(RailsFile::TARGET)[-1].end_with? "_html"

@@ -28,11 +28,12 @@ module Pompeu
 
     def translate_text text, lang
       if text.translatable
-        logger.info "Pompeu - auto translate: #{text.id} #{lang}"
+        logger.info "Pompeu - auto translate: #{text.id} #{lang} from #{@default_language}"
         if !text.translation("en")
           logger.info "Pompeu - auto translate: #{text.id} #{lang}"
         end
         if text.translation(@default_language)
+          logger.info text.translation(@default_language)
           return @translator.translate(@default_language, text.translation(@default_language).text, lang)
         else
           logger.warn "Pompeu - auto translate: Text not found in default language #{text.id} #{@default_language}"

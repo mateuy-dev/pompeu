@@ -1,12 +1,13 @@
 module Pompeu
   require 'fileutils'
-  GooglePlayDataStrings = Struct.new(:fulldescription, :shortdescription, :title, :whatsnew)
+  GooglePlayDataStrings = Struct.new(:fulldescription, :shortdescription, :shortshortdescription, :title, :whatsnew)
   class GooglePlayData
-    TARGET = "google_play"
-    FILES = {fulldescription: {folder: "listings", file:"fulldescription.txt"},
-             shortdescription: {folder: "listings", file: "shortdescription.txt"},
-             title: {folder: "listings", file: "title.txt"},
-             whatsnew: {folder: "release-notes", file: "production.txt"}}
+    TARGET = 'google_play'.freeze
+    FILES = {fulldescription: {folder: 'listings', file:'full-description.txt'},
+             shortdescription: {folder: 'listings', file: 'short-description.txt'},
+             shortshortdescription: {folder: 'listings', file: 'short-short-description.txt'},
+             title: {folder: 'listings', file: 'title.txt'},
+             whatsnew: {folder: 'release-notes', file: 'production.txt'}}.freeze
 
     attr_reader :strings, :language
 
@@ -15,7 +16,7 @@ module Pompeu
       @language = language
     end
 
-    def self.from_files folder_path, language
+    def self.from_files(folder_path, language)
       strings = GooglePlayDataStrings.new
       FILES.each_pair do |attr, file_data|
         full_folder = File.join(folder_path, file_data[:folder], lang_folder(language))
@@ -25,14 +26,21 @@ module Pompeu
       GooglePlayData.new strings, language
     end
 
-    def to_files folder_path, app_name
+    def to_files(folder_path, app_name)
       FILES.each_pair do |attr, file_data|
+        next if attr == :shortshortdescription
+
         full_folder = File.join(folder_path, file_data[:folder], GooglePlayData.lang_folder(language))
         FileUtils.mkdir_p(full_folder) unless File.exist? full_folder
         path = File.join(full_folder, file_data[:file])
         value = @strings[attr]
-        if :title == attr and value.length > 30
+        if (attr == :title) && (value.length > 30)
           value = app_name
+        elsif (attr == :whatsnew) && (value.length >500)
+          value = value[0..499]
+        elsif (attr == :shortdescription) && (value.length >80)
+          value = @strings[:shortshortdescription]
+          value = value[0..79] if value.length > 80
         end
         File.write(path, value)
       end
@@ -40,13 +48,13 @@ module Pompeu
 
 
     # @param [TextDB] text_db
-    def to_db text_db
+    def to_db(text_db)
       @strings.each_pair do |attr, value|
-        text_db.add_translation TARGET, attr.to_s, @language.code, value, TranslationConfidence::UNKNOWN
+        text_db.add_translation TARGET, attr.to_s, @language.code, value, TranslationConfidence::MANUAL
       end
     end
 
-    def self.from_db text_db, language
+    def self.from_db(text_db, language)
       lang = language.code
       strings = GooglePlayDataStrings.new
       strings.each_pair do |attr, value|
@@ -63,8 +71,8 @@ module Pompeu
       @strings == other.strings
     end
 
-    def self.lang_folder language
-      play_lang = language.for "googleplay"
+    def self.lang_folder(language)
+      play_lang = language.for 'googleplay'
     end
   end
 end

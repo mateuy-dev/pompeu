@@ -35,6 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "highline"
   spec.add_dependency "nokogiri"
   spec.add_dependency "thor"
-
   spec.add_dependency "pycall"
 end

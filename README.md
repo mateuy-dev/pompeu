@@ -92,5 +92,12 @@ texts:
 # Build
 rake build && gem install pkg/pompeu-0.1.0.gem
 
+# Install
+Requires
+https://github.com/ssut/py-googletrans
+
+Check the following if errors (start 2020) 
+https://github.com/ssut/py-googletrans/issues/234
+
 
 

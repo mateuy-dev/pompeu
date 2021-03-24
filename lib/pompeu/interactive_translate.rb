@@ -35,7 +35,7 @@ module Pompeu
           end
         end
         puts new_translation
-        text.add_translation language, new_translation, TranslationConfidence::MANUAL
+        text.add_translation language, new_translation, TranslationConfidence::MANUAL, true
       end
     end
   end
